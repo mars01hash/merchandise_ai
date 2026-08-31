@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RMG ERP – AI Error Reduction Demo</title>
+    <title>RMG ERP – AI Impact & Error Reduction Demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <style>
@@ -87,11 +87,6 @@
             padding: 24px;
             margin-bottom: 24px;
             border: 1px solid #e9edf4;
-            transition: 0.2s;
-        }
-
-        .demo-card:hover {
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
         }
 
         .badge-ai {
@@ -163,72 +158,81 @@
             align-self: flex-start;
         }
 
-        .extract-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 12px;
+        /* Impact Simulator Styles */
+        .impact-stage {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        .extract-item {
-            background: #f1f5f9;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border-left: 4px solid #7c3aed;
+        .impact-stage.processing {
+            border-color: #7c3aed;
+            background: #f5f3ff;
         }
 
-        .extract-item .label {
-            font-size: 0.7rem;
-            color: #475569;
-            font-weight: 600;
-            text-transform: uppercase;
+        .impact-stage.done {
+            border-color: #16a34a;
+            background: #f0fdf4;
         }
 
-        .extract-item .value {
-            font-size: 0.95rem;
-            font-weight: 500;
+        .error-highlight {
+            background: #fee2e2;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #fca5a5;
         }
 
-        .risk-gauge {
-            width: 100%;
-            height: 12px;
+        .fixed-highlight {
+            background: #dcfce7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #86efac;
+        }
+
+        .progress-ai {
+            height: 8px;
             background: #e2e8f0;
-            border-radius: 12px;
-            margin: 8px 0;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        .risk-gauge .fill {
+        .progress-ai .bar {
             height: 100%;
+            width: 0%;
+            background: #7c3aed;
+            transition: width 0.1s linear;
+        }
+
+        .impact-metric {
+            text-align: center;
+            padding: 12px;
+            background: #f8fafc;
             border-radius: 12px;
-            background: #22c55e;
         }
 
-        .risk-gauge .fill.warning {
-            background: #eab308;
+        .impact-metric .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
         }
 
-        .risk-gauge .fill.danger {
-            background: #ef4444;
+        .impact-metric .label {
+            font-size: 0.8rem;
+            color: #475569;
         }
 
-        .similarity-card {
-            border: 1px solid #e9edf4;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .comparison-table td {
-            vertical-align: middle;
-        }
-
-        .delta.positive {
+        .impact-metric .number.green {
             color: #16a34a;
-            font-weight: 600;
         }
 
-        .delta.negative {
+        .impact-metric .number.red {
             color: #dc2626;
-            font-weight: 600;
+        }
+
+        .impact-metric .number.purple {
+            color: #7c3aed;
         }
 
         .sidebar-header {
@@ -257,30 +261,6 @@
             margin-bottom: 20px;
         }
 
-        .error-reduction-card {
-            background: #fef2f2;
-            border-left: 5px solid #dc2626;
-            padding: 16px;
-            border-radius: 8px;
-            margin-top: 12px;
-        }
-
-        .error-reduction-card .fixed {
-            background: #dcfce7;
-            border-left-color: #16a34a;
-        }
-
-        .metric-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .metric-label {
-            color: #475569;
-            font-size: 0.9rem;
-        }
-
         .sidebar::-webkit-scrollbar {
             width: 6px;
         }
@@ -288,30 +268,6 @@
         .sidebar::-webkit-scrollbar-thumb {
             background: #2d4a6b;
             border-radius: 8px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .toggle-manual-ai {
-            cursor: pointer;
-        }
-
-        .manual-view {
-            display: none;
-        }
-
-        .ai-view {
-            display: block;
-        }
-
-        .show-manual .manual-view {
-            display: block;
-        }
-
-        .show-manual .ai-view {
-            display: none;
         }
     </style>
 </head>
@@ -322,12 +278,12 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
-                <h5><i class="bi bi-shield-check me-2"></i>Error Reduction AI</h5>
-                <small>18 modules · Visual demo</small>
+                <h5><i class="bi bi-robot me-2"></i>AI Impact Demo</h5>
+                <small>Run AI → See Impact ↓ Error</small>
             </div>
             <nav class="nav flex-column" id="moduleNav"></nav>
             <div class="mt-3 px-3 text-center text-white-50" style="font-size:0.75rem;">
-                <i class="bi bi-robot me-1"></i> AI reduces human error
+                <i class="bi bi-shield-check me-1"></i> Click "Run AI" to see the magic
             </div>
         </div>
 
@@ -340,7 +296,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="aiModalLabel">AI Insight</h5>
+                    <h5 class="modal-title" id="aiModalLabel">AI Impact Detail</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body" id="aiModalBody">...</div>
@@ -383,6 +339,270 @@
             modal.show();
         }
 
+        // ====== AI IMPACT SIMULATOR ======
+        function runAIImpact(moduleId) {
+            const container = document.getElementById('impact_' + moduleId);
+            if (!container) return;
+            const stage = container.querySelector('.impact-stage');
+            const progress = container.querySelector('.progress-ai .bar');
+            const resultArea = container.querySelector('.impact-result');
+            const btn = container.querySelector('.btn-run-ai');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> AI Processing...';
+            stage.className = 'impact-stage processing';
+            progress.style.width = '0%';
+
+            let width = 0;
+            const interval = setInterval(() => {
+                width += Math.random() * 15 + 5;
+                if (width > 100) width = 100;
+                progress.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        stage.className = 'impact-stage done';
+                        resultArea.style.display = 'block';
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="bi bi-arrow-repeat"></i> Re-run AI';
+                        // Trigger confetti effect in result
+                        resultArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                }
+            }, 120);
+        }
+
+        // ====== BUILD PANES ======
+        function buildPane(moduleId) {
+            // Specific error scenarios for each module
+            const scenarios = {
+                'buyer-master': {
+                    error: 'Duplicate buyer "H&M" created twice. Compliance doc missing.',
+                    fix: 'Merged duplicates, auto-attached compliance doc from shared drive.',
+                    timeSaved: '4.2 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '2'
+                },
+                'buyer-order': {
+                    error: 'PO quantity misread as 52,000 (should be 5,200). Unit price $12.50, currency missing.',
+                    fix: 'Corrected qty to 5,200. Added USD currency via context analysis.',
+                    timeSaved: '3.8 min',
+                    costImpact: 'Prevented $32,500 over-ordering',
+                    errorsFixed: '3'
+                },
+                'style-master': {
+                    error: 'GSM entered as "80" (actual 180). Fabric composition missing.',
+                    fix: 'Auto-corrected GSM to 180 using OCR. Inferred 100% Cotton from tech pack.',
+                    timeSaved: '2.5 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '2'
+                },
+                'order-booking': {
+                    error: 'Destination missing. Color breakdown totals 5,000 vs order 5,200.',
+                    fix: 'Filled destination from buyer master. Auto-balanced breakdown ratios.',
+                    timeSaved: '3.1 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '2'
+                },
+                'ie-smv': {
+                    error: 'SMV overestimated at 15.0 min (should be 12.5). Unrealistic cutting start date.',
+                    fix: 'SMV corrected using operation analysis. TNA dates recalculated.',
+                    timeSaved: '2.2 min',
+                    costImpact: 'Reduced CM cost estimate by $0.40/pcs',
+                    errorsFixed: '2'
+                },
+                'costing': {
+                    error: 'Fabric rate $3.50/yd (actual $3.20). Forgot to add overhead.',
+                    fix: 'Corrected rate to $3.20. Auto-added 5% overhead.',
+                    timeSaved: '3.0 min',
+                    costImpact: 'Prevented $1,560 overcosting',
+                    errorsFixed: '3'
+                },
+                'cost-sheet': {
+                    error: 'Missing overhead cost. Total formula missed trims line.',
+                    fix: 'Added overhead. Recalculated totals including all lines.',
+                    timeSaved: '2.8 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '2'
+                },
+                'target-margin': {
+                    error: 'Target price set too low ($13.00 vs ideal $14.25).',
+                    fix: 'Recommended $14.25 based on competitor/historical data.',
+                    timeSaved: '3.5 min',
+                    costImpact: 'Increased margin by $1.25/pcs',
+                    errorsFixed: '1'
+                },
+                'budgeting': {
+                    error: 'Budget approved without checking actual spend. $2k overrun risk.',
+                    fix: 'Flagged overrun early. Suggested reallocation from trims.',
+                    timeSaved: '4.0 min',
+                    costImpact: 'Prevented $2,000 overspend',
+                    errorsFixed: '1'
+                },
+                'material': {
+                    error: 'Applied wastage twice (5% × 5%). Over-ordered fabric by 10%.',
+                    fix: 'Detected double-wastage. Corrected formula to single 5%.',
+                    timeSaved: '2.0 min',
+                    costImpact: 'Prevented $1,200 excess ordering',
+                    errorsFixed: '1'
+                },
+                'supplier-cs': {
+                    error: 'Chose supplier with higher price ($3.35 vs $3.20) due to missed quote.',
+                    fix: 'Auto-compared all quotes, recommended Fabric Ltd.',
+                    timeSaved: '3.2 min',
+                    costImpact: 'Saved $0.15/yd = $982.50 total',
+                    errorsFixed: '1'
+                },
+                'fabric-trims': {
+                    error: 'Used 1.0 yd consumption instead of 1.2 yd. Shortage of 1,040 yd.',
+                    fix: 'Corrected consumption to 1.2 yd from library. Recalculated demand.',
+                    timeSaved: '2.4 min',
+                    costImpact: 'Prevented $3,328 shortage cost',
+                    errorsFixed: '2'
+                },
+                'sample': {
+                    error: 'Misread "color change" as "size change". Wrong action taken.',
+                    fix: 'Extracted correct intent. Created "color shade update" task.',
+                    timeSaved: '3.0 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '1'
+                },
+                'ta-calendar': {
+                    error: 'Cutting start set before fabric arrival date. Invalid dependency.',
+                    fix: 'Detected conflict. Auto-adjusted start date to after arrival.',
+                    timeSaved: '2.5 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '1'
+                },
+                'production': {
+                    error: 'Manager didn\'t notice sewing delay for 3 days.',
+                    fix: 'Real-time monitoring alerted immediately. Escalated to manager.',
+                    timeSaved: '5.0 min',
+                    costImpact: 'Prevented 3-day shipment delay',
+                    errorsFixed: 'N/A'
+                },
+                'shipment': {
+                    error: 'Forgot to attach packing list – customs hold risk.',
+                    fix: 'Auto-checked document completeness, flagged missing file.',
+                    timeSaved: '3.8 min',
+                    costImpact: 'Prevented $500 customs delay fee',
+                    errorsFixed: '1'
+                },
+                'order-status': {
+                    error: 'Status misread as "On Hold" (actually "Ready to Ship").',
+                    fix: 'Unified dashboard with clear status indicators and drill-down.',
+                    timeSaved: '2.0 min',
+                    costImpact: 'N/A',
+                    errorsFixed: '1'
+                },
+                'profitability': {
+                    error: 'Trims cost allocated to wrong order – profit distorted.',
+                    fix: 'Auto-mapped costs to correct order using BOM linkage.',
+                    timeSaved: '4.5 min',
+                    costImpact: 'Accurate profit reporting',
+                    errorsFixed: '1'
+                }
+            };
+
+            const s = scenarios[moduleId] || { error: 'Data inconsistency detected.', fix: 'AI corrected all anomalies.', timeSaved: '3.0 min', costImpact: 'N/A', errorsFixed: '2' };
+
+            return `
+            <div class="module-title">${modules.find(m => m.id === moduleId)?.label || 'Module'} <span class="badge-ai"><i class="bi bi-robot"></i> AI Impact</span></div>
+            <div class="module-sub">Click <strong>"Run AI"</strong> to see how AI fixes errors, saves time, and prevents cost.</div>
+
+            <div id="impact_${moduleId}" class="demo-card">
+                <h6><i class="bi bi-database me-2"></i> Raw Data (Human Entry)</h6>
+                <div class="bg-light p-3 rounded-3 border">
+                    <p class="mb-1"><span class="badge-error">ERROR</span> <span class="error-highlight">${s.error}</span></p>
+                    <p class="small text-muted mb-0">⏱️ Manual processing would take ~${s.timeSaved} to fix.</p>
+                </div>
+
+                <div class="mt-3 d-flex align-items-center gap-3">
+                    <button class="btn btn-ai btn-run-ai" onclick="runAIImpact('${moduleId}')">
+                        <i class="bi bi-play-circle"></i> Run AI Impact Analysis
+                    </button>
+                    <span class="text-muted small">AI will validate, correct, and optimize</span>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-ai mt-3"><div class="bar" style="width:0%;"></div></div>
+
+                <!-- Stage container -->
+                <div class="impact-stage mt-3">
+                    <div class="text-center text-muted"><i class="bi bi-hourglass-split"></i> AI is idle. Click "Run AI" to start.</div>
+                </div>
+
+                <!-- Result (hidden initially) -->
+                <div class="impact-result mt-3" style="display:none;">
+                    <hr />
+                    <h6><i class="bi bi-check-circle-fill text-success me-2"></i> AI Impact & Results</h6>
+                    
+                    <div class="row g-3 mb-3">
+                        <div class="col-6 col-md-3">
+                            <div class="impact-metric">
+                                <div class="number green"><i class="bi bi-check2-circle"></i> ${s.errorsFixed}</div>
+                                <div class="label">Errors Fixed</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="impact-metric">
+                                <div class="number purple"><i class="bi bi-clock"></i> ${s.timeSaved}</div>
+                                <div class="label">Time Saved</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="impact-metric">
+                                <div class="number green"><i class="bi bi-currency-dollar"></i> ${s.costImpact}</div>
+                                <div class="label">Cost Impact</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="impact-metric">
+                                <div class="number purple">99%</div>
+                                <div class="label">Data Accuracy (was 72%)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <i class="bi bi-robot me-2"></i> <strong>AI Action:</strong> ${s.fix}
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="border p-2 rounded-3 bg-danger bg-opacity-10">
+                                <span class="badge-error">BEFORE (Manual)</span>
+                                <p class="small mt-1">${s.error}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="border p-2 rounded-3 bg-success bg-opacity-10">
+                                <span class="badge bg-success">AFTER (AI Corrected)</span>
+                                <p class="small mt-1">${s.fix}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-outline-ai" onclick="showModal('Full Impact Report','<b>AI Impact Summary</b><br><ul><li>Errors fixed: ${s.errorsFixed}</li><li>Time saved: ${s.timeSaved}</li><li>Cost impact: ${s.costImpact}</li><li>Accuracy improved from 72% to 99%</li><li>Source: SRS v2.1 AI Governance (MER-AI-BR-001 to 026)</li></ul>')">
+                            <i class="bi bi-file-text"></i> View Full Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat for extra questions -->
+            <div class="demo-card">
+                <h6><i class="bi bi-chat-dots me-2"></i> Ask about AI Impact</h6>
+                <div class="chat-box" id="chat_${moduleId}"></div>
+                <div class="input-group mt-2">
+                    <input type="text" class="form-control" id="input_${moduleId}" placeholder="e.g. How did AI save time?" />
+                    <button class="btn btn-ai" onclick="sendChat('chat_${moduleId}','input_${moduleId}')">Ask</button>
+                </div>
+            </div>
+        `;
+        }
+
         function sendChat(containerId, inputId) {
             const input = document.getElementById(inputId);
             const msg = input.value.trim();
@@ -397,241 +617,16 @@
                 const aiDiv = document.createElement('div');
                 aiDiv.className = 'chat-msg ai';
                 const responses = [
-                    'I detected a potential duplicate order. Error avoided!',
-                    'All mandatory fields are filled. No missing data errors.',
-                    'The unit price has been corrected from $12.50 to $12.55 (currency fix).',
-                    'I found a mismatch in quantity totals. Automatically reconciled.',
-                    'No errors found – your order is clean.',
-                    'I corrected the date format to match ERP standards.',
-                    'I flagged an inconsistent supplier address and suggested correction.',
+                    'AI corrected 3 errors in 2.5 seconds, saving ~4 minutes of manual work.',
+                    'Impact: Prevented a $2,340 over-ordering mistake by fixing the consumption formula.',
+                    'Accuracy improved from 72% to 99% – no critical data entry errors remain.',
+                    'AI automatically validated 12 fields, flagged 2 missing, and suggested corrections.',
+                    'This specific correction saved the team $500 in potential customs fees.',
                 ];
                 aiDiv.textContent = responses[Math.floor(Math.random() * responses.length)];
                 container.appendChild(aiDiv);
                 container.scrollTop = container.scrollHeight;
-            }, 600);
-        }
-
-        function toggleManual(btn) {
-            const card = btn.closest('.demo-card');
-            card.classList.toggle('show-manual');
-            btn.textContent = card.classList.contains('show-manual') ? 'Show AI View' : 'Show Manual Error';
-        }
-
-        // ====== BUILD PANES ======
-        function buildPane(moduleId) {
-            // Each module gets an error-reduction card and other AI features.
-            const panes = {
-                'buyer-master': `
-                <div class="module-title">Buyer Master <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: data entry, duplicate profiles, missing compliance.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-exclamation-octagon me-2"></i> Error Reduction: Duplicate Buyer</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual Error</button>
-                    <div class="manual-view mt-2"><div class="error-reduction-card"><strong>Manual error:</strong> User created duplicate buyer profile "H&M" twice. <span class="badge bg-danger">Error</span></div></div>
-                    <div class="ai-view mt-2"><div class="error-reduction-card fixed" style="border-left-color:#16a34a;"><strong>AI prevention:</strong> AI detected similar name & address, blocked duplicate, suggested merge. <span class="badge bg-success">Fixed</span></div></div>
-                </div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-check-circle me-2"></i> Compliance Validation</h6>
-                    <button class="btn btn-ai btn-sm" onclick="showModal('Compliance Error','Manual: Missing buyer quality document. AI: Scanned folder, found document, auto-attached.')">Simulate Missing Doc</button>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-chat-dots me-2"></i> Chat</h6><div class="chat-box" id="bmChat"></div><div class="input-group mt-2"><input type="text" class="form-control" id="bmInput" placeholder="Ask about buyer errors" /><button class="btn btn-ai" onclick="sendChat('bmChat','bmInput')">Ask</button></div></div>
-            `,
-
-                'buyer-order': `
-                <div class="module-title">Buyer Order <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: PO data entry, amendment miscalculation, duplicate POs.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-file-pdf me-2"></i> PO Extraction Error</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Clerk misread quantity 5,200 as 52,000. <span class="badge bg-danger">10× error</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> OCR + validation flagged unrealistic qty, cross-checked with history, corrected to 5,200. <span class="badge bg-success">Fixed</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-arrow-repeat me-2"></i> Amendment Impact</h6><button class="btn btn-ai btn-sm" onclick="showModal('Amendment Error','Manual: Missed booking update. AI: Auto-recalc fabric booking +15% and alerted planning.')">Simulate</button></div>
-                <div class="demo-card"><h6><i class="bi bi-exclamation-triangle me-2"></i> Duplicate PO</h6><div class="alert alert-warning">AI detected duplicate PO. <button class="btn btn-sm btn-outline-ai" onclick="showModal('Duplicate','Manual: Would have created double order. AI blocked and flagged.')">View</button></div></div>
-            `,
-
-                'style-master': `
-                <div class="module-title">Style Master <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: tech pack misreading, inconsistent specs, wrong GSM.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-file-earmark-code me-2"></i> Tech Pack Error</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Operator entered GSM 180 as 80. <span class="badge bg-danger">Wrong</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Extracted "180 GSM" from PDF, validated against fabric type. <span class="badge bg-success">Correct</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-diagram-3 me-2"></i> Similarity Check</h6><button class="btn btn-ai btn-sm" onclick="showModal('Similarity Error','Manual: Copied wrong style specs. AI: Showed 85% match with ST-0987 and flagged differences.')">Simulate</button></div>
-            `,
-
-                'order-booking': `
-                <div class="module-title">Order Booking <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: missing fields, breakdown total mismatch, date format errors.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-check-all me-2"></i> Mandatory Fields</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Forgot to enter destination. Order stuck. <span class="badge bg-danger">Missing</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Highlighted missing field, suggested default from buyer master. <span class="badge bg-success">Filled</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-table me-2"></i> Breakdown Totals</h6><button class="btn btn-ai btn-sm" onclick="showModal('Breakdown Error','Manual: Color breakdown sums to 5,000 but order qty 5,200. AI: Auto-adjusted ratios to match.')">Simulate</button></div>
-            `,
-
-                'ie-smv': `
-                <div class="module-title">IE & SMV <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: incorrect SMV, unrealistic TNA dates, line balancing.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-clock me-2"></i> SMV Miscalculation</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> IE engineer used wrong operation time, SMV overestimated. <span class="badge bg-danger">+20%</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Analyzed operation sequence, suggested SMV 12.5 (vs manual 15.0). <span class="badge bg-success">Corrected</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-calendar-event me-2"></i> TNA Generation</h6><button class="btn btn-ai btn-sm" onclick="showModal('TNA Error','Manual: Set cutting start too early. AI: Calculated realistic lead times based on SMV and capacity.')">Simulate</button></div>
-            `,
-
-                'costing': `
-                <div class="module-title">Product Costing <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: rate mismatches, missed components, currency errors.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-cash me-2"></i> Rate Mismatch</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Used $3.50/yd instead of $3.20. Overcost by 9%. <span class="badge bg-danger">Error</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Retrieved historical rate for similar fabric, suggested $3.20. <span class="badge bg-success">Correct</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-arrow-left-right me-2"></i> Currency Conversion</h6><button class="btn btn-ai btn-sm" onclick="showModal('Currency Error','Manual: Missed exchange rate change. AI: Auto-converted using latest rate, alerted finance.')">Simulate</button></div>
-            `,
-
-                'cost-sheet': `
-                <div class="module-title">Cost Sheet <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: missing overhead, incorrect totals, formula errors.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-file-spreadsheet me-2"></i> Missing Overhead</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Forgot to add 5% overhead, cost sheet understated. <span class="badge bg-danger">Under</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Detected missing overhead, auto-added 5%, flagged for approval. <span class="badge bg-success">Added</span></div></div>
-                </div>
-                <div class="demo-card"><h6><i class="bi bi-sliders me-2"></i> Sensitivity</h6><button class="btn btn-ai btn-sm" onclick="showModal('Sensitivity Error','Manual: Mis-calculated margin. AI: Real-time slider with automated margin update.')">Simulate</button></div>
-            `,
-
-                'target-margin': `
-                <div class="module-title">Target & Margin <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: wrong target price, missed competitor data.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-bar-chart me-2"></i> Target Price Error</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Set price too low, margin 35% vs target 45%. <span class="badge bg-danger">Under</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Recommended $14.25 based on competitor and historical data. <span class="badge bg-success">Optimized</span></div></div>
-                </div>
-            `,
-
-                'budgeting': `
-                <div class="module-title">Order Budgeting <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: budget vs actual mismatch, overspending alerts.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-wallet me-2"></i> Budget Overrun</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Approved budget without checking actual spend. $2k overrun. <span class="badge bg-danger">Overspent</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Real-time utilization tracking, flagged overrun early. <span class="badge bg-success">Prevented</span></div></div>
-                </div>
-            `,
-
-                'material': `
-                <div class="module-title">Material Requirement <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: double wastage, wrong consumption, obsolete library.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-percent me-2"></i> Double Wastage</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Applied wastage twice, over-ordered by 10%. <span class="badge bg-danger">Extra cost</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Detected wastage already included in consumption, corrected formula. <span class="badge bg-success">Fixed</span></div></div>
-                </div>
-            `,
-
-                'supplier-cs': `
-                <div class="module-title">Supplier CS <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: wrong supplier selection, missing comparison data.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-files me-2"></i> Supplier Selection</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Chose supplier with higher price due to missed quote. <span class="badge bg-danger">Overpay</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Auto-compared all quotes, highlighted best value. <span class="badge bg-success">Optimal</span></div></div>
-                </div>
-            `,
-
-                'fabric-trims': `
-                <div class="module-title">Fabric & Trims <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: wrong quantity calculation, color mismatch.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-calculator me-2"></i> Quantity Calculation</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Used 1.0 yd instead of 1.2 yd, shortage of 1,040 yd. <span class="badge bg-danger">Short</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Retrieved correct consumption from library, calculated 6,552 yd. <span class="badge bg-success">Accurate</span></div></div>
-                </div>
-            `,
-
-                'sample': `
-                <div class="module-title">Sample Development <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: missed feedback, misrouted samples.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-chat-right-text me-2"></i> Feedback Misinterpretation</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Read "color change" as "size change" – wrong action. <span class="badge bg-danger">Wrong</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Extracted "color" and "minor change" – created correct task. <span class="badge bg-success">Correct</span></div></div>
-                </div>
-            `,
-
-                'ta-calendar': `
-                <div class="module-title">T&A Calendar <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: unrealistic dates, conflicting dependencies.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-calendar-event me-2"></i> Unrealistic Dates</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Set cutting start before fabric arrival. <span class="badge bg-danger">Invalid</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Detected dependency conflict, auto-adjusted start date. <span class="badge bg-success">Resolved</span></div></div>
-                </div>
-            `,
-
-                'production': `
-                <div class="module-title">Production Follow-up <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: missed bottlenecks, delayed alerts.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-exclamation-octagon me-2"></i> Bottleneck Detection</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Manager didn't notice sewing delay until 3 days later. <span class="badge bg-danger">Late</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Real-time monitoring alerted immediately. <span class="badge bg-success">Early</span></div></div>
-                </div>
-            `,
-
-                'shipment': `
-                <div class="module-title">Shipment Planning <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: wrong documentation, customs delays.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-file-earmark-text me-2"></i> Document Error</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Forgot to attach packing list – customs hold. <span class="badge bg-danger">Delay</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Auto-checked document completeness, flagged missing. <span class="badge bg-success">Avoided</span></div></div>
-                </div>
-            `,
-
-                'order-status': `
-                <div class="module-title">Order Status <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: missed status updates, wrong status interpretation.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-speedometer me-2"></i> Status Misread</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Thought order was on hold – actually ready to ship. <span class="badge bg-danger">Confused</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Unified status with drill-down, clear indicators. <span class="badge bg-success">Clear</span></div></div>
-                </div>
-            `,
-
-                'profitability': `
-                <div class="module-title">Profitability <span class="badge-ai"><i class="bi bi-robot"></i> AI</span></div>
-                <div class="module-sub">Error reduction: misallocated costs, wrong variance explanation.</div>
-                <div class="demo-card">
-                    <h6><i class="bi bi-coin me-2"></i> Cost Allocation</h6>
-                    <button class="btn btn-sm btn-outline-ai toggle-manual" onclick="toggleManual(this)">Show Manual</button>
-                    <div class="manual-view"><div class="error-reduction-card"><strong>Manual:</strong> Allocated trims cost to wrong order – profit distorted. <span class="badge bg-danger">Misallocated</span></div></div>
-                    <div class="ai-view"><div class="error-reduction-card fixed"><strong>AI:</strong> Auto-mapped costs to correct order using BOM. <span class="badge bg-success">Accurate</span></div></div>
-                </div>
-            `
-            };
-            return panes[moduleId] || `<div class="module-title">Module not found</div>`;
+            }, 500);
         }
 
         // ====== INIT ======
@@ -665,28 +660,25 @@
             document.querySelectorAll('.chat-box:empty').forEach(c => {
                 const div = document.createElement('div');
                 div.className = 'chat-msg ai';
-                div.textContent = 'Ask me about error reduction in this module.';
+                div.textContent = 'I can explain how AI reduces errors here. Ask me!';
                 c.appendChild(div);
             });
 
-            // Add a global error reduction summary at the top of the first module (Buyer Master)
+            // Global Impact Summary at top of first module
             const summary = document.createElement('div');
             summary.className = 'demo-card bg-light';
             summary.innerHTML = `
-            <h5><i class="bi bi-graph-up-arrow me-2"></i> AI Error Reduction – At a Glance</h5>
+            <h5><i class="bi bi-robot me-2"></i> AI Impact Overview</h5>
             <div class="row text-center">
-                <div class="col-3"><div class="metric-number">89%</div><div class="metric-label">Data Entry Errors Reduced</div></div>
-                <div class="col-3"><div class="metric-number">100%</div><div class="metric-label">Mandatory Field Coverage</div></div>
-                <div class="col-3"><div class="metric-number">76%</div><div class="metric-label">Calculation Mistakes Avoided</div></div>
-                <div class="col-3"><div class="metric-number">92%</div><div class="metric-label">Duplicate/Conflict Prevention</div></div>
+                <div class="col-3"><div class="impact-metric"><div class="number green">78%</div><div class="label">Manual Effort Reduction</div></div></div>
+                <div class="col-3"><div class="impact-metric"><div class="number purple">~4.2 min</div><div class="label">Avg Time Saved per Order</div></div></div>
+                <div class="col-3"><div class="impact-metric"><div class="number green">$1,200+</div><div class="label">Avg Cost Avoided per Order</div></div></div>
+                <div class="col-3"><div class="impact-metric"><div class="number purple">99%</div><div class="label">Data Accuracy (vs 72% manual)</div></div></div>
             </div>
-            <p class="small text-muted mt-2">Based on SRS v2.1 AI governance and human-in-the-loop validation.</p>
+            <p class="small text-muted mt-2"><i class="bi bi-info-circle"></i> Based on SRS v2.1 AI governance (MER-AI-BR-001 to 026). Click any module and <strong>Run AI</strong> to see it in action.</p>
         `;
-            // Insert at the top of the first pane (buyer-master)
             const firstPane = document.getElementById('pane-buyer-master');
-            if (firstPane) {
-                firstPane.insertBefore(summary, firstPane.firstChild);
-            }
+            if (firstPane) firstPane.insertBefore(summary, firstPane.firstChild);
         });
     </script>
 </body>
