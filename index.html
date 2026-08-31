@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RMG ERP – Merchandising AI Demo</title>
+    <!-- Bootstrap + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+        }
+
+        .sidebar {
+            height: 100vh;
+            background: #0d1b2a;
+            color: #ecf0f1;
+            padding-top: 20px;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        .sidebar .module-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #b0c4de;
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .sidebar .module-link:hover,
+        .sidebar .module-link.active {
+            background: #1b2a41;
+            color: #ffffff;
+            border-left-color: #4a9eff;
+        }
+
+        .sidebar .module-link i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 30px 25px;
+            overflow-y: auto;
+            height: 100vh;
+            flex: 1;
+        }
+
+        .module-pane {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .module-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .demo-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: 0.2s;
+            border: 1px solid #e9edf4;
+        }
+
+        .demo-card:hover {
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .badge-ai {
+            background: #7c3aed;
+            color: white;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-ai {
+            background: #7c3aed;
+            border: none;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .btn-ai:hover {
+            background: #5b21b6;
+            color: white;
+        }
+
+        .btn-outline-ai {
+            border-color: #7c3aed;
+            color: #7c3aed;
+        }
+
+        .btn-outline-ai:hover {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .chat-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .chat-msg {
+            margin-bottom: 10px;
+            padding: 8px 14px;
+            border-radius: 18px;
+            max-width: 85%;
+        }
+
+        .chat-msg.user {
+            background: #e2e8f0;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .chat-msg.ai {
+            background: #dbeafe;
+            align-self: flex-start;
+        }
+
+        .extract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .extract-item {
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border-left: 4px solid #7c3aed;
+        }
+
+        .extract-item .label {
+            font-size: 0.75rem;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .extract-item .value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .risk-gauge {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            margin: 8px 0;
+        }
+
+        .risk-gauge .fill {
+            height: 100%;
+            border-radius: 12px;
+            background: #22c55e;
+        }
+
+        .risk-gauge .fill.warning {
+            background: #eab308;
+        }
+
+        .risk-gauge .fill.danger {
+            background: #ef4444;
+        }
+
+        .similarity-card {
+            border: 1px solid #e9edf4;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .similarity-card .match {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .status-badge.success {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-badge.warning {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .status-badge.danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .comparison-table td {
+            vertical-align: middle;
+        }
+
+        .comparison-table .delta {
+            font-weight: 600;
+        }
+
+        .delta.positive {
+            color: #16a34a;
+        }
+
+        .delta.negative {
+            color: #dc2626;
+        }
+
+        .sidebar-header {
+            padding: 0 20px 20px 20px;
+            border-bottom: 1px solid #2a3a4f;
+            margin-bottom: 12px;
+        }
+
+        .sidebar-header h5 {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .sidebar-header small {
+            color: #94a3b8;
+        }
+
+        .module-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .module-sub {
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .loading-dots::after {
+            content: '...';
+            animation: dots 1.2s steps(4) infinite;
+        }
+
+        @keyframes dots {
+            0% {
+                content: '';
+            }
+
+            25% {
+                content: '.';
+            }
+
+            50% {
+                content: '..';
+            }
+
+            75% {
+                content: '...';
+            }
+        }
+
+        .pulse-glow {
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(124, 58, 237, 0);
+            }
+        }
+
+        /* scrollbar */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #2d4a6b;
+            border-radius: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h5><i class="bi bi-boxes me-2"></i>Merchandising AI</h5>
+                <small>18 modules · Demo</small>
+            </div>
+            <nav class="nav flex-column" id="moduleNav">
+                <!-- Links will be generated by JS -->
+            </nav>
+            <div class="mt-3 px-3 text-center text-white-50" style="font-size:0.75rem;">
+                <i class="bi bi-shield-check me-1"></i> Mock AI – for presentation
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+            <!-- Panes will be injected by JS -->
+        </div>
+    </div>
+
+    <!-- AI Modals -->
+    <div class="modal fade" id="aiModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aiModalLabel">AI Output</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="aiModalBody">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // ====== MODULE DEFINITIONS ======
+        const modules = [
+            { id: 'buyer-master', label: 'Buyer Master', icon: 'bi-person-badge' },
+            { id: 'buyer-order-mgmt', label: 'Buyer Order Management', icon: 'bi-file-earmark-text' },
+            { id: 'style-product-master', label: 'Style & Product Master', icon: 'bi-tags' },
+            { id: 'order-booking', label: 'Order Booking', icon: 'bi-cart-check' },
+            { id: 'ie-smv', label: 'IE & SMV Management', icon: 'bi-speedometer2' },
+            { id: 'product-costing', label: 'Product Costing', icon: 'bi-calculator' },
+            { id: 'cost-sheet', label: 'Cost Sheet', icon: 'bi-table' },
+            { id: 'target-margin', label: 'Target Price & Margin', icon: 'bi-graph-up-arrow' },
+            { id: 'order-budgeting', label: 'Order-wise Budgeting', icon: 'bi-wallet2' },
+            { id: 'material-requirement', label: 'Material Requirement', icon: 'bi-box-seam' },
+            { id: 'supplier-cs', label: 'Supplier CS', icon: 'bi-files' },
+            { id: 'fabric-trims', label: 'Fabric & Trims Requirement', icon: 'bi-layers' },
+            { id: 'sample-dev', label: 'Sample Development & Approval', icon: 'bi-flask' },
+            { id: 'ta-calendar', label: 'T&A Calendar', icon: 'bi-calendar-event' },
+            { id: 'production-followup', label: 'Production Follow-up', icon: 'bi-gear' },
+            { id: 'shipment-planning', label: 'Shipment Planning', icon: 'bi-truck' },
+            { id: 'order-status', label: 'Order Status', icon: 'bi-speedometer' },
+            { id: 'profitability', label: 'Buyer-wise Profitability', icon: 'bi-coin' },
+        ];
+
+        // ====== HELPERS ======
+        function showModal(title, html) {
+            document.getElementById('aiModalLabel').textContent = title;
+            document.getElementById('aiModalBody').innerHTML = html;
+            const modal = new bootstrap.Modal(document.getElementById('aiModal'));
+            modal.show();
+        }
+
+        function simulateLoading(callback) {
+            const btn = event.target;
+            const original = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span> Processing...';
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.disabled = false;
+                callback();
+            }, 1200);
+        }
+
+        // Chat helper
+        function sendChat(moduleId, inputId, responseId) {
+            const input = document.getElementById(inputId);
+            const msg = input.value.trim();
+            if (!msg) return;
+            const container = document.getElementById(responseId);
+            // Add user message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-msg user';
+            userDiv.textContent = msg;
+            container.appendChild(userDiv);
+            input.value = '';
+            // Simulate AI response
+            setTimeout(() => {
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'chat-msg ai';
+                const responses = [
+                    'Based on the data, I found 3 relevant records. Would you like to see them?',
+                    'The current status for that order is "In Production". Estimated completion: 2026-09-10.',
+                    'I see a potential risk: material shortage for Fabric X. Suggested action: expedite PO #PO-456.',
+                    'Here is the summary: total orders 12, value $245K, average margin 14.2%.',
+                    'I have prepared a draft response for you. Please review it before sending.',
+                ];
+                aiDiv.textContent = responses[Math.floor(Math.random() * responses.length)];
+                container.appendChild(aiDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 800);
+        }
+
+        // ====== BUILD MODULE PANES ======
+        function buildPane(moduleId) {
+            // Each module returns HTML with AI demos
+            const panes = {
+                'buyer-master': `
+                <div class="module-title">Buyer Master <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Intelligent buyer profile enrichment, risk scoring, and compliance Q&A.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-upload me-2"></i> AI Enrichment from Contract</h6>
+                    <p class="text-muted small">Upload a buyer contract to auto-extract commercial terms.</p>
+                    <div class="d-flex gap-2 mb-3">
+                        <button class="btn btn-ai btn-sm" onclick="simulateEnrichment()"><i class="bi bi-file-earmark-text"></i> Simulate Upload</button>
+                    </div>
+                    <div id="enrichmentResult" class="extract-grid" style="display:none;">
+                        <div class="extract-item"><div class="label">Payment Terms</div><div class="value">Net 60</div></div>
+                        <div class="extract-item"><div class="label">Incoterm</div><div class="value">FOB</div></div>
+                        <div class="extract-item"><div class="label">Lead Time</div><div class="value">45 days</div></div>
+                        <div class="extract-item"><div class="label">Currency</div><div class="value">USD</div></div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-shield-exclamation me-2"></i> Buyer Risk Score</h6>
+                    <div class="d-flex align-items-center gap-4">
+                        <div style="width:120px;">
+                            <div class="risk-gauge"><div class="fill warning" style="width:68%;"></div></div>
+                            <div class="d-flex justify-content-between small"><span>Low</span><span class="fw-bold">Medium (68)</span><span>High</span></div>
+                        </div>
+                        <div>
+                            <span class="badge bg-warning text-dark">Risk factors:</span> 2 delayed payments, 1 amendment in last 6 months.
+                            <button class="btn btn-outline-ai btn-sm ms-2" onclick="showModal('Risk Analysis','<p>AI Analysis: Buyer has a 68% risk score due to recent payment delays and order amendments. Recommended: monitor shipments closely and request upfront payment for high-value orders.</p>')">Explain</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-chat-dots me-2"></i> Compliance Q&A</h6>
+                    <div class="chat-box" id="buyerChatContainer" style="max-height:150px;"></div>
+                    <div class="input-group mt-2">
+                        <input type="text" class="form-control" id="buyerChatInput" placeholder="e.g. Show packing instructions for Buyer X" />
+                        <button class="btn btn-ai" onclick="sendChat('buyer','buyerChatInput','buyerChatContainer')">Ask</button>
+                    </div>
+                </div>
+            `,
+
+                'buyer-order-mgmt': `
+                <div class="module-title">Buyer Order Management <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Intelligent PO extraction, amendment impact, and duplicate detection.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-pdf me-2"></i> PO Extraction</h6>
+                    <p class="text-muted small">Upload a buyer PO (PDF/Image) – AI extracts key fields.</p>
+                    <button class="btn btn-ai btn-sm" onclick="simulatePOExtract()"><i class="bi bi-upload"></i> Simulate PO Upload</button>
+                    <div id="poExtractResult" style="display:none;" class="mt-3">
+                        <div class="extract-grid">
+                            <div class="extract-item"><div class="label">PO Number</div><div class="value">PO-2026-0089</div></div>
+                            <div class="extract-item"><div class="label">Buyer</div><div class="value">H&M</div></div>
+                            <div class="extract-item"><div class="label">Style</div><div class="value">ST-1256</div></div>
+                            <div class="extract-item"><div class="label">Quantity</div><div class="value">5,200 pcs</div></div>
+                            <div class="extract-item"><div class="label">Unit Price</div><div class="value">$12.50</div></div>
+                            <div class="extract-item"><div class="label">Ship Date</div><div class="value">2026-10-15</div></div>
+                        </div>
+                        <div class="mt-2 text-success"><i class="bi bi-check-circle"></i> Draft order created with 92% confidence</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-arrow-repeat me-2"></i> Amendment Impact Analysis</h6>
+                    <p>Simulate a quantity change from 5,200 → 6,000 pcs.</p>
+                    <button class="btn btn-outline-ai btn-sm" onclick="simulateAmendment()">Analyze Impact</button>
+                    <div id="amendmentResult" style="display:none;" class="mt-3">
+                        <table class="table table-sm comparison-table">
+                            <tr><th>Area</th><th>Before</th><th>After</th><th>Delta</th></tr>
+                            <tr><td>Order Value</td><td>$65,000</td><td>$75,000</td><td class="delta positive">+$10,000</td></tr>
+                            <tr><td>Fabric Booking</td><td>1,200 m</td><td>1,385 m</td><td class="delta positive">+185 m</td></tr>
+                            <tr><td>TNA (Shipment)</td><td>Oct 15</td><td>Oct 20</td><td class="delta negative">+5 days</td></tr>
+                        </table>
+                        <div class="alert alert-info">AI Recommendation: Re-budget and re-book materials. Notify Production.</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-triangle me-2"></i> Duplicate PO Alert</h6>
+                    <div class="alert alert-warning">AI detected a potential duplicate PO #PO-2026-0089 (similar to #PO-2026-0078). <button class="btn btn-sm btn-outline-ai" onclick="showModal('Duplicate Check','Both POs have same buyer, style, and quantity. Please verify if this is a duplicate or a revision.')">Review</button></div>
+                </div>
+            `,
+
+                'style-product-master': `
+                <div class="module-title">Style & Product Master <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Tech pack extraction, previous-style similarity, and auto-publish.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-earmark-code me-2"></i> Tech Pack Extraction</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateTechPack()">Simulate Tech Pack Upload</button>
+                    <div id="techPackResult" style="display:none;" class="mt-3">
+                        <div class="extract-grid">
+                            <div class="extract-item"><div class="label">Garment Type</div><div class="value">T-Shirt</div></div>
+                            <div class="extract-item"><div class="label">Fabric</div><div class="value">100% Cotton, 180 GSM</div></div>
+                            <div class="extract-item"><div class="label">Construction</div><div class="value">Single Jersey</div></div>
+                            <div class="extract-item"><div class="label">Sizes</div><div class="value">S,M,L,XL</div></div>
+                            <div class="extract-item"><div class="label">Wash</div><div class="value">Enzyme Wash</div></div>
+                            <div class="extract-item"><div class="label">Trims</div><div class="value">Labels, Polybag</div></div>
+                        </div>
+                        <div class="mt-2 text-success"><i class="bi bi-check-circle"></i> Draft style created with source links</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-diagram-3 me-2"></i> Previous-Style Similarity</h6>
+                    <p>AI found 2 similar styles based on the tech pack.</p>
+                    <div class="similarity-card">
+                        <div><strong>Style ST-0987</strong> <span class="match">85% match</span></div>
+                        <div class="small text-muted">Same buyer, similar fabric, same wash. Differences: embroidery vs. no embroidery.</div>
+                        <button class="btn btn-sm btn-outline-ai mt-1" onclick="showModal('Style Comparison','<b>ST-0987 vs New</b><br>+ Fabric: same<br>+ Wash: same<br>- Embroidery: New has embroidery<br>+ Trims: different label type')">View Differences</button>
+                    </div>
+                    <div class="similarity-card">
+                        <div><strong>Style ST-1123</strong> <span class="match">72% match</span></div>
+                        <div class="small text-muted">Different buyer, similar category, different GSM.</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-globe me-2"></i> Auto-Publish to Website</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulatePublish()">Simulate Publish</button>
+                    <div id="publishResult" style="display:none;" class="mt-2">
+                        <span class="badge bg-success"><i class="bi bi-check-circle"></i> Published successfully to CMS</span>
+                        <div class="small text-muted">Version 2.1 · 2026-09-01 14:23</div>
+                    </div>
+                </div>
+            `,
+
+                'order-booking': `
+                <div class="module-title">Order Booking <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Mandatory field validation, breakdown prefill, and shipment feasibility.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-check-all me-2"></i> Mandatory Field Check</h6>
+                    <div class="alert alert-success">All mandatory fields are complete. AI validated 12 fields.</div>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Field Validation','AI validated: Buyer, Style, Quantity, Ship Date, Currency, PO#. Missing: Destination – please fill.')">Simulate Missing</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-table me-2"></i> Color-Size Breakdown Suggestion</h6>
+                    <p>AI pre-filled matrix based on historical ratios.</p>
+                    <table class="table table-sm table-bordered">
+                        <tr><th>Color</th><th>S</th><th>M</th><th>L</th><th>XL</th></tr>
+                        <tr><td>Red</td><td>200</td><td>300</td><td>250</td><td>150</td></tr>
+                        <tr><td>Blue</td><td>180</td><td>280</td><td>220</td><td>120</td></tr>
+                        <tr><td>Black</td><td>220</td><td>320</td><td>280</td><td>180</td></tr>
+                    </table>
+                    <span class="badge bg-info">AI: based on previous order #ORD-4523</span>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-calendar-check me-2"></i> Shipment Feasibility</h6>
+                    <div class="d-flex align-items-center">
+                        <span class="badge bg-danger me-2">High Risk</span>
+                        <span>Requested ship date: Oct 15. Based on lead-time analysis, recommended date: Oct 25.</span>
+                        <button class="btn btn-sm btn-outline-ai ms-2" onclick="showModal('Feasibility Details','Fabric procurement: 30 days, Production: 20 days, Testing: 5 days. Total min lead time: 55 days. Requested: 40 days.')">Explain</button>
+                    </div>
+                </div>
+            `,
+
+                'ie-smv': `
+                <div class="module-title">IE & SMV Management <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">SMV-based TNA, cost suggestions, and workload balancing.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-clock me-2"></i> SMV-based TNA Generation</h6>
+                    <p>SMV: 12.5 minutes · Order: 5,200 pcs</p>
+                    <button class="btn btn-ai btn-sm" onclick="simulateTNAGeneration()">Generate TNA</button>
+                    <div id="tnaGenResult" style="display:none;" class="mt-2">
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle text-success"></i> Cutting: Sep 1–5</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Sewing: Sep 6–18</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Finishing: Sep 19–24</li>
+                            <li><i class="bi bi-check-circle text-success"></i> Packing: Sep 25–28</li>
+                        </ul>
+                        <div class="small text-muted">Based on SMV and historical line efficiency (85%)</div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-cash me-2"></i> SMV-cost Suggestion</h6>
+                    <p>AI suggests CM rate: $2.45/pcs (based on SMV 12.5 and similar styles).</p>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('CM Rate Suggestion','Historical CM rates for SMV 12-13: $2.30–$2.60. Suggested: $2.45. Accept?')">Review</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-arrows-expand me-2"></i> Workload Balancing</h6>
+                    <div class="alert alert-info">AI recommends delaying Order #5678 by 2 days to balance line capacity.</div>
+                    <button class="btn btn-sm btn-outline-ai">View Recommendation</button>
+                </div>
+            `,
+
+                'product-costing': `
+                <div class="module-title">Product Costing <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Component suggestions, unusual cost detection, and revision comparison.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-lightbulb me-2"></i> Component Suggestions</h6>
+                    <p>AI recommends the following rates:</p>
+                    <ul>
+                        <li>Fabric: $3.20/yd (source: style ST-0987)</li>
+                        <li>Trims: $0.85/set (source: style ST-1123)</li>
+                        <li>CM: $2.45/pcs (source: IE/SMV analysis)</li>
+                    </ul>
+                    <button class="btn btn-sm btn-outline-ai">Accept All</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-circle me-2"></i> Unusual Cost Flag</h6>
+                    <div class="alert alert-warning">Washing cost is 35% higher than average for this category. <button class="btn btn-sm btn-outline-ai" onclick="showModal('Cost Flag','Washing: $0.45 vs average $0.33. Possible reasons: special enzyme wash or supplier premium. Recommend review.')">Inspect</button></div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-arrow-left-right me-2"></i> Revision Comparison</h6>
+                    <table class="table table-sm comparison-table">
+                        <tr><th>Component</th><th>V1</th><th>V2</th><th>Delta</th></tr>
+                        <tr><td>Fabric</td><td>$3.20</td><td>$3.35</td><td class="delta positive">+4.7%</td></tr>
+                        <tr><td>CM</td><td>$2.45</td><td>$2.45</td><td class="delta">0%</td></tr>
+                        <tr><td>Washing</td><td>$0.45</td><td>$0.40</td><td class="delta negative">-11%</td></tr>
+                    </table>
+                </div>
+            `,
+
+                'cost-sheet': `
+                <div class="module-title">Cost Sheet <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Auto-generation, margin sensitivity, and approval integration.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-spreadsheet me-2"></i> Auto-Generated Cost Sheet</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateCostSheet()">Generate from Tech Pack</button>
+                    <div id="costSheetResult" style="display:none;" class="mt-2">
+                        <table class="table table-sm">
+                            <tr><th>Item</th><th>Qty</th><th>Rate</th><th>Total</th></tr>
+                            <tr><td>Fabric</td><td>1.2 yd</td><td>$3.20</td><td>$3.84</td></tr>
+                            <tr><td>Trims</td><td>1 set</td><td>$0.85</td><td>$0.85</td></tr>
+                            <tr><td>CM</td><td>1 pcs</td><td>$2.45</td><td>$2.45</td></tr>
+                            <tr><td>Washing</td><td>1 pcs</td><td>$0.40</td><td>$0.40</td></tr>
+                            <tr><th colspan="3">Total Cost</th><th>$7.54</th></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-sliders me-2"></i> Margin Sensitivity</h6>
+                    <p>Move price slider to see margin change.</p>
+                    <input type="range" class="form-range" min="10" max="20" step="0.5" value="14" id="priceSlider" oninput="updateMargin(this.value)" />
+                    <div>Target Price: <span id="targetPriceDisplay">$14.00</span> &nbsp; Margin: <span id="marginDisplay">46%</span></div>
+                    <button class="btn btn-sm btn-outline-ai mt-1" onclick="showModal('Margin Analysis','At $14.00, margin is 46%. To achieve 50%, adjust price to $15.08.')">Analyze</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-send-check me-2"></i> Approval Integration</h6>
+                    <button class="btn btn-success btn-sm" onclick="showModal('Cost Sheet Submitted','Cost sheet submitted for approval. Approver: John Doe (Head of Merchandising). You will be notified.')">Submit for Approval</button>
+                </div>
+            `,
+
+                'target-margin': `
+                <div class="module-title">Target Price & Margin Analysis <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Negotiation strategy, impact score explanation, and benchmarking.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-chat-square-quote me-2"></i> Negotiation Strategy</h6>
+                    <p>Buyer target: $13.50, your quote: $14.00</p>
+                    <div class="alert alert-info">AI suggests: Offer $13.75 – historical acceptance rate 70%.</div>
+                    <button class="btn btn-sm btn-outline-ai">View Details</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-bar-chart me-2"></i> Impact Score Explanation</h6>
+                    <div>Impact Score: <span class="fw-bold">-8%</span> (margin erosion)</div>
+                    <p class="small">Key drivers: Fabric cost +4.7%, Washing cost -11% (net impact).</p>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Impact Explanation','The 8% negative impact is primarily due to fabric price increase (4.7%) and washing cost reduction (11% offset). Overall margin decreased from 48% to 40%.')">Explain</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-database me-2"></i> Benchmark Query</h6>
+                    <div class="chat-box" id="marginChatContainer"></div>
+                    <div class="input-group mt-2">
+                        <input type="text" class="form-control" id="marginChatInput" placeholder="e.g. Average margin for Buyer H&M" />
+                        <button class="btn btn-ai" onclick="sendChat('margin','marginChatInput','marginChatContainer')">Ask</button>
+                    </div>
+                </div>
+            `,
+
+                'order-budgeting': `
+                <div class="module-title">Order-wise Budgeting <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Budget prefill, variance alerts, and utilization prediction.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-wallet me-2"></i> Prefill Budget from Costing</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateBudgetPrefill()">Generate Budget</button>
+                    <div id="budgetResult" style="display:none;" class="mt-2">
+                        <table class="table table-sm">
+                            <tr><th>Category</th><th>Budget</th></tr>
+                            <tr><td>Fabric</td><td>$19,968</td></tr>
+                            <tr><td>Trims</td><td>$4,420</td></tr>
+                            <tr><td>CM</td><td>$12,740</td></tr>
+                            <tr><td>Washing</td><td>$2,080</td></tr>
+                            <tr><th>Total</th><th>$39,208</th></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-triangle me-2"></i> Variance Alert</h6>
+                    <div class="alert alert-warning">Budget vs Costing: +2.5% overrun in Trims. <button class="btn btn-sm btn-outline-ai">Review</button></div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-graph-up me-2"></i> Utilization Prediction</h6>
+                    <div>Predicted final utilization: 97% (within tolerance).</div>
+                    <div class="risk-gauge"><div class="fill" style="width:97%;"></div></div>
+                </div>
+            `,
+
+                'material-requirement': `
+                <div class="module-title">Material Requirement <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Historical library search, auto-wastage, and override approval.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-search me-2"></i> Historical Library Search</h6>
+                    <p>AI found matching consumption:</p>
+                    <ul>
+                        <li>Fabric: 1.2 yd/pcs (source: ST-0987, 95% match)</li>
+                        <li>Trims: 1 set/pcs (source: ST-1123, 88% match)</li>
+                    </ul>
+                    <button class="btn btn-sm btn-outline-ai">Accept Suggestions</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-percent me-2"></i> Auto-Wastage Prefill</h6>
+                    <p>Wastage: <span class="fw-bold">5%</span> (based on buyer+category rule)</p>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Wastage Rule','Rule: Buyer H&M + Category T-Shirt = 5% wastage. Effective from 2026-01-01.')">View Rule</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-pencil-square me-2"></i> Override Approval</h6>
+                    <p>You changed wastage to 8% (tolerance 5%).</p>
+                    <div class="alert alert-danger">This requires approval. <button class="btn btn-sm btn-outline-ai">Request Approval</button></div>
+                </div>
+            `,
+
+                'supplier-cs': `
+                <div class="module-title">Supplier CS <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Quotation extraction, comparison matrix, and buyer nomination.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-earmark-spreadsheet me-2"></i> Quotation Extraction</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateQuoteExtract()">Simulate Upload Quotes</button>
+                    <div id="quoteResult" style="display:none;" class="mt-2">
+                        <div class="extract-grid">
+                            <div class="extract-item"><div class="label">Supplier</div><div class="value">Fabric Ltd.</div></div>
+                            <div class="extract-item"><div class="label">Price</div><div class="value">$3.20/yd</div></div>
+                            <div class="extract-item"><div class="label">Lead Time</div><div class="value">30 days</div></div>
+                            <div class="extract-item"><div class="label">MOQ</div><div class="value">500 yd</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-table me-2"></i> Comparison Matrix</h6>
+                    <table class="table table-sm">
+                        <tr><th>Supplier</th><th>Price</th><th>Lead Time</th><th>Score</th></tr>
+                        <tr><td>Fabric Ltd.</td><td>$3.20</td><td>30 days</td><td><span class="badge bg-success">92</span></td></tr>
+                        <tr><td>TexCorp</td><td>$3.35</td><td>25 days</td><td><span class="badge bg-warning">84</span></td></tr>
+                        <tr><td>Prime Fab</td><td>$3.10</td><td>40 days</td><td><span class="badge bg-danger">71</span></td></tr>
+                    </table>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-person-check me-2"></i> Buyer Nomination</h6>
+                    <div class="alert alert-info">Buyer has nominated Fabric Ltd. as preferred supplier.</div>
+                </div>
+            `,
+
+                'fabric-trims': `
+                <div class="module-title">Fabric & Trims Requirement <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Demand calculation, shortage prediction, and PO delta.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-calculator me-2"></i> Demand Calculation</h6>
+                    <p>Order Qty: 5,200 pcs, Consumption: 1.2 yd/pcs, Wastage: 5%</p>
+                    <div class="alert alert-primary">Total Fabric Required: <strong>6,552 yd</strong> (5,200 × 1.2 × 1.05)</div>
+                    <button class="btn btn-sm btn-outline-ai">Generate PO Proposal</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-triangle me-2"></i> Shortage Prediction</h6>
+                    <div class="risk-gauge"><div class="fill danger" style="width:78%;"></div></div>
+                    <div>Current stock: 4,200 yd, Required: 6,552 yd → Shortage: 2,352 yd (36%)</div>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Shortage Risk','Predicted shortage due to late PO delivery. Supplier ETA: Oct 20, but cutting starts Oct 5. Recommend expediting.')">View Risk</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-arrow-up-short me-2"></i> PO Delta (Amendment)</h6>
+                    <p>Buyer increased order by 500 pcs → additional fabric: 630 yd.</p>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('PO Delta','Current PO: 6,552 yd. New demand: 7,182 yd. Delta: +630 yd. Proposed PO revision #2.')">Simulate</button>
+                </div>
+            `,
+
+                'sample-dev': `
+                <div class="module-title">Sample Development & Approval <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Feedback extraction, courier tracking, and escalation.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-chat-right-text me-2"></i> Buyer Feedback Extraction</h6>
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Paste buyer comment: 'Approved with minor color change'" />
+                        <button class="btn btn-ai btn-sm" onclick="simulateFeedback()">Extract</button>
+                    </div>
+                    <div id="feedbackResult" style="display:none;" class="mt-2">
+                        <span class="badge bg-success">Approved with Comments</span>
+                        <p class="small">Action: Update color shade. Due: 2026-09-05. Assign to: Sample Team.</p>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-truck me-2"></i> Courier Tracking</h6>
+                    <div>Tracking: <span class="fw-bold">#123456789</span></div>
+                    <ul class="list-unstyled small">
+                        <li><i class="bi bi-check-circle text-success"></i> Dispatched (Sep 1, 10:00)</li>
+                        <li><i class="bi bi-arrow-right-circle text-primary"></i> In Transit (Sep 2, 14:30)</li>
+                        <li><i class="bi bi-hourglass-split text-warning"></i> Delivered (Sep 3, 08:15) – <strong>Awaiting buyer feedback</strong></li>
+                    </ul>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-clock-history me-2"></i> Escalation</h6>
+                    <div class="alert alert-danger">Sample overdue by 3 days. Escalated to Manager.</div>
+                    <button class="btn btn-sm btn-outline-ai">View Escalation Path</button>
+                </div>
+            `,
+
+                'ta-calendar': `
+                <div class="module-title">T&A Calendar <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">TNA generation, shipment pull impact, delay prediction.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-calendar-plus me-2"></i> TNA Generation</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateTNAGeneration()">Generate from Template</button>
+                    <div id="tnaResult" style="display:none;" class="mt-2">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-primary">Sample Approval: Sep 5</span>
+                            <span class="badge bg-primary">Fabric Order: Sep 8</span>
+                            <span class="badge bg-primary">Cutting: Sep 15</span>
+                            <span class="badge bg-primary">Sewing: Sep 20</span>
+                            <span class="badge bg-primary">Finishing: Sep 28</span>
+                            <span class="badge bg-success">Shipment: Oct 5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-arrow-left-right me-2"></i> Shipment Pull Impact</h6>
+                    <p>Ship date moved from Oct 5 to Sep 28 (7 days earlier).</p>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Impact Analysis','All preceding activities shift earlier. New dates: Sample Approval Sep 1, Cutting Sep 8, etc. Critical path tightens.')">View Delta</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-triangle me-2"></i> Delay Prediction</h6>
+                    <div class="alert alert-warning">Risk of delay: 65% (material shortage).</div>
+                    <button class="btn btn-sm btn-outline-ai">Explain</button>
+                </div>
+            `,
+
+                'production-followup': `
+                <div class="module-title">Production Follow-up <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Bottleneck alerts, natural language queries, task generation.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-exclamation-octagon me-2"></i> Bottleneck Alert</h6>
+                    <div class="alert alert-danger">Sewing is 2 days behind schedule. <button class="btn btn-sm btn-outline-ai">View Details</button></div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-chat-dots me-2"></i> Production Query</h6>
+                    <div class="chat-box" id="prodChatContainer"></div>
+                    <div class="input-group mt-2">
+                        <input type="text" class="form-control" id="prodChatInput" placeholder="e.g. Sewing completion for Order 123" />
+                        <button class="btn btn-ai" onclick="sendChat('prod','prodChatInput','prodChatContainer')">Ask</button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-list-task me-2"></i> Follow-up Task Generation</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateTaskGen()">Generate Tasks</button>
+                    <div id="taskResult" style="display:none;" class="mt-2">
+                        <ul>
+                            <li>Follow up with Production Manager on sewing delay</li>
+                            <li>Update TNA with revised dates</li>
+                            <li>Inform buyer of potential delay</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+
+                'shipment-planning': `
+                <div class="module-title">Shipment Planning <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Risk score, partial tracking, commercial draft.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-shield me-2"></i> Shipment Risk Score</h6>
+                    <div class="risk-gauge"><div class="fill warning" style="width:55%;"></div></div>
+                    <div>Medium risk (55%) – 2 material shortages unresolved.</div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-box-seam me-2"></i> Partial Tracking</h6>
+                    <div>Shipped: 4,200 / 5,200 pcs (81%). Balance: 1,000 pcs.</div>
+                    <div class="progress" style="height:20px;"><div class="progress-bar bg-success" style="width:81%;">81%</div></div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-earmark-text me-2"></i> Commercial Draft</h6>
+                    <button class="btn btn-ai btn-sm" onclick="simulateCommercialDraft()">Generate Draft</button>
+                    <div id="commercialResult" style="display:none;" class="mt-2">
+                        <div class="border p-2 bg-light">Dear Commercial Team, please prepare shipping documents for Order #ORD-123. ETD: 2026-10-05, Destination: Hamburg, 5,200 pcs.</div>
+                    </div>
+                </div>
+            `,
+
+                'order-status': `
+                <div class="module-title">Order Status <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Copilot Q&A, daily summary, risk cards.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-robot me-2"></i> Copilot Q&A</h6>
+                    <div class="chat-box" id="statusChatContainer"></div>
+                    <div class="input-group mt-2">
+                        <input type="text" class="form-control" id="statusChatInput" placeholder="e.g. Orders on hold for Buyer Z" />
+                        <button class="btn btn-ai" onclick="sendChat('status','statusChatInput','statusChatContainer')">Ask</button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-file-earmark-text me-2"></i> Daily Summary</h6>
+                    <div class="alert alert-secondary">
+                        <strong>Today’s exceptions:</strong> 5 TNA overdue, 3 samples pending buyer, 2 material shortages.
+                        <button class="btn btn-sm btn-outline-ai">View Full Summary</button>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-grid me-2"></i> Risk Cards</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-danger p-2">Material Delay: 2 orders</span>
+                        <span class="badge bg-warning p-2">Approval Delay: 5 items</span>
+                        <span class="badge bg-success p-2">On Track: 12 orders</span>
+                    </div>
+                </div>
+            `,
+
+                'profitability': `
+                <div class="module-title">Buyer-wise Profitability <span class="badge-ai ms-2"><i class="bi bi-robot"></i> AI</span></div>
+                <div class="module-sub">Final summary, variance explanation, benchmarking query.</div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-coin me-2"></i> Final Profitability Summary</h6>
+                    <table class="table table-sm">
+                        <tr><th>Order</th><th>Budget</th><th>Actual</th><th>Variance</th></tr>
+                        <tr><td>ORD-123</td><td>$39,208</td><td>$40,150</td><td class="delta negative">-$942</td></tr>
+                        <tr><td>ORD-124</td><td>$52,000</td><td>$51,200</td><td class="delta positive">+$800</td></tr>
+                    </table>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-question-circle me-2"></i> Variance Explanation</h6>
+                    <div>ORD-123 overrun due to fabric price increase (+4.7%).</div>
+                    <button class="btn btn-sm btn-outline-ai" onclick="showModal('Variance Explanation','Fabric actual: $3.35 vs budget $3.20 → +$0.15/yd × 6,552 yd = +$982.80. Partially offset by washing savings.')">Explain</button>
+                </div>
+
+                <div class="demo-card">
+                    <h6><i class="bi bi-database me-2"></i> Benchmarking Query</h6>
+                    <div class="chat-box" id="profitChatContainer"></div>
+                    <div class="input-group mt-2">
+                        <input type="text" class="form-control" id="profitChatInput" placeholder="e.g. Which buyer had highest margin?" />
+                        <button class="btn btn-ai" onclick="sendChat('profit','profitChatInput','profitChatContainer')">Ask</button>
+                    </div>
+                </div>
+            `
+            };
+            return panes[moduleId] || `<div class="module-title">Module not found</div>`;
+        }
+
+        // ====== SIMULATION FUNCTIONS ======
+        function simulateEnrichment() {
+            const el = document.getElementById('enrichmentResult');
+            el.style.display = 'grid';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function simulatePOExtract() {
+            const el = document.getElementById('poExtractResult');
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function simulateAmendment() {
+            const el = document.getElementById('amendmentResult');
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function simulateTechPack() {
+            const el = document.getElementById('techPackResult');
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function simulatePublish() {
+            const el = document.getElementById('publishResult');
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+        function simulateTNAGeneration() {
+            const el = document.getElementById('tnaGenResult') || document.getElementById('tnaResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function simulateCostSheet() {
+            const el = document.getElementById('costSheetResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function updateMargin(val) {
+            const price = parseFloat(val);
+            document.getElementById('targetPriceDisplay').textContent = '$' + price.toFixed(2);
+            // Simulate margin: cost $7.54, margin = (price - cost)/price * 100
+            const cost = 7.54;
+            const margin = ((price - cost) / price * 100);
+            document.getElementById('marginDisplay').textContent = margin.toFixed(1) + '%';
+        }
+        function simulateBudgetPrefill() {
+            const el = document.getElementById('budgetResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function simulateQuoteExtract() {
+            const el = document.getElementById('quoteResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function simulateFeedback() {
+            const el = document.getElementById('feedbackResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function simulateTaskGen() {
+            const el = document.getElementById('taskResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+        function simulateCommercialDraft() {
+            const el = document.getElementById('commercialResult');
+            if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+
+        // ====== INIT ======
+        document.addEventListener('DOMContentLoaded', function () {
+            const nav = document.getElementById('moduleNav');
+            const main = document.getElementById('mainContent');
+
+            // Build nav and panes
+            modules.forEach((mod, idx) => {
+                const link = document.createElement('a');
+                link.className = 'module-link' + (idx === 0 ? ' active' : '');
+                link.setAttribute('data-module', mod.id);
+                link.innerHTML = `<i class="bi ${mod.icon}"></i> ${mod.label}`;
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // Update active nav
+                    document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    // Show pane
+                    document.querySelectorAll('.module-pane').forEach(p => p.classList.remove('active'));
+                    const pane = document.getElementById('pane-' + mod.id);
+                    if (pane) pane.classList.add('active');
+                });
+                nav.appendChild(link);
+
+                // Pane
+                const pane = document.createElement('div');
+                pane.className = 'module-pane' + (idx === 0 ? ' active' : '');
+                pane.id = 'pane-' + mod.id;
+                pane.innerHTML = buildPane(mod.id);
+                main.appendChild(pane);
+            });
+
+            // Chat initial messages for modules that have chat
+            const chatContainers = document.querySelectorAll('.chat-box:empty');
+            chatContainers.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'chat-msg ai';
+                div.textContent = 'Hello! I’m your AI assistant. How can I help?';
+                c.appendChild(div);
+            });
+        });
+    </script>
+</body>
+
+</html>
