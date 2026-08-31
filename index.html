@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RMG ERP – Merchandising AI (Auto, Semi-Auto & Human Correction)</title>
+    <title>RMG – Merchandising AI</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap 5 + Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -52,7 +53,7 @@
             overflow-y: auto;
             position: sticky;
             top: 0;
-            width: 275px;
+            width: 285px;
             flex-shrink: 0;
             border-right: 1px solid #1e293b;
             z-index: 100;
@@ -90,7 +91,7 @@
             border-left: 3px solid transparent;
             transition: all 0.2s ease;
             cursor: pointer;
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
@@ -104,6 +105,20 @@
             color: #ffffff;
             border-left-color: #6366f1;
             font-weight: 600;
+        }
+
+        .sidebar .module-link.featured-module {
+            background: rgba(99, 102, 241, 0.12);
+            color: #ffffff;
+            border-left-color: #818cf8;
+            font-weight: 700;
+            margin-bottom: 8px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .sidebar .module-link.featured-module.active {
+            background: rgba(99, 102, 241, 0.25);
+            border-left-color: #6366f1;
         }
 
         .sidebar .module-link i {
@@ -135,7 +150,7 @@
             border-radius: 16px;
             padding: 18px 24px;
             color: #ffffff;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
@@ -166,7 +181,7 @@
         }
 
         .impact-item .val {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: #ffffff;
             margin-top: 4px;
@@ -253,6 +268,7 @@
                 opacity: 0;
                 transform: translateY(8px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -463,13 +479,6 @@
             margin-top: 12px;
         }
 
-        .correction-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
         .learning-banner {
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
@@ -480,11 +489,6 @@
             margin-top: 10px;
             display: none;
             animation: fadeIn 0.3s ease;
-        }
-
-        .learning-banner i {
-            color: #059669;
-            font-size: 1rem;
         }
 
         /* Risk gauge */
@@ -513,7 +517,8 @@
         }
 
         /* Comparison Tables & Diffs */
-        .comparison-table td, .comparison-table th {
+        .comparison-table td,
+        .comparison-table th {
             vertical-align: middle;
             font-size: 0.85rem;
         }
@@ -591,6 +596,227 @@
             font-weight: 700;
         }
 
+        /* ====================================================
+           ORDER LIFECYCLE & VALUE TRACKER (TECH PACK TO SHIPMENT)
+           ==================================================== */
+        .order-picker-bar {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 14px 20px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+        }
+
+        .order-pill-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            padding: 7px 16px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .order-pill-btn:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+
+        .order-pill-btn.active {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .order-summary-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #312e81 100%);
+            border-radius: 16px;
+            padding: 22px 26px;
+            color: #ffffff;
+            margin-bottom: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+        }
+
+        .order-hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .order-hero-kpi {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 10px 14px;
+        }
+
+        .order-hero-kpi .kpi-label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            font-weight: 600;
+        }
+
+        .order-hero-kpi .kpi-val {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 2px;
+        }
+
+        /* Interactive Stepper */
+        .lifecycle-stepper-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px 20px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+        }
+
+        .stepper-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .stepper-track {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            position: relative;
+        }
+
+        .stepper-step {
+            text-align: center;
+            cursor: pointer;
+            padding: 12px 6px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            position: relative;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .stepper-step:hover {
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+
+        .stepper-step.selected {
+            background: #eef2ff;
+            border-color: #c7d2fe;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+        }
+
+        .step-icon-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px auto;
+            font-size: 1.15rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .step-status-completed .step-icon-circle {
+            background: #d1fae5;
+            color: #059669;
+            border: 2px solid #10b981;
+        }
+
+        .step-status-active .step-icon-circle {
+            background: #e0e7ff;
+            color: #4f46e5;
+            border: 2px solid #6366f1;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+            animation: pulseStep 1.8s infinite;
+        }
+
+        @keyframes pulseStep {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+            }
+        }
+
+        .step-status-pending .step-icon-circle {
+            background: #f8fafc;
+            color: #94a3b8;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .step-title {
+            font-size: 0.76rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.25;
+            margin-bottom: 2px;
+        }
+
+        .step-timing {
+            font-size: 0.68rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Stage Inspection Deep-Dive Card */
+        .stage-detail-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+        }
+
+        .stage-action-card {
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stage-action-card.card-auto {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .stage-action-card.card-hitl {
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+
+        .stage-action-card.card-correction {
+            background: #f5f3ff;
+            border-color: #ddd6fe;
+        }
+
         /* Custom Scrollbar */
         .sidebar::-webkit-scrollbar,
         .main-content::-webkit-scrollbar,
@@ -618,7 +844,7 @@
         <div class="sidebar">
             <div class="sidebar-header">
                 <h5><i class="bi bi-boxes text-primary me-2"></i>Merchandising AI</h5>
-                <small>Auto · Semi-Auto · Human In The Loop</small>
+                <small>Fortis</small>
             </div>
             <nav class="nav flex-column" id="moduleNav">
                 <!-- Injected via JavaScript -->
@@ -631,35 +857,40 @@
         <!-- Main Content Viewport -->
         <div class="main-content" id="mainContent">
 
-            <!-- Top Executive Impact Ribbon -->
-            <div class="impact-ribbon">
+            <!-- Top Executive Impact Ribbon (Dynamic Module-Scoped Telemetry) -->
+            <div class="impact-ribbon" id="impactRibbon">
                 <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
                     <div>
-                        <h6 class="mb-0 fw-bold"><i class="bi bi-cpu me-2 text-warning"></i>AI Process Automation & Impact Dashboard</h6>
-                        <small class="text-white-50">Live enterprise metrics across 18 merchandising workflows</small>
+                        <h6 class="mb-0 fw-bold" id="ribbonTitle"><i
+                                class="bi bi-signpost-2-fill text-warning me-2"></i>End-to-End Order Lifecycle Telemetry
+                        </h6>
+                        <small class="text-white-50" id="ribbonSub">Aggregated pipeline metrics across all 6
+                            manufacturing milestones</small>
                     </div>
-                    <span class="badge bg-primary px-3 py-2" id="liveLearningsBadge"><i class="bi bi-stars me-1"></i> 18 Custom Rules Learned</span>
+                    <span class="badge bg-primary px-3 py-2" id="ribbonBadge"><i class="bi bi-stars me-1"></i> 18 Custom
+                        Rules Learned</span>
                 </div>
-                <div class="impact-grid">
+                <div class="impact-grid" id="ribbonGrid">
                     <div class="impact-item">
-                        <div class="label"><i class="bi bi-lightning-charge-fill text-success"></i> Auto (Zero-Touch)</div>
+                        <div class="label"><i class="bi bi-lightning-charge-fill text-success"></i> Auto Milestones
+                        </div>
                         <div class="val text-success">75%</div>
-                        <div class="sub">Instant parsing & routine validation</div>
+                        <div class="sub">4 of 6 Zero-Touch</div>
                     </div>
                     <div class="impact-item">
-                        <div class="label"><i class="bi bi-person-gear text-warning"></i> Semi-Auto (HITL)</div>
+                        <div class="label"><i class="bi bi-person-gear text-warning"></i> HITL Touchpoints</div>
                         <div class="val text-warning">25%</div>
-                        <div class="sub">Human review & strategic co-pilot</div>
+                        <div class="sub">2 Strategic Approvals</div>
                     </div>
                     <div class="impact-item">
-                        <div class="label"><i class="bi bi-stopwatch text-info"></i> Cycle Time Reduction</div>
-                        <div class="val text-info">82%</div>
-                        <div class="sub">4.5h &rarr; 25m per order</div>
+                        <div class="label"><i class="bi bi-stopwatch text-info"></i> Lead Time Reduction</div>
+                        <div class="val text-info">14 Days</div>
+                        <div class="sub">34d vs 48d manual baseline</div>
                     </div>
                     <div class="impact-item">
-                        <div class="label"><i class="bi bi-check2-circle text-primary"></i> Human Corrections</div>
-                        <div class="val text-primary" id="topCorrectionCounter">14 Logged</div>
-                        <div class="sub">Accuracy improved +4.2%</div>
+                        <div class="label"><i class="bi bi-shield-check text-primary"></i> Protected Margin</div>
+                        <div class="val text-primary" id="topCorrectionCounter">$14,560</div>
+                        <div class="sub">Cost overrun prevented</div>
                     </div>
                 </div>
             </div>
@@ -669,14 +900,21 @@
                 <div class="d-flex align-items-center gap-2 flex-wrap">
                     <span class="text-muted small fw-bold"><i class="bi bi-funnel me-1"></i>Filter Tier:</span>
                     <div class="filter-btn-group">
-                        <button class="tier-filter-btn active" id="allFilterBtn" onclick="filterTier('all')"><i class="bi bi-grid-fill me-1"></i> All in Buyer Master (4)</button>
-                        <button class="tier-filter-btn btn-filter-auto" id="autoFilterBtn" onclick="filterTier('auto')"><i class="bi bi-lightning-charge-fill text-success"></i> ⚡ Auto (1)</button>
-                        <button class="tier-filter-btn btn-filter-semi" id="semiFilterBtn" onclick="filterTier('semi')"><i class="bi bi-person-gear text-warning"></i> 🤝 Semi-Auto (2)</button>
-                        <button class="tier-filter-btn btn-filter-correction" id="correctionFilterBtn" onclick="filterTier('correction')"><i class="bi bi-pencil-square text-primary"></i> ✏️ Human Correction (1)</button>
+                        <button class="tier-filter-btn active" id="allFilterBtn" onclick="filterTier('all')"><i
+                                class="bi bi-grid-fill me-1"></i> All in Active View</button>
+                        <button class="tier-filter-btn btn-filter-auto" id="autoFilterBtn"
+                            onclick="filterTier('auto')"><i class="bi bi-lightning-charge-fill text-success"></i> ⚡
+                            Auto</button>
+                        <button class="tier-filter-btn btn-filter-semi" id="semiFilterBtn"
+                            onclick="filterTier('semi')"><i class="bi bi-person-gear text-warning"></i> 🤝
+                            Semi-Auto</button>
+                        <button class="tier-filter-btn btn-filter-correction" id="correctionFilterBtn"
+                            onclick="filterTier('correction')"><i class="bi bi-pencil-square text-primary"></i> ✏️ Human
+                            Correction</button>
                     </div>
                 </div>
                 <div id="currentModuleBadge" class="badge bg-light text-dark border px-3 py-2 shadow-sm">
-                    <i class="bi bi-person-badge text-primary me-1"></i> <strong>Buyer Master</strong> · 4 AI Features
+                    <i class="bi bi-signpost-2-fill text-primary me-1"></i> <strong>Order Journey</strong> · Master Flow
                 </div>
             </div>
 
@@ -691,7 +929,8 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content shadow-lg border-0" style="border-radius:16px;">
                 <div class="modal-header bg-light">
-                    <h5 class="modal-title fw-bold" id="aiModalLabel"><i class="bi bi-robot text-primary me-2"></i>AI Analysis</h5>
+                    <h5 class="modal-title fw-bold" id="aiModalLabel"><i class="bi bi-robot text-primary me-2"></i>AI
+                        Analysis</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4" id="aiModalBody">...</div>
@@ -704,7 +943,8 @@
 
     <!-- Toast Notification for Active Learning -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
-        <div id="learningToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="learningToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert"
+            aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">
                     <i class="bi bi-check-circle-fill text-success me-2"></i>
@@ -720,6 +960,7 @@
     <script>
         // ====== MODULE DEFINITIONS ======
         const modules = [
+            { id: 'lifecycle-tracker', label: 'Order Journey (Tech Pack → Ship)', icon: 'bi-signpost-2-fill', isFeatured: true },
             { id: 'buyer-master', label: 'Buyer Master', icon: 'bi-person-badge' },
             { id: 'buyer-order-mgmt', label: 'Buyer Order Management', icon: 'bi-file-earmark-text' },
             { id: 'style-product-master', label: 'Style & Product Master', icon: 'bi-tags' },
@@ -732,7 +973,7 @@
             { id: 'material-requirement', label: 'Material Requirement', icon: 'bi-box-seam' },
             { id: 'supplier-cs', label: 'Supplier CS', icon: 'bi-files' },
             { id: 'fabric-trims', label: 'Fabric & Trims Requirement', icon: 'bi-layers' },
-            { id: 'sample-dev', label: 'Sample Dev & Approval', icon: 'bi-flask' },
+            { id: 'sample-dev', label: 'Sample Dev & Approval', icon: 'bi-clipboard-check' },
             { id: 'ta-calendar', label: 'T&A Calendar', icon: 'bi-calendar-event' },
             { id: 'production-followup', label: 'Production Follow-up', icon: 'bi-gear' },
             { id: 'shipment-planning', label: 'Shipment Planning', icon: 'bi-truck' },
@@ -743,6 +984,256 @@
         let totalCorrectionsCount = 14;
         let currentActiveModule = modules[0];
         let currentActiveTier = 'all';
+
+        // ====== SIMULATED ORDER DATA FOR LIFECYCLE TRACKER ======
+        const sampleOrders = {
+            'PO-2026-0089': {
+                orderNo: 'PO-2026-0089',
+                buyer: 'H&M Hennes & Mauritz',
+                style: 'ST-1256 (Men\'s Organic Polo)',
+                qty: '5,200 pcs',
+                unitPrice: '$12.80',
+                totalVal: '$66,560',
+                activeStageIdx: 4, // 0 to 5 (Stage 5: Production)
+                leadTimeDays: 34,
+                baselineLeadTime: 48,
+                timeSavedTotal: '14 Days Saved (29% Cycle Reduction)',
+                costProtected: '$14,560 Protected Margin',
+                stages: [
+                    {
+                        name: '1. Tech Pack Ingestion',
+                        day: 'Day 1',
+                        status: 'completed',
+                        icon: 'bi-file-earmark-code',
+                        autoAi: 'AI Vision OCR parsed 180 GSM Single Jersey, enzyme wash & flat-knit collar in 3.4 seconds.',
+                        hitl: 'Historical match identified: Style ST-0987 (88% similarity) reused for standard placket spec.',
+                        humanCorrection: 'Merchandiser adjusted fabric GSM from 160 to 180 GSM in tech master.',
+                        timeSaved: '45 mins &rarr; 4 secs (99% faster)',
+                        risk: 'Verified (0 defects)'
+                    },
+                    {
+                        name: '2. Costing & Booking',
+                        day: 'Day 3',
+                        status: 'completed',
+                        icon: 'bi-calculator',
+                        autoAi: 'Automated FOB Cost Sheet generated ($7.74/pc). All 16 mandatory ERP commercial fields validated.',
+                        hitl: 'AI suggested counter-offer target price of $13.75 to preserve 44.7% gross margin.',
+                        humanCorrection: 'Corrected ambiguous PO typeface price from $12.50 to $12.80 (+$1,560 profit margin).',
+                        timeSaved: '3.5 hrs &rarr; 15 mins (93% faster)',
+                        risk: '100% Verified by Human'
+                    },
+                    {
+                        name: '3. Material Sourcing & CS',
+                        day: 'Day 10',
+                        status: 'completed',
+                        icon: 'bi-box-seam',
+                        autoAi: 'Calculated 6,739 yds fabric demand. Automated Comparative Statement (CS) across 3 nominated mills.',
+                        hitl: 'Nominated Fabric Ltd. ($3.20/yd, 30d lead time, 94 quality rating).',
+                        humanCorrection: 'Overrode fabric wastage from 5% to 8% for stripe jersey matching.',
+                        timeSaved: '2 days &rarr; 20 mins',
+                        risk: 'Zero stockout risk'
+                    },
+                    {
+                        name: '4. Sample Dev & Approvals',
+                        day: 'Day 18',
+                        status: 'completed',
+                        icon: 'bi-clipboard-check',
+                        autoAi: 'NLP parsed unformatted buyer email: "Fit approved with minor neck drop tweak (-0.5cm)".',
+                        hitl: 'Pattern master adjusted neck collar CAD pattern and logged buyer approval confirmation.',
+                        humanCorrection: 'Updated lab dip shade recipe to standard Pantone 19-4052.',
+                        timeSaved: '4 days &rarr; 1 day',
+                        risk: 'Approved on 1st revision'
+                    },
+                    {
+                        name: '5. IE, Cutting & Sewing',
+                        day: 'Day 28 (Active)',
+                        status: 'active',
+                        icon: 'bi-gear-wide-connected',
+                        autoAi: 'Decomposed 12.5 SMV into 18 operations. Balanced Line 04 workload at 86% efficiency.',
+                        hitl: 'Line supervisor approved 2-day buffer for plant maintenance without delaying critical path.',
+                        humanCorrection: 'Adjusted CM making cost from $2.45 to $2.65 for complex placket.',
+                        timeSaved: '1.5 days saved on critical path',
+                        risk: 'In Progress: 4,160 / 5,200 pcs sewn (80%)'
+                    },
+                    {
+                        name: '6. QA, Invoicing & Port Ship',
+                        day: 'Day 34 (Scheduled)',
+                        status: 'pending',
+                        icon: 'bi-truck',
+                        autoAi: 'Auto-drafted Commercial Invoice & Packing List for Hamburg Port customs clearance.',
+                        hitl: 'Freight space pre-booked with Maersk at preferred spot shipping rate.',
+                        humanCorrection: 'Customs HS Code 6105.10 validated with commercial finance team.',
+                        timeSaved: '2 days saved on freight doc prep',
+                        risk: 'On track for Oct 5 ETD'
+                    }
+                ]
+            },
+            'PO-2026-0112': {
+                orderNo: 'PO-2026-0112',
+                buyer: 'Zara (Inditex Group)',
+                style: 'ST-2044 (Women\'s Graphic Crop Tee)',
+                qty: '8,500 pcs',
+                unitPrice: '$9.40',
+                totalVal: '$79,900',
+                activeStageIdx: 5, // All stages complete
+                leadTimeDays: 28,
+                baselineLeadTime: 42,
+                timeSavedTotal: '14 Days Saved (33% Cycle Reduction)',
+                costProtected: '$18,200 Protected Margin',
+                stages: [
+                    {
+                        name: '1. Tech Pack Ingestion',
+                        day: 'Day 1',
+                        status: 'completed',
+                        icon: 'bi-file-earmark-code',
+                        autoAi: 'Extracted 140 GSM Organic Single Jersey & water-based graphic print specs.',
+                        hitl: 'Fast-track approval triggered for Zara 21-day express fast-fashion program.',
+                        humanCorrection: 'Validated crop length measurements with Spanish size grade.',
+                        timeSaved: '30 mins &rarr; 3 secs',
+                        risk: 'Clean'
+                    },
+                    {
+                        name: '2. Costing & Booking',
+                        day: 'Day 2',
+                        status: 'completed',
+                        icon: 'bi-calculator',
+                        autoAi: 'Cost Sheet rolled up to $4.85/pc FOB. Fast pricing accepted.',
+                        hitl: 'Approved volume margin of 48.4% for 8,500 pcs run.',
+                        humanCorrection: 'Applied packaging polybag spec update.',
+                        timeSaved: '2 hrs &rarr; 10 mins',
+                        risk: 'Approved'
+                    },
+                    {
+                        name: '3. Material Sourcing & CS',
+                        day: 'Day 6',
+                        status: 'completed',
+                        icon: 'bi-box-seam',
+                        autoAi: 'Greige fabric pulled from ready warehouse stock (9,200 yds reserved).',
+                        hitl: 'Dye house priority slot allocated for immediate rotary printing.',
+                        humanCorrection: 'Print ink formulation adjusted for zero cadmium.',
+                        timeSaved: '5 days &rarr; 1 day',
+                        risk: 'Stock in-house'
+                    },
+                    {
+                        name: '4. Sample Dev & Approvals',
+                        day: 'Day 12',
+                        status: 'completed',
+                        icon: 'bi-clipboard-check',
+                        autoAi: 'AI digital 3D sample approved via CLO3D simulation directly with Zara buyers.',
+                        hitl: 'Physical proto dispatched via DHL Express with instant barcode tracking.',
+                        humanCorrection: 'Print placement centered by +1.5cm.',
+                        timeSaved: '6 days &rarr; 2 days',
+                        risk: 'Approved'
+                    },
+                    {
+                        name: '5. IE, Cutting & Sewing',
+                        day: 'Day 22',
+                        status: 'completed',
+                        icon: 'bi-gear-wide-connected',
+                        autoAi: 'Auto-cut nesting achieved 89.2% marker efficiency. Line 02 sewn at 92% efficiency.',
+                        hitl: 'QA inspection cleared with zero critical defects.',
+                        humanCorrection: 'Thread tension calibrated for stretch seam.',
+                        timeSaved: '2 days saved',
+                        risk: '8,500 pcs completed'
+                    },
+                    {
+                        name: '6. QA, Invoicing & Port Ship',
+                        day: 'Day 28',
+                        status: 'completed',
+                        icon: 'bi-truck',
+                        autoAi: 'Air freight shipping manifest generated & cleared with customs in 10 mins.',
+                        hitl: 'Cargo boarded Flight QR-642 to Madrid Hub.',
+                        humanCorrection: 'Commercial invoice signed electronically.',
+                        timeSaved: 'Shipped 14 days ahead of manual baseline',
+                        risk: 'Delivered On-Time'
+                    }
+                ]
+            },
+            'PO-2026-0145': {
+                orderNo: 'PO-2026-0145',
+                buyer: 'Target Corporation',
+                style: 'ST-3088 (Heavyweight Fleece Hoodie)',
+                qty: '12,000 pcs',
+                unitPrice: '$18.50',
+                totalVal: '$222,000',
+                activeStageIdx: 3, // Stage 4 active
+                leadTimeDays: 45,
+                baselineLeadTime: 60,
+                timeSavedTotal: '15 Days Projected Savings',
+                costProtected: '$38,400 Projected Margin',
+                stages: [
+                    {
+                        name: '1. Tech Pack Ingestion',
+                        day: 'Day 1',
+                        status: 'completed',
+                        icon: 'bi-file-earmark-code',
+                        autoAi: 'Decomposed 320 GSM Brushed Fleece, kangaroo pocket & brass eyelets.',
+                        hitl: 'AI suggested brushed fleece recipe from winter 2025 archive.',
+                        humanCorrection: 'Corrected hood lining spec to single jersey 160 GSM.',
+                        timeSaved: '1 hour &rarr; 5 secs',
+                        risk: 'Verified'
+                    },
+                    {
+                        name: '2. Costing & Booking',
+                        day: 'Day 4',
+                        status: 'completed',
+                        icon: 'bi-calculator',
+                        autoAi: 'Unit cost rolled up to $10.80. Target price verified at $18.50 (41.6% margin).',
+                        hitl: 'Executive approval granted for $222,000 order booking.',
+                        humanCorrection: 'Currency exchange buffer locked at 1.5%.',
+                        timeSaved: '4 hrs &rarr; 20 mins',
+                        risk: 'Signed'
+                    },
+                    {
+                        name: '3. Material Sourcing & CS',
+                        day: 'Day 14',
+                        status: 'completed',
+                        icon: 'bi-box-seam',
+                        autoAi: 'Calculated 16,800 kg yarn requirement. CS matrix nominated Prime Spinning.',
+                        hitl: 'Confirmed heavy rib cuff trims with local trim supplier.',
+                        humanCorrection: 'Added 4% buffer for brush fleece shrinkage.',
+                        timeSaved: '3 days &rarr; 2 hrs',
+                        risk: 'Yarn in transit'
+                    },
+                    {
+                        name: '4. Sample Dev & Approvals',
+                        day: 'Day 22 (Active)',
+                        status: 'active',
+                        icon: 'bi-clipboard-check',
+                        autoAi: 'Courier tracking shows Fit Proto delivered to Minneapolis HQ. Awaiting buyer review.',
+                        hitl: 'Pattern team pre-graded size runs XS-3XL to save 2 days post-approval.',
+                        humanCorrection: 'Drawcord tip reinforced with metal aglet.',
+                        timeSaved: 'Active: Projected 3 days saved',
+                        risk: 'In Review with Buyer Target'
+                    },
+                    {
+                        name: '5. IE, Cutting & Sewing',
+                        day: 'Day 36 (Scheduled)',
+                        status: 'pending',
+                        icon: 'bi-gear-wide-connected',
+                        autoAi: 'SMV estimated at 19.5 mins. Dedicated 2 heavy-duty sewing lines.',
+                        hitl: 'Operator skill matrix mapped for pocket welting.',
+                        humanCorrection: 'None (Scheduled)',
+                        timeSaved: 'Projected 4 days saved',
+                        risk: 'Scheduled'
+                    },
+                    {
+                        name: '6. QA, Invoicing & Port Ship',
+                        day: 'Day 45 (Scheduled)',
+                        status: 'pending',
+                        icon: 'bi-truck',
+                        autoAi: 'FOB Chattogram sea freight booking template prepared.',
+                        hitl: 'Consolidated container plan drafted (2 x 40ft HQ).',
+                        humanCorrection: 'None (Scheduled)',
+                        timeSaved: 'Projected 5 days saved',
+                        risk: 'On Schedule for Nov 15 ETD'
+                    }
+                ]
+            }
+        };
+
+        let currentSelectedOrderKey = 'PO-2026-0089';
+        let currentSelectedStageIdx = 4;
 
         // ====== HELPERS ======
         function showModal(title, html) {
@@ -778,7 +1269,7 @@
                 aiDiv.className = 'chat-msg ai';
                 const responses = [
                     'Analyzing contract archive... Found 3 previous orders with identical payment terms (Net 60).',
-                    'Shipment feasibility check: Current critical path shows 42 days needed vs 35 days requested. Expedited shipping recommended.',
+                    'Shipment feasibility check: Current critical path shows 34 days needed vs 48 days manual baseline. On schedule.',
                     'Material shortage alert: Fabric booking #PO-456 requires 250m buffer. Automated PO amendment drafted.',
                     'Buyer H&M historical margin benchmark is 14.8%. Your current quote is at 15.2% (Healthy).',
                     'I have prepared a draft negotiation email with volume tiered pricing ($13.75 for 5k pcs, $13.50 for 10k pcs).'
@@ -789,9 +1280,251 @@
             }, 600);
         }
 
+        // ====== DYNAMIC MODULE-SCOPED TELEMETRY METRICS ======
+        const moduleMetrics = {
+            'lifecycle-tracker': {
+                title: '<i class="bi bi-signpost-2-fill text-warning me-2"></i>End-to-End Order Lifecycle Telemetry',
+                sub: 'Aggregated pipeline metrics across all 6 manufacturing milestones',
+                badge: '<i class="bi bi-stars me-1"></i> 18 Custom Rules Learned',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Auto Milestones', val: '75%', sub: '4 of 6 Zero-Touch', color: 'text-success' },
+                    { label: '<i class="bi bi-person-gear text-warning"></i> HITL Touchpoints', val: '25%', sub: '2 Strategic Approvals', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Lead Time Reduction', val: '14 Days', sub: '34d vs 48d manual baseline', color: 'text-info' },
+                    { label: '<i class="bi bi-shield-check text-primary"></i> Protected Margin', val: '$14,560', sub: 'Cost overrun prevented', color: 'text-primary' },
+                ]
+            },
+            'buyer-master': {
+                title: '<i class="bi bi-person-badge text-primary me-2"></i>Buyer Master & Contract Intelligence',
+                sub: 'Live extraction accuracy, credit risk assessment & preference tuning',
+                badge: '<i class="bi bi-building-check me-1"></i> H&M Master Profile',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Contract OCR', val: '99.2%', sub: 'Zero-touch clause extraction', color: 'text-success' },
+                    { label: '<i class="bi bi-shield-exclamation text-warning"></i> Risk Scoring', val: '68 (Med)', sub: 'Financial health audit', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Ingestion Time', val: '2 Secs', sub: 'vs 25 mins manual analysis', color: 'text-info' },
+                    { label: '<i class="bi bi-pencil-square text-primary"></i> Custom Rules', val: '±0% Tol', sub: 'Carton packing rule learned', color: 'text-primary' },
+                ]
+            },
+            'buyer-order-mgmt': {
+                title: '<i class="bi bi-file-earmark-text text-primary me-2"></i>PO Intake & Order Discrepancy Control',
+                sub: 'Automated PO parsing, anomaly warnings & OCR active learning',
+                badge: '<i class="bi bi-stars me-1"></i> Active Learning: Enabled',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Field Extraction', val: '92% Auto', sub: '16 mandatory fields parsed', color: 'text-success' },
+                    { label: '<i class="bi bi-exclamation-triangle text-warning"></i> Anomaly Detection', val: '1 Flagged', sub: 'Ambiguous typeface price', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> PO Entry Speed', val: '3 Secs', sub: 'vs 30 mins manual typing', color: 'text-info' },
+                    { label: '<i class="bi bi-cash-stack text-primary"></i> Revenue Saved', val: '+$1,560', sub: 'Corrected $12.50 &rarr; $12.80', color: 'text-primary' },
+                ]
+            },
+            'style-product-master': {
+                title: '<i class="bi bi-tags text-primary me-2"></i>Tech Pack Intelligence & Style Archive',
+                sub: 'Automated spec extraction, fabric similarity & CAD sync',
+                badge: '<i class="bi bi-collection me-1"></i> 1,400+ Styles Indexed',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Spec Extraction', val: '100% Auto', sub: '180 GSM, 100% Cotton', color: 'text-success' },
+                    { label: '<i class="bi bi-diagram-3 text-warning"></i> Style Similarity', val: '88% Match', sub: 'Matched Style #ST-0987', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Tech Pack Parsing', val: '4 Secs', sub: 'vs 45 mins manual review', color: 'text-info' },
+                    { label: '<i class="bi bi-arrow-repeat text-primary"></i> Ripple Recalc', val: '1,350 kg', sub: 'Yarn weight updated live', color: 'text-primary' },
+                ]
+            },
+            'order-booking': {
+                title: '<i class="bi bi-cart-check text-primary me-2"></i>Order Booking & Ratio Validation',
+                sub: 'Mandatory field verification & historical size-color distribution',
+                badge: '<i class="bi bi-check2-circle me-1"></i> ERP Pre-Validation Pass',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> ERP Verification', val: '16/16 Valid', sub: '100% clean check', color: 'text-success' },
+                    { label: '<i class="bi bi-grid-3x3 text-warning"></i> Ratio Suggestion', val: '5.2k Pcs', sub: 'Historical size matrix', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Booking Cycle', val: '5 Mins', sub: 'vs 2 hours manual routing', color: 'text-info' },
+                    { label: '<i class="bi bi-bullseye text-primary"></i> Breakdown Accuracy', val: '99.8%', sub: 'Zero ratio imbalance', color: 'text-primary' },
+                ]
+            },
+            'ie-smv': {
+                title: '<i class="bi bi-speedometer2 text-primary me-2"></i>Industrial Engineering & Line Balancing',
+                sub: 'GSD SMV decomposition, bottleneck prediction & line routing',
+                badge: '<i class="bi bi-cpu me-1"></i> Line 04 Recommended',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Total Garment SMV', val: '12.5 Mins', sub: 'Auto-decomposed', color: 'text-success' },
+                    { label: '<i class="bi bi-speedometer text-warning"></i> Line Efficiency', val: '86% Target', sub: 'Sewing Line 04', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> SMV Study Time', val: 'Instant', sub: 'vs 3 hrs manual motion study', color: 'text-info' },
+                    { label: '<i class="bi bi-arrows-expand text-primary"></i> Balancing Delta', val: '+14% Pcs/Hr', sub: 'Line workload balanced', color: 'text-primary' },
+                ]
+            },
+            'product-costing': {
+                title: '<i class="bi bi-calculator text-primary me-2"></i>Product Costing & Anomaly Guard',
+                sub: 'Dynamic component calculation, CM rate overrides & supplier audits',
+                badge: '<i class="bi bi-shield-check me-1"></i> Margin Guard Active',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Base Cost Rollup', val: '$7.54 FOB', sub: 'Automated recipe rollup', color: 'text-success' },
+                    { label: '<i class="bi bi-exclamation-diamond text-warning"></i> Washing Flag', val: '+35% Alert', sub: 'Identified alternate vendor', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Costing Speed', val: '10 Secs', sub: 'vs 1.5 hrs manual sheet', color: 'text-info' },
+                    { label: '<i class="bi bi-pencil-square text-primary"></i> CM Rate Override', val: '$2.65', sub: 'Placket making cost updated', color: 'text-primary' },
+                ]
+            },
+            'cost-sheet': {
+                title: '<i class="bi bi-table text-primary me-2"></i>Live FOB Cost Sheet & Margin Sensitivity',
+                sub: 'Component breakdown, dynamic slider modeling & negotiation planner',
+                badge: '<i class="bi bi-tag me-1"></i> FOB Target: $14.00',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> FOB Garment Cost', val: '$7.74/pc', sub: 'Synchronized live', color: 'text-success' },
+                    { label: '<i class="bi bi-graph-up text-warning"></i> Gross Profit Margin', val: '44.7%', sub: 'Healthy margin band', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Quote Generation', val: 'Real-Time', sub: 'Instant slider recalculation', color: 'text-info' },
+                    { label: '<i class="bi bi-trophy text-primary"></i> Win Probability', val: '78% Hist', sub: 'At $14.00 quote', color: 'text-primary' },
+                ]
+            },
+            'target-margin': {
+                title: '<i class="bi bi-graph-up-arrow text-primary me-2"></i>Target Price Negotiation Strategy',
+                sub: 'Buyer target price gap analysis & counter-offer guidance',
+                badge: '<i class="bi bi-chat-quote me-1"></i> Target: $13.50 · Factory: $14.00',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Rec Counter-Offer', val: '$13.75', sub: 'Optimized sweet spot', color: 'text-success' },
+                    { label: '<i class="bi bi-percent text-warning"></i> Acceptance Prob', val: '70% High', sub: 'Immediate acceptance rate', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Strategy Speed', val: 'Instant', sub: 'Historical negotiation model', color: 'text-info' },
+                    { label: '<i class="bi bi-cash text-primary"></i> Gross Value Gap', val: '+$1,300', sub: 'Preserved over buyer target', color: 'text-primary' },
+                ]
+            },
+            'order-budgeting': {
+                title: '<i class="bi bi-wallet2 text-primary me-2"></i>Order-Wise Budget Allocation & Tracking',
+                sub: 'Cost-to-budget prefill, cost overrun prevention & spend caps',
+                badge: '<i class="bi bi-wallet me-1"></i> Budget Cap: $39,208',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Auto Allocation', val: '$39,208', sub: 'Prefilled from costing', color: 'text-success' },
+                    { label: '<i class="bi bi-pie-chart text-warning"></i> Fabric Allocation', val: '$19,968', sub: '51% of total spend', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Budget Setup', val: '1 Sec', sub: 'vs 45 mins manual entry', color: 'text-info' },
+                    { label: '<i class="bi bi-shield-lock text-primary"></i> Variance Tol', val: '±2.0% Max', sub: 'Automated lockout rule', color: 'text-primary' },
+                ]
+            },
+            'material-requirement': {
+                title: '<i class="bi bi-box-seam text-primary me-2"></i>Material Requirement Planning (MRP)',
+                sub: 'Yarn & fabric demand formulas, custom wastage tuning & auto PO requisition',
+                badge: '<i class="bi bi-check-all me-1"></i> Requisition Ready',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Total Yardage', val: '6,739 yd', sub: 'Auto calculated with wastage', color: 'text-success' },
+                    { label: '<i class="bi bi-tags text-warning"></i> Category Rule', val: 'Stripe Jersey', sub: 'Matched fabric complexity', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> MRP Calc Speed', val: 'Instant', sub: 'vs 1.5 hrs manual formulas', color: 'text-info' },
+                    { label: '<i class="bi bi-pencil-square text-primary"></i> Wastage Override', val: '8% (+187 yd)', sub: 'Human approved for stripe', color: 'text-primary' },
+                ]
+            },
+            'supplier-cs': {
+                title: '<i class="bi bi-files text-primary me-2"></i>Supplier Comparative Statement (CS)',
+                sub: 'Multi-mill quote audits, lead time scoring & vendor nomination',
+                badge: '<i class="bi bi-award me-1"></i> Fabric Ltd. Top Ranked',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Quote Ingestion', val: '3 Mills', sub: 'Standardized comparison', color: 'text-success' },
+                    { label: '<i class="bi bi-star text-warning"></i> Top Mill Score', val: '94/100', sub: 'Fabric Ltd @ $3.20/yd', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> CS Prep Time', val: '20 Mins', sub: 'vs 2 days manual vendor calls', color: 'text-info' },
+                    { label: '<i class="bi bi-truck text-primary"></i> Delivery Window', val: '30 Days', sub: 'Zero critical path delay', color: 'text-primary' },
+                ]
+            },
+            'fabric-trims': {
+                title: '<i class="bi bi-layers text-primary me-2"></i>Inventory Allocation & Shortage Prevention',
+                sub: 'Warehouse stock matching, deadstock reuse & shortage drafting',
+                badge: '<i class="bi bi-box me-1"></i> Warehouse Linked',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> In-Stock Match', val: '4,200 yd', sub: 'Warehouse stock allocated', color: 'text-success' },
+                    { label: '<i class="bi bi-exclamation-octagon text-danger"></i> Shortage Alert', val: '2,352 yd', sub: 'Auto requisition drafted', color: 'text-danger' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Stock Reconcile', val: '5 Secs', sub: 'vs 3 hrs warehouse audit', color: 'text-info' },
+                    { label: '<i class="bi bi-file-earmark-plus text-primary"></i> PO Requisition', val: '#PO-881', sub: 'Automated generation', color: 'text-primary' },
+                ]
+            },
+            'sample-dev': {
+                title: '<i class="bi bi-clipboard-check text-primary me-2"></i>Sample Development & Fit Approval',
+                sub: 'Unstructured buyer email parsing, courier tracking & revision management',
+                badge: '<i class="bi bi-check-circle me-1"></i> Approved with Comments',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> NLP Feedback Parse', val: '3.2 Secs', sub: 'Extracted neck drop spec', color: 'text-success' },
+                    { label: '<i class="bi bi-arrow-repeat text-warning"></i> Revision Speed', val: '1 Rev', sub: 'Down from 3.2 avg', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Approval Cycle', val: '1 Day', sub: 'vs 4 days manual review', color: 'text-info' },
+                    { label: '<i class="bi bi-pencil-square text-primary"></i> Pattern Updated', val: '-0.5cm Drop', sub: 'Synchronized to CAD', color: 'text-primary' },
+                ]
+            },
+            'ta-calendar': {
+                title: '<i class="bi bi-calendar-event text-primary me-2"></i>Time & Action (T&A) Critical Path Engine',
+                sub: 'Automated scheduling, downstream buffer recalculations & ETD guards',
+                badge: '<i class="bi bi-calendar-check me-1"></i> ETD: Oct 5 (On Schedule)',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Critical Path', val: '34 Days', sub: 'Auto baseline generated', color: 'text-success' },
+                    { label: '<i class="bi bi-shield-check text-warning"></i> Milestone Guard', val: '6 Gates', sub: 'Automated alert tracking', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Schedule Plan', val: 'Instant', sub: 'vs 1 day manual calendar', color: 'text-info' },
+                    { label: '<i class="bi bi-pencil-square text-primary"></i> Buffer Adjustment', val: '+3 Days', sub: 'Plant maintenance absorbed', color: 'text-primary' },
+                ]
+            },
+            'production-followup': {
+                title: '<i class="bi bi-gear text-primary me-2"></i>Floor Progress & Bottleneck Analytics',
+                sub: 'Real-time sewing output, hourly defect rate & line balancing alerts',
+                badge: '<i class="bi bi-activity me-1"></i> Line 04 Active',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Output Tracking', val: '80% Done', sub: '4,160 / 5,200 pcs sewn', color: 'text-success' },
+                    { label: '<i class="bi bi-exclamation-triangle text-danger"></i> Bottleneck Alert', val: '1.5d Delay', sub: 'Line 04 needle issue', color: 'text-danger' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Exception Detect', val: 'Real-Time', sub: 'Hourly IoT line telemetry', color: 'text-info' },
+                    { label: '<i class="bi bi-arrow-left-right text-primary"></i> Remedial Action', val: 'Re-routed', sub: 'Workload re-balanced', color: 'text-primary' },
+                ]
+            },
+            'shipment-planning': {
+                title: '<i class="bi bi-truck text-primary me-2"></i>Shipment Planning & Freight Documentation',
+                sub: 'Commercial packing list generation, port clearance & forwarder dispatch',
+                badge: '<i class="bi bi-geo-alt me-1"></i> Destination: Hamburg Port',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Freight Docs Draft', val: '100% Auto', sub: 'Commercial Inv & Packing List', color: 'text-success' },
+                    { label: '<i class="bi bi-check-circle text-warning"></i> Forwarder Rate', val: 'Maersk Spot', sub: 'Preferred freight contract', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Doc Dispatch', val: '10 Mins', sub: 'vs 2 days manual prep', color: 'text-info' },
+                    { label: '<i class="bi bi-shield-check text-primary"></i> ETD Compliance', val: '100% On-Time', sub: 'Cleared for Oct 5 sailing', color: 'text-primary' },
+                ]
+            },
+            'order-status': {
+                title: '<i class="bi bi-speedometer text-primary me-2"></i>Order Status 360° & AI Copilot',
+                sub: 'Natural language query answering, milestone telemetry & exception tracking',
+                badge: '<i class="bi bi-robot me-1"></i> Copilot Active',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Status Telemetry', val: 'In Sewing', sub: '62% floor completion', color: 'text-success' },
+                    { label: '<i class="bi bi-chat-dots text-warning"></i> Response Speed', val: '0.6 Secs', sub: 'Instant ERP query answer', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Status Reporting', val: 'Instant', sub: 'Eliminated daily email reports', color: 'text-info' },
+                    { label: '<i class="bi bi-check2-circle text-primary"></i> Milestone Health', val: 'Green / OK', sub: 'No overdue milestones', color: 'text-primary' },
+                ]
+            },
+            'profitability': {
+                title: '<i class="bi bi-coin text-primary me-2"></i>Post-Mortem Profitability & Variance Audit',
+                sub: 'Budgeted vs actual spend reconciliation, profit margin analysis & leakage control',
+                badge: '<i class="bi bi-graph-up-arrow me-1"></i> Net Margin: 44.8%',
+                kpis: [
+                    { label: '<i class="bi bi-lightning-charge-fill text-success"></i> Variance Reconciled', val: '+$758 Fav', sub: 'Under budgeted cost', color: 'text-success' },
+                    { label: '<i class="bi bi-percent text-warning"></i> Net Profit Margin', val: '44.8%', sub: 'High profitability tier', color: 'text-warning' },
+                    { label: '<i class="bi bi-stopwatch text-info"></i> Post-Mortem Audit', val: 'Auto-Gen', sub: 'vs 3 weeks manual audit', color: 'text-info' },
+                    { label: '<i class="bi bi-lightbulb text-primary"></i> Margin Driver', val: 'Fabric CS', sub: '+$0.15/yd saving captured', color: 'text-primary' },
+                ]
+            }
+        };
+
+        function updateImpactRibbonForModule(mod) {
+            const data = moduleMetrics[mod.id] || moduleMetrics['lifecycle-tracker'];
+            const ribbonTitle = document.getElementById('ribbonTitle');
+            const ribbonSub = document.getElementById('ribbonSub');
+            const ribbonBadge = document.getElementById('ribbonBadge');
+            const ribbonGrid = document.getElementById('ribbonGrid');
+
+            if (ribbonTitle) ribbonTitle.innerHTML = data.title;
+            if (ribbonSub) ribbonSub.textContent = data.sub;
+            if (ribbonBadge) ribbonBadge.innerHTML = data.badge;
+
+            if (ribbonGrid) {
+                let gridHtml = '';
+                data.kpis.forEach(k => {
+                    gridHtml += `
+                        <div class="impact-item">
+                            <div class="label">${k.label}</div>
+                            <div class="val ${k.color}">${k.val}</div>
+                            <div class="sub">${k.sub}</div>
+                        </div>
+                    `;
+                });
+                ribbonGrid.innerHTML = gridHtml;
+            }
+        }
+
         function updateFilterBarForModule(mod) {
             currentActiveModule = mod;
             currentActiveTier = 'all';
+
+            // Dynamically update Top Impact Ribbon metrics for this module
+            updateImpactRibbonForModule(mod);
 
             document.querySelectorAll('.tier-filter-btn').forEach(btn => btn.classList.remove('active'));
             const allBtn = document.getElementById('allFilterBtn');
@@ -799,6 +1532,30 @@
 
             const pane = document.getElementById('pane-' + mod.id);
             if (!pane) return;
+
+            if (mod.id === 'lifecycle-tracker') {
+                if (allBtn) allBtn.innerHTML = `<i class="bi bi-grid-fill me-1"></i> All in Order Journey (6 Stages)`;
+                const autoBtn = document.getElementById('autoFilterBtn');
+                if (autoBtn) {
+                    autoBtn.innerHTML = `<i class="bi bi-lightning-charge-fill text-success"></i> ⚡ Auto (6)`;
+                    autoBtn.style.opacity = '1';
+                }
+                const semiBtn = document.getElementById('semiFilterBtn');
+                if (semiBtn) {
+                    semiBtn.innerHTML = `<i class="bi bi-person-gear text-warning"></i> 🤝 Semi-Auto (6)`;
+                    semiBtn.style.opacity = '1';
+                }
+                const correctionBtn = document.getElementById('correctionFilterBtn');
+                if (correctionBtn) {
+                    correctionBtn.innerHTML = `<i class="bi bi-pencil-square text-primary"></i> ✏️ Human Correction (6)`;
+                    correctionBtn.style.opacity = '1';
+                }
+                const badge = document.getElementById('currentModuleBadge');
+                if (badge) {
+                    badge.innerHTML = `<i class="bi bi-signpost-2-fill text-primary me-1"></i> <strong>Order Journey</strong> · 6 Stages (Tech Pack &rarr; Ship)`;
+                }
+                return;
+            }
 
             const cards = pane.querySelectorAll('.demo-card');
             const autoCards = pane.querySelectorAll('.demo-card[data-tier="auto"]');
@@ -857,6 +1614,31 @@
             const pane = document.getElementById('pane-' + currentActiveModule.id);
             if (!pane) return;
 
+            if (currentActiveModule.id === 'lifecycle-tracker') {
+                const autoCol = pane.querySelector('.card-auto')?.parentElement;
+                const semiCol = pane.querySelector('.card-hitl')?.parentElement;
+                const corrCol = pane.querySelector('.card-correction')?.parentElement;
+
+                if (tier === 'all') {
+                    if (autoCol) autoCol.style.display = 'block';
+                    if (semiCol) semiCol.style.display = 'block';
+                    if (corrCol) corrCol.style.display = 'block';
+                } else if (tier === 'auto') {
+                    if (autoCol) autoCol.style.display = 'block';
+                    if (semiCol) semiCol.style.display = 'none';
+                    if (corrCol) corrCol.style.display = 'none';
+                } else if (tier === 'semi') {
+                    if (autoCol) autoCol.style.display = 'none';
+                    if (semiCol) semiCol.style.display = 'block';
+                    if (corrCol) corrCol.style.display = 'none';
+                } else if (tier === 'correction') {
+                    if (autoCol) autoCol.style.display = 'none';
+                    if (semiCol) semiCol.style.display = 'none';
+                    if (corrCol) corrCol.style.display = 'block';
+                }
+                return;
+            }
+
             const cards = pane.querySelectorAll('.demo-card');
             cards.forEach(c => {
                 if (tier === 'all') {
@@ -871,32 +1653,205 @@
             });
         }
 
+        // ====== LIFECYCLE TRACKER INTERACTIVE HANDLERS ======
+        function switchSampleOrder(orderKey) {
+            currentSelectedOrderKey = orderKey;
+            const order = sampleOrders[orderKey];
+            currentSelectedStageIdx = order.activeStageIdx;
+
+            // Update order picker buttons
+            document.querySelectorAll('.order-pill-btn').forEach(btn => btn.classList.remove('active'));
+            const targetBtn = document.getElementById('orderBtn-' + orderKey);
+            if (targetBtn) targetBtn.classList.add('active');
+
+            renderOrderLifecycleView();
+            showLearningToast(`Loaded Order ${order.orderNo} (${order.buyer}). Lead Time Saved: ${order.timeSavedTotal}`);
+        }
+
+        function selectJourneyStage(stageIdx) {
+            currentSelectedStageIdx = stageIdx;
+            renderOrderLifecycleView();
+        }
+
+        function simulateJourneyProgression() {
+            const order = sampleOrders[currentSelectedOrderKey];
+            if (order.activeStageIdx < 5) {
+                order.activeStageIdx++;
+                currentSelectedStageIdx = order.activeStageIdx;
+                order.stages[order.activeStageIdx - 1].status = 'completed';
+                order.stages[order.activeStageIdx].status = 'active';
+                renderOrderLifecycleView();
+                showLearningToast(`🚀 Order ${order.orderNo} progressed to ${order.stages[order.activeStageIdx].name}!`);
+            } else {
+                showLearningToast(`🎉 Order ${order.orderNo} has completed all 6 stages and is fully Shipped!`);
+            }
+        }
+
+        function renderOrderLifecycleView() {
+            const container = document.getElementById('lifecycleContentContainer');
+            if (!container) return;
+
+            const order = sampleOrders[currentSelectedOrderKey];
+            const activeStage = order.stages[currentSelectedStageIdx] || order.stages[0];
+
+            let stepperHtml = '';
+            order.stages.forEach((stg, idx) => {
+                let statusClass = 'step-status-pending';
+                let badgeText = 'Pending';
+                if (idx < order.activeStageIdx) {
+                    statusClass = 'step-status-completed';
+                    badgeText = '<i class="bi bi-check-lg"></i> Done';
+                } else if (idx === order.activeStageIdx) {
+                    statusClass = 'step-status-active';
+                    badgeText = '<i class="bi bi-play-fill"></i> In Progress';
+                }
+
+                const isSelected = idx === currentSelectedStageIdx ? 'selected' : '';
+
+                stepperHtml += `
+                    <div class="stepper-step ${statusClass} ${isSelected}" onclick="selectJourneyStage(${idx})">
+                        <div class="step-icon-circle"><i class="bi ${stg.icon}"></i></div>
+                        <div class="step-title">${stg.name}</div>
+                        <div class="step-timing">${stg.day}</div>
+                        <span class="badge ${idx < order.activeStageIdx ? 'bg-success' : (idx === order.activeStageIdx ? 'bg-primary' : 'bg-light text-muted border')} mt-1" style="font-size:0.65rem;">${badgeText}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <!-- Order Summary Hero -->
+                <div class="order-summary-hero">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div>
+                            <span class="badge bg-warning text-dark px-3 py-1 fw-bold"><i class="bi bi-tag-fill me-1"></i> ${order.buyer}</span>
+                            <h4 class="fw-bold mt-2 mb-0">${order.orderNo}: ${order.style}</h4>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-warning btn-sm fw-bold px-3 shadow" onclick="simulateJourneyProgression()"><i class="bi bi-play-circle-fill me-1"></i> Simulate Live Progression</button>
+                        </div>
+                    </div>
+                    <div class="order-hero-grid">
+                        <div class="order-hero-kpi">
+                            <div class="kpi-label">Order Volume</div>
+                            <div class="kpi-val">${order.qty}</div>
+                        </div>
+                        <div class="order-hero-kpi">
+                            <div class="kpi-label">Unit FOB Price</div>
+                            <div class="kpi-val">${order.unitPrice}</div>
+                        </div>
+                        <div class="order-hero-kpi">
+                            <div class="kpi-label">Total Order Value</div>
+                            <div class="kpi-val text-success">${order.totalVal}</div>
+                        </div>
+                        <div class="order-hero-kpi">
+                            <div class="kpi-label">Lead Time Reduction</div>
+                            <div class="kpi-val text-info">${order.leadTimeDays}d <small class="fs-6 text-white-50">(vs ${order.baselineLeadTime}d)</small></div>
+                        </div>
+                        <div class="order-hero-kpi">
+                            <div class="kpi-label">Protected Value</div>
+                            <div class="kpi-val text-warning">${order.costProtected}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6-Stage Stepper Box -->
+                <div class="lifecycle-stepper-box">
+                    <div class="stepper-header">
+                        <div>
+                            <h6 class="fw-bold mb-1"><i class="bi bi-diagram-3-fill text-primary me-2"></i>End-to-End Milestone Pipeline</h6>
+                            <small class="text-muted">Click any stage node below to inspect AI actions, human interventions, and time savings</small>
+                        </div>
+                        <span class="badge bg-light text-dark border px-3 py-2">
+                            Stage ${currentSelectedStageIdx + 1} of 6 Selected
+                        </span>
+                    </div>
+                    <div class="stepper-track">
+                        ${stepperHtml}
+                    </div>
+                </div>
+
+                <!-- Stage Deep-Dive Inspection Card -->
+                <div class="stage-detail-box">
+                    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2 border-bottom pb-3">
+                        <div>
+                            <span class="badge bg-primary px-3 py-1 me-2">STAGE ${currentSelectedStageIdx + 1} INSPECTION</span>
+                            <h5 class="fw-bold d-inline align-middle">${activeStage.name}</h5>
+                        </div>
+                        <div>
+                            <span class="roi-pill me-2"><i class="bi bi-clock-history"></i> Cycle Time: <strong>${activeStage.timeSaved}</strong></span>
+                            <span class="badge bg-success"><i class="bi bi-shield-check me-1"></i> ${activeStage.risk}</span>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <!-- Auto AI Action -->
+                        <div class="col-md-4">
+                            <div class="stage-action-card card-auto h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="badge-tier badge-auto"><i class="bi bi-lightning-charge-fill"></i> AUTO (Zero-Touch)</span>
+                                </div>
+                                <h6 class="fw-bold text-success mb-2"><i class="bi bi-robot me-1"></i> AI Autonomous Action</h6>
+                                <p class="small text-muted mb-0">${activeStage.autoAi}</p>
+                            </div>
+                        </div>
+
+                        <!-- Semi-Auto Action -->
+                        <div class="col-md-4">
+                            <div class="stage-action-card card-hitl h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="badge-tier badge-semi"><i class="bi bi-person-gear"></i> SEMI-AUTO (HITL)</span>
+                                </div>
+                                <h6 class="fw-bold text-warning mb-2"><i class="bi bi-hand-index-thumb me-1"></i> Co-Pilot Suggestion</h6>
+                                <p class="small text-muted mb-0">${activeStage.hitl}</p>
+                            </div>
+                        </div>
+
+                        <!-- Human Correction -->
+                        <div class="col-md-4">
+                            <div class="stage-action-card card-correction h-100">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="badge-tier badge-correction"><i class="bi bi-pencil-square"></i> HUMAN CORRECTION</span>
+                                </div>
+                                <h6 class="fw-bold text-primary mb-2"><i class="bi bi-shield-lock me-1"></i> Human Override & Learning</h6>
+                                <p class="small text-muted mb-0">${activeStage.humanCorrection}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top flex-wrap gap-2">
+                        <small class="text-muted"><i class="bi bi-info-circle text-primary me-1"></i> Real-time audit log: Model confidence 96.2% · Zero compliance exception detected.</small>
+                        <button class="btn btn-outline-ai btn-sm" onclick="showModal('${activeStage.name} Full Audit Trail', '<p><strong>Stage Execution Telemetry:</strong></p><ul><li>Automatic Processing Time: 3.4 seconds</li><li>Human Review Duration: 12 seconds</li><li>Downstream Ripple Efficiency: 100% synchronized across ERP</li></ul>')"><i class="bi bi-file-earmark-text me-1"></i> View Full Stage Audit Trail</button>
+                    </div>
+                </div>
+            `;
+        }
+
         // ====== INTERACTIVE HUMAN CORRECTION HANDLERS ======
         function applyPoCorrection() {
             const correctedPrice = parseFloat(document.getElementById('poPriceInput').value) || 12.80;
             const qty = 5200;
             const newTotal = (qty * correctedPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-            
+
             document.getElementById('poExtractPriceValue').innerHTML = `<span class="diff-before">$12.50</span> <span class="diff-after">$${correctedPrice.toFixed(2)}</span>`;
             document.getElementById('poOrderValueTotal').innerHTML = `<span class="diff-before">$65,000</span> <span class="diff-after">${newTotal}</span>`;
             document.getElementById('poConfidenceBadge').innerHTML = `<i class="bi bi-check-circle-fill text-success"></i> 100% Verified by Human`;
             document.getElementById('poConfidenceBadge').className = "text-success fw-bold small";
-            
+
             const learningBanner = document.getElementById('poLearningBanner');
             learningBanner.style.display = 'block';
             learningBanner.innerHTML = `<i class="bi bi-stars text-success me-2"></i><strong>Active Learning Registered:</strong> Corrected price applied. OCR template updated for Buyer H&M (Typeface: Helvetica Light). Future POs will parse this correctly.`;
-            
+
             showLearningToast(`PO Price updated to $${correctedPrice.toFixed(2)}. Order value recalculated to ${newTotal}.`);
         }
 
         function applyGsmCorrection() {
             const gsm = document.getElementById('techPackGsmInput').value;
             document.getElementById('techPackGsmValue').innerHTML = `<span class="diff-before">160 GSM</span> <span class="diff-after">${gsm} GSM</span>`;
-            
+
             const learningBanner = document.getElementById('gsmLearningBanner');
             learningBanner.style.display = 'block';
             learningBanner.innerHTML = `<i class="bi bi-stars text-success me-2"></i><strong>Downstream Ripple Effect:</strong> Fabric weight increased by +12.5%. Raw material yarn requirement updated to 1,350 kg. Cost Sheet updated automatically.`;
-            
+
             showLearningToast(`GSM updated to ${gsm}. Yarn consumption and cost sheet recalculated.`);
         }
 
@@ -904,15 +1859,15 @@
             const wastage = parseFloat(document.getElementById('wastageInput').value) || 8;
             const orderQty = 5200;
             const cons = 1.2;
-            const newTotal = Math.round(orderQty * cons * (1 + wastage/100));
-            
+            const newTotal = Math.round(orderQty * cons * (1 + wastage / 100));
+
             document.getElementById('wastageDisplayValue').innerHTML = `<span class="diff-before">5%</span> <span class="diff-after">${wastage}%</span>`;
             document.getElementById('wastageDemandValue').innerHTML = `<span class="diff-before">6,552 yd</span> <span class="diff-after">${newTotal.toLocaleString()} yd (+${newTotal - 6552} yd)</span>`;
-            
+
             const banner = document.getElementById('wastageLearningBanner');
             banner.style.display = 'block';
             banner.innerHTML = `<i class="bi bi-shield-check text-primary me-2"></i><strong>Override Escalation & Learning:</strong> Custom wastage rule recorded for Category "Stripe Jersey". Manager approval requested automatically.`;
-            
+
             showLearningToast(`Wastage changed to ${wastage}%. Additional ${newTotal - 6552} yards added to PO requisition.`);
         }
 
@@ -922,19 +1877,19 @@
             const trims = 0.85;
             const wash = 0.40;
             const totalCost = fabric + trims + cmRate + wash;
-            
+
             document.getElementById('costSheetCmVal').innerHTML = `<span class="diff-before">$2.45</span> <span class="diff-after">$${cmRate.toFixed(2)}</span>`;
             document.getElementById('costSheetTotalVal').innerHTML = `<span class="diff-before">$7.54</span> <span class="diff-after">$${totalCost.toFixed(2)}</span>`;
-            
+
             // Recalculate margin display
             const targetPrice = parseFloat(document.getElementById('priceSlider').value);
             const margin = ((targetPrice - totalCost) / targetPrice * 100);
             document.getElementById('marginDisplay').textContent = margin.toFixed(1) + '%';
-            
+
             const banner = document.getElementById('costingLearningBanner');
             banner.style.display = 'block';
             banner.innerHTML = `<i class="bi bi-graph-up text-success me-2"></i><strong>Margin Recalculated:</strong> Unit cost adjusted to $${totalCost.toFixed(2)}. Target Price recommendations shifted to preserve 45% margin.`;
-            
+
             showLearningToast(`CM Rate updated to $${cmRate.toFixed(2)}. Cost sheet total updated to $${totalCost.toFixed(2)}.`);
         }
 
@@ -951,11 +1906,11 @@
             const extraDays = parseInt(document.getElementById('tnaDelayInput').value) || 3;
             document.getElementById('tnaSewingDates').innerHTML = `<span class="diff-before">Sep 6–18</span> <span class="diff-after">Sep 6–21 (+${extraDays}d)</span>`;
             document.getElementById('tnaShipDate').innerHTML = `<span class="diff-before">Oct 5</span> <span class="diff-after text-danger">Oct 8 (Critical Path Alert)</span>`;
-            
+
             const banner = document.getElementById('tnaLearningBanner');
             banner.style.display = 'block';
             banner.innerHTML = `<i class="bi bi-bell-fill text-warning me-2"></i><strong>Schedule Shifted:</strong> All downstream activities (Finishing, Packing, Inspection) updated. Automated notification draft prepared for Buyer H&M.`;
-            
+
             showLearningToast(`T&A updated (+${extraDays} days). Critical path shifted.`);
         }
 
@@ -968,9 +1923,33 @@
             }
         }
 
-        // ====== BUILD ALL 18 MODULE PANES ======
+        // ====== BUILD ALL 19 MODULE PANES ======
         function buildPane(moduleId) {
             const panes = {
+                'lifecycle-tracker': `
+                <div class="module-header">
+                    <div class="module-title"><i class="bi bi-signpost-2-fill text-primary"></i> Order Journey & Lifecycle 360°</div>
+                    <div class="module-sub">End-to-End tracking flow from Tech Pack Ingestion to Port Shipment with live AI impact telemetry.</div>
+                </div>
+
+                <!-- Order Picker Bar -->
+                <div class="order-picker-bar">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="small fw-bold text-muted"><i class="bi bi-collection me-1"></i>Select Order:</span>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button class="order-pill-btn active" id="orderBtn-PO-2026-0089" onclick="switchSampleOrder('PO-2026-0089')"><i class="bi bi-bag-check"></i> PO-2026-0089 (H&M · 5.2k pcs)</button>
+                            <button class="order-pill-btn" id="orderBtn-PO-2026-0112" onclick="switchSampleOrder('PO-2026-0112')"><i class="bi bi-check-circle"></i> PO-2026-0112 (Zara · 8.5k pcs)</button>
+                            <button class="order-pill-btn" id="orderBtn-PO-2026-0145" onclick="switchSampleOrder('PO-2026-0145')"><i class="bi bi-hourglass-split"></i> PO-2026-0145 (Target · 12k pcs)</button>
+                        </div>
+                    </div>
+                    <span class="badge bg-success px-3 py-2"><i class="bi bi-lightning-charge-fill me-1"></i> AI Tracking Active</span>
+                </div>
+
+                <div id="lifecycleContentContainer">
+                    <!-- Injected dynamically by renderOrderLifecycleView() -->
+                </div>
+            `,
+
                 'buyer-master': `
                 <div class="module-header">
                     <div class="module-title"><i class="bi bi-person-badge text-primary"></i> Buyer Master</div>
@@ -1476,7 +2455,7 @@
 
                 'sample-dev': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-flask text-primary"></i> Sample Development & Approval</div>
+                    <div class="module-title"><i class="bi bi-clipboard-check text-primary"></i> Sample Development & Approval</div>
                     <div class="module-sub">Buyer comments parsing, courier tracking, and photo defect inspection.</div>
                 </div>
 
@@ -1633,7 +2612,14 @@
                 const link = document.createElement('a');
                 link.className = 'module-link' + (idx === 0 ? ' active' : '');
                 link.setAttribute('data-module', mod.id);
-                link.innerHTML = `<i class="bi ${mod.icon}"></i> ${mod.label}`;
+
+                if (mod.isFeatured) {
+                    link.classList.add('featured-module');
+                    link.innerHTML = `<i class="bi ${mod.icon} text-warning"></i> <span>${mod.label}</span> <span class="badge bg-warning text-dark ms-auto" style="font-size:0.62rem; padding: 2px 6px;">MASTER</span>`;
+                } else {
+                    link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span>`;
+                }
+
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
                     document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
@@ -1656,7 +2642,8 @@
                 main.appendChild(pane);
             });
 
-            // Initialize filter bar for default active module
+            // Initialize Order Lifecycle Stepper and default filter bar
+            renderOrderLifecycleView();
             updateFilterBarForModule(modules[0]);
         });
     </script>
