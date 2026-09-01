@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fortis – Merchandising AI</title>
+    <title>Fortis – Merchandising AI Suite</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@
             overflow-y: auto;
             position: sticky;
             top: 0;
-            width: 290px;
+            width: 300px;
             flex-shrink: 0;
             border-right: 1px solid #1e293b;
             z-index: 100;
@@ -89,8 +89,8 @@
         }
 
         .sidebar-header small {
-            color: #cbd5e1;
-            font-size: 0.76rem;
+            color: #94a3b8;
+            font-size: 0.74rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             display: block;
@@ -105,13 +105,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 9px 18px;
+            padding: 8px 18px;
             color: #94a3b8;
             text-decoration: none;
             border-left: 3px solid transparent;
             transition: all 0.2s ease;
             cursor: pointer;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             font-weight: 500;
         }
 
@@ -123,14 +123,14 @@
         .sidebar .module-link.active {
             background: #1e293b;
             color: #ffffff;
-            border-left-color: #ffffff;
+            border-left-color: #6366f1;
             font-weight: 600;
         }
 
         .sidebar .module-link.featured-module {
             background: rgba(99, 102, 241, 0.12);
             color: #ffffff;
-            border-left-color: #cbd5e1;
+            border-left-color: #6366f1;
             font-weight: 700;
             margin-bottom: 8px;
             border-radius: 0 8px 8px 0;
@@ -142,8 +142,8 @@
         }
 
         .sidebar .module-link i {
-            font-size: 1.15rem;
-            width: 22px;
+            font-size: 1.1rem;
+            width: 20px;
             text-align: center;
             color: #cbd5e1;
         }
@@ -202,68 +202,72 @@
 
         .impact-item {
             background: #1e293b;
-            border: 1px solid #475569;
+            border: 1px solid #334155;
             border-radius: 12px;
-            padding: 14px 16px;
+            padding: 12px 14px;
+            transition: transform 0.2s;
+        }
+
+        .impact-item:hover {
+            transform: translateY(-2px);
+            border-color: #6366f1;
         }
 
         .impact-item .label {
-            font-size: 0.74rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
+            font-size: 0.72rem;
             color: #cbd5e1;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .impact-item .val {
-            font-size: 1.45rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #ffffff;
             margin-top: 4px;
         }
 
         .impact-item .sub {
-            font-size: 0.76rem;
+            font-size: 0.72rem;
             color: #94a3b8;
             margin-top: 2px;
-            font-weight: 500;
         }
 
         /* Controls Toolbar */
         .controls-toolbar {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 12px 18px;
-            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 10px 16px;
+            border: 1px solid var(--card-border);
             margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
-            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
         }
 
         .view-mode-selector {
             display: inline-flex;
             background: #f1f5f9;
-            padding: 4px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            gap: 4px;
+            padding: 3px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         .view-mode-btn {
             border: none;
             background: transparent;
-            color: #475569;
-            padding: 6px 14px;
-            border-radius: 7px;
-            font-size: 0.82rem;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
             font-weight: 600;
+            color: #64748b;
             cursor: pointer;
             transition: all 0.2s ease;
             display: inline-flex;
@@ -271,54 +275,27 @@
             gap: 6px;
         }
 
-        .view-mode-btn:hover {
-            color: #0f172a;
-            background: rgba(255, 255, 255, 0.6);
-        }
-
         .view-mode-btn.active {
             background: #ffffff;
             color: #0f172a;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            font-weight: 700;
-        }
-
-        .view-mode-btn.active.btn-mode-compare {
-            color: #4f46e5;
-            background: #ffffff;
-            border-bottom: 2px solid #4f46e5;
-        }
-
-        .view-mode-btn.active.btn-mode-ai {
-            color: #059669;
-            background: #ffffff;
-            border-bottom: 2px solid #059669;
-        }
-
-        .view-mode-btn.active.btn-mode-legacy {
-            color: #ea580c;
-            background: #ffffff;
-            border-bottom: 2px solid #ea580c;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .tier-filter-btn {
-            border: 1px solid #cbd5e1;
+            border: 1px solid #e2e8f0;
             background: #ffffff;
-            color: #475569;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 5px 11px;
+            border-radius: 8px;
             font-size: 0.78rem;
             font-weight: 600;
+            color: #475569;
             cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            transition: all 0.2s ease;
         }
 
         .tier-filter-btn:hover {
-            border-color: #94a3b8;
             background: #f8fafc;
+            border-color: #cbd5e1;
         }
 
         .tier-filter-btn.active {
@@ -330,17 +307,17 @@
         /* Module Panes */
         .module-pane {
             display: none;
-            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .module-pane.active {
             display: block;
+            animation: fadeIn 0.25s ease-in-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(8px);
+                transform: translateY(4px);
             }
 
             to {
@@ -350,82 +327,78 @@
         }
 
         .module-header {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .module-title {
-            font-size: 1.55rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: #0f172a;
-            letter-spacing: -0.4px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            letter-spacing: -0.3px;
         }
 
         .module-sub {
-            color: #334155;
-            font-size: 0.92rem;
-            font-weight: 500;
-            margin-top: 4px;
+            color: #64748b;
+            font-size: 0.86rem;
+            margin-top: 2px;
         }
 
-        /* ====================================================
-           SIDE-BY-SIDE DUAL COMPARISON CARD LAYOUT
-           ==================================================== */
+        /* Dual Comparison Cards */
         .comparison-card-wrapper {
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+            border-radius: 14px;
             border: 1px solid var(--card-border);
-            margin-bottom: 22px;
+            margin-bottom: 18px;
             overflow: hidden;
-            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            transition: border-color 0.2s;
         }
 
         .comparison-card-wrapper:hover {
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.09);
             border-color: #cbd5e1;
         }
 
         .comparison-card-header {
-            background: #f1f5f9;
-            border-bottom: 2px solid #cbd5e1;
-            padding: 14px 20px;
+            padding: 12px 18px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .comparison-card-header h6 {
             margin: 0;
-            font-weight: 800;
+            font-weight: 700;
             color: #0f172a;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .head-to-head-delta-pill {
-            background: #f8fafc;
-            color: #0f172a;
-            border: 1px solid #cbd5e1;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            font-size: 0.74rem;
             font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            position: relative;
+            transition: all 0.2s ease;
         }
 
         @media (max-width: 992px) {
@@ -436,254 +409,176 @@
 
         .legacy-side {
             background: var(--legacy-bg);
-            padding: 20px;
-            border-right: 1px dashed var(--legacy-border);
-            position: relative;
+            padding: 16px 18px;
+            border-right: 1px solid var(--legacy-border);
         }
 
         .ai-side {
-            background: #f8faff;
-            padding: 20px;
-            position: relative;
+            background: #ffffff;
+            padding: 16px 18px;
         }
 
         .side-system-tag {
             font-size: 0.7rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 3px 8px;
-            border-radius: 6px;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            margin-bottom: 8px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
         }
 
-        .tag-legacy {
-            background: #ffedd5;
-            color: #9a3412;
+        .side-system-tag.tag-legacy {
+            background: var(--legacy-badge);
+            color: var(--legacy-header);
             border: 1px solid #fdba74;
         }
 
-        .tag-ai {
+        .side-system-tag.tag-ai {
             background: #e0e7ff;
             color: #3730a3;
             border: 1px solid #c7d2fe;
         }
 
-        /* Legacy Manual Terminal / Excel Grid UI */
+        /* Mimicked Legacy Terminal / Manual Keying */
         .legacy-terminal-box {
             background: #ffffff;
             border: 1px solid #fed7aa;
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-top: 10px;
+            border-radius: 8px;
+            padding: 12px;
             margin-bottom: 12px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         .legacy-terminal-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #ffedd5;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed #fed7aa;
             padding-bottom: 6px;
-            margin-bottom: 10px;
         }
 
         .legacy-timer-badge {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.74rem;
+            font-size: 0.72rem;
             font-weight: 700;
-            padding: 2px 8px;
+            color: #c2410c;
+            background: #ffedd5;
+            padding: 2px 6px;
             border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
         }
 
         .legacy-input-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 8px;
         }
 
-        .legacy-input-cell {
-            background: #fffdfa;
-            border: 1px solid #fed7aa;
-            border-radius: 6px;
-            padding: 6px 8px;
-        }
-
         .legacy-input-cell label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #9a3412;
-            text-transform: uppercase;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: #78350f;
             display: block;
             margin-bottom: 2px;
         }
 
         .legacy-input-cell input,
         .legacy-input-cell select {
+            width: 100%;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
-            font-weight: 600;
-            color: #334155;
-            width: 100%;
-            border: 1px solid #e2e8f0;
+            padding: 4px 6px;
+            border: 1px solid #fed7aa;
             border-radius: 4px;
-            padding: 3px 6px;
-            background: #ffffff;
-            transition: all 0.2s;
-        }
-
-        .legacy-input-cell input:focus {
-            border-color: #ea580c;
-            outline: none;
-            background: #fff7ed;
+            background: #fffdfa;
+            color: #451a03;
         }
 
         .legacy-input-cell input.typing-active {
             border-color: #ea580c;
-            background: #fff7ed;
-            animation: pulseTyping 0.6s infinite alternate;
-        }
-
-        @keyframes pulseTyping {
-            from {
-                background: #fff7ed;
-            }
-
-            to {
-                background: #fed7aa;
-            }
+            background: #ffedd5;
         }
 
         .legacy-error-alert {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
             color: #991b1b;
-            border-radius: 6px;
-            padding: 6px 10px;
             font-size: 0.76rem;
+            padding: 6px 10px;
+            border-radius: 6px;
             margin-top: 8px;
             display: none;
             animation: fadeIn 0.3s ease;
         }
 
-        .workflow-step-chain {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin: 10px 0;
-        }
-
-        .workflow-step-item {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 0.78rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .step-badge {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #f1f5f9;
-            color: #475569;
-            font-size: 0.68rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .step-badge.legacy {
-            background: #ffedd5;
-            color: #ea580c;
-        }
-
-        .step-badge.ai {
-            background: #d1fae5;
-            color: #059669;
-        }
-
+        /* KPI Micro Strips */
         .kpi-stat-strip {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 8px;
-            margin-top: 10px;
+            margin-top: 12px;
+            border-top: 1px dashed #e2e8f0;
             padding-top: 10px;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .legacy-side .kpi-stat-strip {
+            border-top-color: #fed7aa;
         }
 
         .kpi-micro-card {
             background: #ffffff;
+            border-radius: 6px;
+            padding: 6px 8px;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 10px;
+        }
+
+        .legacy-side .kpi-micro-card {
+            background: #fffbf5;
+            border-color: #fed7aa;
         }
 
         .kpi-micro-card .k-label {
-            font-size: 0.65rem;
+            font-size: 0.66rem;
             color: #64748b;
             font-weight: 600;
             text-transform: uppercase;
         }
 
         .kpi-micro-card .k-val {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 0.88rem;
+            font-weight: 800;
             color: #0f172a;
             margin-top: 1px;
         }
 
-        .k-legacy-danger {
-            color: #0f172a;
-        }
-
-        .k-ai-success {
-            color: #0f172a;
-        }
-
-        /* Operational Tier Badges */
+        /* Tier Badges */
         .badge-tier {
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.4px;
-            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 6px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
 
         .badge-auto {
-            background: #d1fae5;
+            background: var(--auto-bg);
             color: #065f46;
             border: 1px solid #a7f3d0;
         }
 
         .badge-semi {
-            background: #fef3c7;
+            background: var(--semi-bg);
             color: #92400e;
             border: 1px solid #fde68a;
         }
 
         .badge-correction {
-            background: #e0e7ff;
+            background: var(--correction-bg);
             color: #3730a3;
             border: 1px solid #c7d2fe;
         }
@@ -691,12 +586,12 @@
         /* Buttons */
         .btn-ai {
             background: #6366f1;
-            border: none;
             color: #ffffff;
             font-weight: 600;
             font-size: 0.82rem;
             padding: 6px 14px;
             border-radius: 8px;
+            border: none;
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
@@ -764,7 +659,7 @@
             border-color: #fdba74;
         }
 
-        /* Grid Extraction Items */
+        /* Extraction Item Display */
         .extract-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -820,7 +715,7 @@
             animation: fadeIn 0.3s ease;
         }
 
-        /* Risk gauge */
+        /* Risk Gauge */
         .risk-gauge {
             width: 100%;
             height: 8px;
@@ -912,9 +807,7 @@
             border-bottom-left-radius: 2px;
         }
 
-        /* ====================================================
-           ORDER LIFECYCLE & VALUE TRACKER
-           ==================================================== */
+        /* Order Lifecycle Hero & Stepper */
         .order-picker-bar {
             background: #ffffff;
             border-radius: 14px;
@@ -995,7 +888,7 @@
             margin-top: 2px;
         }
 
-        /* Interactive Stepper */
+        /* Stepper */
         .lifecycle-stepper-box {
             background: #ffffff;
             border-radius: 16px;
@@ -1019,11 +912,6 @@
         .stepper-header h6 {
             color: #0f172a;
             font-weight: 800;
-        }
-
-        .stepper-header small {
-            color: #334155;
-            font-weight: 500;
         }
 
         .stepper-track {
@@ -1175,7 +1063,7 @@
             <div>
                 <div class="sidebar-header">
                     <h5><i class="bi bi-boxes me-2"></i>Merchandising AI</h5>
-                    <small>FORTIS GROUP · SYSTEM BENCHMARK</small>
+                    <small>FORTIS APPAREL SUITE</small>
                 </div>
                 <div class="sidebar-nav-container">
                     <nav class="nav flex-column" id="moduleNav">
@@ -1194,7 +1082,7 @@
                     </button>
                 </div>
                 <div class="mt-2 text-center text-white-50" style="font-size:0.72rem;">
-                    <i class="bi bi-shield-check me-1"></i> Side-by-Side Validation Active
+                    <i class="bi bi-shield-check me-1"></i> Side-by-Side Audit Active
                 </div>
             </div>
         </div>
@@ -1209,14 +1097,12 @@
                         <h6 class="mb-0 fw-bold" id="ribbonTitle">
                             <i class="bi bi-signpost-2-fill me-2"></i>End-to-End Order Lifecycle Telemetry
                         </h6>
-                        <small class="text-white-50" id="ribbonSub">Aggregated pipeline metrics across all 6
-                            manufacturing milestones</small>
+                        <small class="text-white-50" id="ribbonSub">Aggregated pipeline metrics across all 6 manufacturing milestones</small>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
                         <button class="btn btn-sm btn-outline-light px-3 py-1" onclick="openBenchmarkModal()"><i
                                 class="bi bi-bar-chart-line me-1"></i> Full Benchmark (19 Modules)</button>
-                        <span class="badge bg-primary px-3 py-2" id="ribbonBadge"><i class="bi bi-stars me-1"></i> 18
-                            Custom Rules Learned</span>
+                        <span class="badge bg-primary px-3 py-2" id="ribbonBadge"><i class="bi bi-stars me-1"></i> 18 Custom Rules Learned</span>
                     </div>
                 </div>
                 <div class="impact-grid" id="ribbonGrid">
@@ -1275,16 +1161,14 @@
         </div>
     </div>
 
-    <!-- Executive Benchmark Modal (19 Modules Matrix) -->
+    <!-- Executive Benchmark Modal (All 19 Modules Matrix) -->
     <div class="modal fade" id="benchmarkModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content shadow-lg border-0" style="border-radius:16px;">
                 <div class="modal-header bg-dark text-white">
                     <div>
-                        <h5 class="modal-title fw-bold"><i class="bi bi-table me-2"></i>Executive System
-                            Benchmark: Legacy ERP vs. Merchandising AI</h5>
-                        <small class="text-white-50">Cross-departmental time, accuracy, labor, and margin protection
-                            audit across all 19 modules</small>
+                        <h5 class="modal-title fw-bold"><i class="bi bi-table me-2"></i>Executive System Benchmark: Legacy ERP vs. Merchandising AI</h5>
+                        <small class="text-white-50">Cross-departmental time, accuracy, labor, and margin protection audit across all 18 modules</small>
                     </div>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
@@ -1310,10 +1194,8 @@
                     </div>
                 </div>
                 <div class="modal-footer bg-light d-flex justify-content-between">
-                    <span class="small text-muted"><i class="bi bi-info-circle me-1"></i> Average cycle
-                        time reduced by <strong>87.4%</strong> across all apparel manufacturing stages.</span>
-                    <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Close
-                        Benchmark</button>
+                    <span class="small text-muted"><i class="bi bi-info-circle me-1"></i> Average cycle time reduced by <strong>87.4%</strong> across all apparel merchandising stages.</span>
+                    <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Close Benchmark</button>
                 </div>
             </div>
         </div>
@@ -1324,20 +1206,16 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content shadow-lg border-0 bg-dark text-white" style="border-radius:16px;">
                 <div class="modal-header border-secondary">
-                    <h5 class="modal-title fw-bold text-white"><i class="bi bi-stopwatch-fill me-2"></i>Live Workflow
-                        Race: Tech Pack & Order Intake</h5>
+                    <h5 class="modal-title fw-bold text-white"><i class="bi bi-stopwatch-fill me-2"></i>Live Workflow Race: Tech Pack & Order Intake</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <p class="small text-white-50">Simulate a live end-to-end processing race between a human
-                        merchandiser using Legacy Excel/Email and the Fortis Merchandising AI engine.</p>
+                    <p class="small text-white-50">Simulate a live end-to-end processing race between a human merchandiser using Legacy Excel/Email and the Fortis Merchandising AI engine.</p>
 
                     <!-- AI Lane -->
                     <div class="race-lane border border-primary bg-opacity-10 bg-primary mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span class="fw-bold"><i
-                                    class="bi bi-lightning-charge-fill me-1"></i> Fortis Merchandising AI
-                                (OCR + NLP + Auto ERP Sync)</span>
+                            <span class="fw-bold"><i class="bi bi-lightning-charge-fill me-1"></i> Fortis Merchandising AI (OCR + NLP + Auto ERP Sync)</span>
                             <span class="badge bg-primary" id="aiRaceTime">0.0s</span>
                         </div>
                         <div class="small text-white-50" id="aiRaceStatus">Ready to execute autonomous pipeline...</div>
@@ -1349,12 +1227,10 @@
                     <!-- Legacy Lane -->
                     <div class="race-lane border border-danger bg-opacity-10 bg-danger mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span class="fw-bold text-white"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy
-                                System (Excel Sheets + PDF Printing + Phone Inquiries)</span>
+                            <span class="fw-bold text-white"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy System (Excel Sheets + PDF Printing + Phone Inquiries)</span>
                             <span class="badge bg-danger" id="legacyRaceTime">0.0m</span>
                         </div>
-                        <div class="small text-white-50" id="legacyRaceStatus">Ready to open 28-page PDF tech pack...
-                        </div>
+                        <div class="small text-white-50" id="legacyRaceStatus">Ready to open 28-page PDF tech pack...</div>
                         <div class="race-progress-bar">
                             <div class="race-progress-fill bg-warning" id="legacyProgressFill"></div>
                         </div>
@@ -1363,14 +1239,12 @@
                     <!-- Race Commentary Box -->
                     <div class="border border-secondary rounded p-3 bg-black small"
                         style="font-family:'JetBrains Mono', monospace; min-height: 90px;" id="raceLogContainer">
-                        <span class="text-secondary">&gt; Click "Start Live Benchmark Race" to begin execution
-                            test...</span>
+                        <span class="text-secondary">&gt; Click "Start Live Benchmark Race" to begin execution test...</span>
                     </div>
                 </div>
                 <div class="modal-footer border-secondary">
                     <button type="button" class="btn btn-warning fw-bold px-4" id="startRaceBtn"
-                        onclick="runLiveWorkflowRace()"><i class="bi bi-play-fill me-1"></i> Start Live Benchmark
-                        Race</button>
+                        onclick="runLiveWorkflowRace()"><i class="bi bi-play-fill me-1"></i> Start Live Benchmark Race</button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -1382,8 +1256,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content shadow-lg border-0" style="border-radius:16px;">
                 <div class="modal-header bg-light">
-                    <h5 class="modal-title fw-bold" id="aiModalLabel"><i class="bi bi-cpu me-2"></i>AI
-                        Analysis</h5>
+                    <h5 class="modal-title fw-bold" id="aiModalLabel"><i class="bi bi-cpu me-2"></i>AI Analysis</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4" id="aiModalBody">...</div>
@@ -1411,27 +1284,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // ====== MODULE DEFINITIONS ======
+        // ====== ALL 18 MERCHANDISING MODULES + MASTER ORDER JOURNEY ======
         const modules = [
             { id: 'lifecycle-tracker', label: 'Order Journey (Tech Pack → Ship)', icon: 'bi-signpost-2-fill', isFeatured: true },
-            { id: 'buyer-master', label: 'Buyer Master', icon: 'bi-person-badge' },
-            { id: 'buyer-order-mgmt', label: 'Buyer Order Management', icon: 'bi-file-earmark-text' },
-            { id: 'style-product-master', label: 'Style & Product Master', icon: 'bi-tags' },
-            { id: 'order-booking', label: 'Order Booking', icon: 'bi-cart-check' },
-            { id: 'ie-smv', label: 'IE & SMV Management', icon: 'bi-speedometer2' },
-            { id: 'product-costing', label: 'Product Costing', icon: 'bi-calculator' },
-            { id: 'cost-sheet', label: 'Cost Sheet', icon: 'bi-table' },
-            { id: 'target-margin', label: 'Target Price & Margin', icon: 'bi-graph-up-arrow' },
-            { id: 'order-budgeting', label: 'Order-wise Budgeting', icon: 'bi-wallet2' },
-            { id: 'material-requirement', label: 'Material Requirement', icon: 'bi-box-seam' },
-            { id: 'supplier-cs', label: 'Supplier CS', icon: 'bi-files' },
-            { id: 'fabric-trims', label: 'Fabric & Trims Requirement', icon: 'bi-layers' },
-            { id: 'sample-dev', label: 'Sample Dev & Approval', icon: 'bi-clipboard-check' },
-            { id: 'ta-calendar', label: 'T&A Calendar', icon: 'bi-calendar-event' },
-            { id: 'production-followup', label: 'Production Follow-up', icon: 'bi-gear' },
-            { id: 'shipment-planning', label: 'Shipment Planning', icon: 'bi-truck' },
-            { id: 'order-status', label: 'Order Status', icon: 'bi-speedometer' },
-            { id: 'profitability', label: 'Buyer Profitability', icon: 'bi-coin' },
+            { id: 'buyer-master', label: '1. Buyer Master', icon: 'bi-person-badge' },
+            { id: 'buyer-order-mgmt', label: '2. Buyer Order Management', icon: 'bi-file-earmark-text' },
+            { id: 'style-product-master', label: '3. Style & Product Master', icon: 'bi-tags' },
+            { id: 'order-booking', label: '4. Order Booking', icon: 'bi-cart-check' },
+            { id: 'ie-smv', label: '5. IE & SMV Management', icon: 'bi-speedometer2' },
+            { id: 'product-costing', label: '6. Product Costing', icon: 'bi-calculator' },
+            { id: 'cost-sheet', label: '7. Cost Sheet', icon: 'bi-table' },
+            { id: 'target-margin', label: '8. Target Price & Margin', icon: 'bi-graph-up-arrow' },
+            { id: 'order-budgeting', label: '9. Order-wise Budgeting', icon: 'bi-wallet2' },
+            { id: 'material-requirement', label: '10. Material Requirement (MRP)', icon: 'bi-box-seam' },
+            { id: 'supplier-cs', label: '11. Supplier CS', icon: 'bi-files' },
+            { id: 'fabric-trims', label: '12. Fabric & Trims Requirement', icon: 'bi-layers' },
+            { id: 'sample-dev', label: '13. Sample Dev & Approval', icon: 'bi-clipboard-check' },
+            { id: 'ta-calendar', label: '14. T&A Calendar', icon: 'bi-calendar-event' },
+            { id: 'production-followup', label: '15. Production Follow-up', icon: 'bi-gear' },
+            { id: 'shipment-planning', label: '16. Shipment Planning', icon: 'bi-truck' },
+            { id: 'order-status', label: '17. Order Status 360°', icon: 'bi-speedometer' },
+            { id: 'profitability', label: '18. Buyer Profitability', icon: 'bi-coin' },
         ];
 
         let totalCorrectionsCount = 14;
@@ -1442,24 +1315,24 @@
         // ====== BENCHMARK SUMMARY DATA FOR ALL 19 MODULES ======
         const benchmarkData = [
             { id: 'lifecycle-tracker', name: 'Order Journey (Tech Pack → Ship)', legacyTool: 'Disjointed Excel files, paper binders, weekly email status meetings', legacyTime: '48 Days Lead Time', aiTool: 'AI Autonomous Milestone Orchestration & Downstream Ripple Recalc', aiTime: '34 Days Lead Time', timeSaved: '14 Days Saved (29% Faster)', impact: '$14,560 Margin Protected' },
-            { id: 'buyer-master', name: 'Buyer Master & Contract Intel', legacyTool: 'Manual reading of 35-page PDF contracts, manual clause copying', legacyTime: '25 Mins', aiTool: 'Zero-touch NLP Contract Extraction & Historical Risk Scoring', aiTime: '2 Secs', timeSaved: '99% Faster', impact: 'Zero clause oversights' },
-            { id: 'buyer-order-mgmt', name: 'Buyer Order Management (PO)', legacyTool: 'Manual re-typing from scanned PO images into ERP', legacyTime: '30 Mins', aiTool: 'OCR Ingestion + Active Learning Typeface Correction', aiTime: '3 Secs', timeSaved: '99.8% Faster', impact: '+$1,560 Typo Recovered' },
-            { id: 'style-product-master', name: 'Style & Product Master', legacyTool: 'Manual measurement chart typing & CAD team paper handoffs', legacyTime: '45 Mins', aiTool: 'Tech Pack Vision AI & 1,400+ Style Archive Similarity Matching', aiTime: '4 Secs', timeSaved: '99% Faster', impact: 'Saved 10 days lab dip re-use' },
-            { id: 'order-booking', name: 'Order Booking & Ratio Validation', legacyTool: 'Manual size-color breakdown calculations & paper booking slips', legacyTime: '2 Hours', aiTool: '16-Field Instant Validation & Historical Size Curve Suggestion', aiTime: '5 Mins', timeSaved: '96% Faster', impact: 'Zero ratio imbalance' },
-            { id: 'ie-smv', name: 'IE & SMV Management', legacyTool: 'Stopwatch video motion study & manual GSD data entry sheets', legacyTime: '3 Hours', aiTool: 'Automated 18-Op SMV Decomposition & Line Workload Balancer', aiTime: 'Instant (1s)', timeSaved: '99.9% Faster', impact: '+14% Line Efficiency' },
-            { id: 'product-costing', name: 'Product Costing & Anomaly Guard', legacyTool: 'Static Excel costing workbook with broken cell references', legacyTime: '1.5 Hours', aiTool: 'Dynamic Recipe Rollup & AI Supplier Cost Anomaly Flag', aiTime: '10 Secs', timeSaved: '98% Faster', impact: 'Flagged 35% wash cost spike' },
-            { id: 'cost-sheet', name: 'Cost Sheet & Margin Planner', legacyTool: 'Manual re-calculation for each buyer target negotiation round', legacyTime: '45 Mins', aiTool: 'Real-time FOB Sensitivity Slider & Win-Rate Prediction', aiTime: 'Real-Time', timeSaved: '100% Live', impact: '78% Win Probability Locked' },
-            { id: 'target-margin', name: 'Target Price Negotiation', legacyTool: 'Guesswork bargaining with no buyer price concession history', legacyTime: '1 Day Delay', aiTool: 'AI Strategic Counter-Offer Guidance ($13.75 Sweet Spot)', aiTime: 'Instant', timeSaved: 'Immediate', impact: '+$1,300 Margin Preserved' },
-            { id: 'order-budgeting', name: 'Order-wise Budgeting', legacyTool: 'Disconnected accounting sheets prone to manual over-spend', legacyTime: '45 Mins', aiTool: 'Automated Cost-to-Budget Lockout Rules (±2.0% Tolerance)', aiTime: '1 Sec', timeSaved: '99% Faster', impact: 'Cost overruns capped' },
-            { id: 'material-requirement', name: 'Material Requirement (MRP)', legacyTool: 'Manual handheld calculator yarn formulas & static wastage %', legacyTime: '1.5 Hours', aiTool: 'Automated Multi-Component MRP & Category Wastage Learning', aiTime: 'Instant', timeSaved: '99% Faster', impact: '187 yds shortage prevented' },
-            { id: 'supplier-cs', name: 'Supplier CS (Comparative Statement)', legacyTool: 'Calling 3-5 yarn mills, compiling paper quotes over 2 days', legacyTime: '2 Days', aiTool: 'Automated Mill Matrix & Weighted Scoring (Price, Lead, Quality)', aiTime: '20 Mins', timeSaved: '99% Faster', impact: 'Zero delivery bottlenecks' },
-            { id: 'fabric-trims', name: 'Fabric & Trims Inventory', legacyTool: 'Physical warehouse ledger check & manual shortage discovery', legacyTime: '3 Hours', aiTool: 'Live Warehouse Stock Matching & Auto PO Requisition Draft', aiTime: '5 Secs', timeSaved: '99.5% Faster', impact: '2,352 yd shortage auto-draft' },
-            { id: 'sample-dev', name: 'Sample Development & Approvals', legacyTool: 'Unorganized buyer emails, lost courier waybills, 3.2 avg revisions', legacyTime: '4 Days', aiTool: 'NLP Buyer Email Feedback Parsing & Direct CAD Pattern Update', aiTime: '1 Day', timeSaved: '75% Faster', impact: '1st-revision approval' },
-            { id: 'ta-calendar', name: 'T&A Calendar Critical Path', legacyTool: 'Static Excel Gantt chart, no automatic downstream delay ripple', legacyTime: '1 Day', aiTool: 'Dynamic Critical Path Engine with Ripple Buffer Adjustments', aiTime: 'Instant', timeSaved: '100% Live', impact: 'Automated buyer delay alert' },
-            { id: 'production-followup', name: 'Production Follow-up', legacyTool: 'End-of-day handwritten paper production floor reports', legacyTime: '24h Lag', aiTool: 'Real-time Line Bottleneck Alerts & Intelligent Re-allocation', aiTime: 'Real-Time', timeSaved: 'Immediate', impact: '1.5d floor delay arrested' },
-            { id: 'shipment-planning', name: 'Shipment Planning & Freight', legacyTool: 'Manual commercial invoice typing and freight phone coordination', legacyTime: '2 Days', aiTool: 'Auto-Drafted Commercial Invoices & Spot Rate Booking', aiTime: '10 Mins', timeSaved: '98% Faster', impact: '100% On-time ETD Sailing' },
-            { id: 'order-status', name: 'Order Status 360°', legacyTool: 'Merchandiser spends 2 hrs daily answering buyer status emails', legacyTime: '2 Hours/Day', aiTool: 'Natural Language 360° Order Copilot & Instant Telemetry', aiTime: '0.6 Secs', timeSaved: '100% Eliminated', impact: 'Instant buyer transparency' },
-            { id: 'profitability', name: 'Buyer Profitability Post-Mortem', legacyTool: 'Audit completed 3-4 weeks post-shipment with missing vouchers', legacyTime: '3 Weeks', aiTool: 'Real-time Budgeted vs Actual Spend & Net Margin Variance', aiTime: 'Instant Auto', timeSaved: '3 Weeks Faster', impact: '+$758 Favorable Captured' },
+            { id: 'buyer-master', name: 'Buyer Master & Duplicate Guard', legacyTool: 'Manual reading of 35-page PDF contracts, duplicate records in ERP', legacyTime: '25 Mins', aiTool: 'Zero-touch NLP Contract Extraction, Duplicate Blocking & Auto Compliance', aiTime: '2 Secs', timeSaved: '99% Faster', impact: 'Zero clause oversights' },
+            { id: 'buyer-order-mgmt', name: 'Buyer Order Management (PO)', legacyTool: 'Manual re-typing from scanned PO images into ERP', legacyTime: '30 Mins', aiTool: 'OCR Ingestion + Amendment Impact Simulator + Duplicate PO Flag', aiTime: '3 Secs', timeSaved: '99.8% Faster', impact: '+$1,560 Typo Recovered' },
+            { id: 'style-product-master', name: 'Style & Product Master', legacyTool: 'Manual measurement chart typing & CAD team paper handoffs', legacyTime: '45 Mins', aiTool: 'Tech Pack Vision AI, 1,400+ Style Similarity & Defect Scanning', aiTime: '4 Secs', timeSaved: '99% Faster', impact: 'Saved 10 days lab dip re-use' },
+            { id: 'order-booking', name: 'Order Booking & Ratio Validation', legacyTool: 'Manual size-color breakdown calculations & paper booking slips', legacyTime: '2 Hours', aiTool: '16-Field Validation, Historical Curve Prefill & Shipment Feasibility', aiTime: '5 Mins', timeSaved: '96% Faster', impact: 'Zero ratio imbalance' },
+            { id: 'ie-smv', name: 'IE & SMV Management', legacyTool: 'Stopwatch video motion study & manual GSD data entry sheets', legacyTime: '3 Hours', aiTool: '18-Op SMV Decomposition, T&A Dependency Gen & Line Balancing', aiTime: 'Instant (1s)', timeSaved: '99.9% Faster', impact: '+14% Line Efficiency' },
+            { id: 'product-costing', name: 'Product Costing & Anomaly Guard', legacyTool: 'Static Excel costing workbook with broken cell references', legacyTime: '1.5 Hours', aiTool: 'Dynamic Recipe Rollup, Dual-Version Comparison & +35% Wash Flag', aiTime: '10 Secs', timeSaved: '98% Faster', impact: 'Flagged 35% wash cost spike' },
+            { id: 'cost-sheet', name: 'Cost Sheet & Missing Cost Guard', legacyTool: 'Manual re-calculation for each buyer target negotiation round', legacyTime: '45 Mins', aiTool: 'Missing Cost Finder, Real-time FOB Slider & 1-Click Executive Approval', aiTime: 'Real-Time', timeSaved: '100% Live', impact: '78% Win Probability Locked' },
+            { id: 'target-margin', name: 'Target Price Negotiation Strategy', legacyTool: 'Guesswork bargaining with no buyer price concession history', legacyTime: '1 Day Delay', aiTool: 'Plain-English Impact Explainer & Counter-Offer Guidance ($13.75)', aiTime: 'Instant', timeSaved: 'Immediate', impact: '+$1,300 Margin Preserved' },
+            { id: 'order-budgeting', name: 'Order-wise Budgeting', legacyTool: 'Disconnected accounting sheets prone to manual over-spend', legacyTime: '45 Mins', aiTool: 'Automated Cost-to-Budget Prefill & Final Spend Utilization Forecast', aiTime: '1 Sec', timeSaved: '99% Faster', impact: 'Cost overruns capped' },
+            { id: 'material-requirement', name: 'Material Requirement (MRP)', legacyTool: 'Manual handheld calculator yarn formulas & static wastage %', legacyTime: '1.5 Hours', aiTool: 'Approved Consumption Library Matching & Wastage Tolerance Escalation', aiTime: 'Instant', timeSaved: '99% Faster', impact: '187 yds shortage prevented' },
+            { id: 'supplier-cs', name: 'Supplier CS (Comparative Statement)', legacyTool: 'Calling 3-5 yarn mills, compiling paper quotes over 2 days', legacyTime: '2 Days', aiTool: 'Nominated Supplier Priority Check & Weighted Scorecard Evaluation', aiTime: '20 Mins', timeSaved: '99% Faster', impact: 'Zero delivery bottlenecks' },
+            { id: 'fabric-trims', name: 'Fabric & Trims Inventory', legacyTool: 'Physical warehouse ledger check & manual shortage discovery', legacyTime: '3 Hours', aiTool: 'Order Surge Demand Recalculator & Automated Requisition PO Draft', aiTime: '5 Secs', timeSaved: '99.5% Faster', impact: '2,352 yd shortage auto-draft' },
+            { id: 'sample-dev', name: 'Sample Development & Approvals', legacyTool: 'Unorganized buyer emails, lost courier waybills, 3.2 avg revisions', legacyTime: '4 Days', aiTool: 'NLP Buyer Comment Extraction, DHL Tracking & Hierarchy Escalation', aiTime: '1 Day', timeSaved: '75% Faster', impact: '1st-revision approval' },
+            { id: 'ta-calendar', name: 'T&A Calendar Critical Path', legacyTool: 'Static Excel Gantt chart, no automatic downstream delay ripple', legacyTime: '1 Day', aiTool: 'Dynamic Critical Path Engine with Predictive Delay Risk Scoring', aiTime: 'Instant', timeSaved: '100% Live', impact: 'Automated buyer delay alert' },
+            { id: 'production-followup', name: 'Production Follow-up', legacyTool: 'End-of-day handwritten paper production floor reports', legacyTime: '24h Lag', aiTool: 'Real-time Line Bottleneck Alerts & Auto-Remedial Planning Tasks', aiTime: 'Real-Time', timeSaved: 'Immediate', impact: '1.5d floor delay arrested' },
+            { id: 'shipment-planning', name: 'Shipment Planning & Freight', legacyTool: 'Manual commercial invoice typing and freight phone coordination', legacyTime: '2 Days', aiTool: 'Shipment Risk Score, Partial Shipment Tracker & Auto HS Clearance', aiTime: '10 Mins', timeSaved: '98% Faster', impact: '100% On-time ETD Sailing' },
+            { id: 'order-status', name: 'Order Status 360°', legacyTool: 'Merchandiser spends 2 hrs daily answering buyer status emails', legacyTime: '2 Hours/Day', aiTool: 'Natural Language Order Copilot, Daily Exception Digest & Risk Cards', aiTime: '0.6 Secs', timeSaved: '100% Eliminated', impact: 'Instant buyer transparency' },
+            { id: 'profitability', name: 'Buyer Profitability Post-Mortem', legacyTool: 'Audit completed 3-4 weeks post-shipment with missing vouchers', legacyTime: '3 Weeks', aiTool: 'Actual Spend P&L Rollup, Plain-English Explainer & Future CLV Forecast', aiTime: 'Instant Auto', timeSaved: '3 Weeks Faster', impact: '+$758 Favorable Captured' },
         ];
 
         // ====== SIMULATED ORDER DATA FOR LIFECYCLE TRACKER ======
@@ -1494,7 +1367,7 @@
                         autoAi: 'AI Vision OCR parsed 180 GSM Single Jersey, enzyme wash & flat-knit collar in 3.4 seconds.',
                         hitl: 'Historical match identified: Style ST-0987 (88% similarity) reused for standard placket spec.',
                         humanCorrection: 'Merchandiser adjusted fabric GSM from 160 to 180 GSM in tech master.',
-                        timeSaved: '45 mins &rarr; 4 secs (99% faster)',
+                        timeSaved: '45 mins → 4 secs (99% faster)',
                         risk: 'Verified (0 defects)'
                     },
                     {
@@ -1514,7 +1387,7 @@
                         autoAi: 'Automated FOB Cost Sheet generated ($7.74/pc). All 16 mandatory ERP commercial fields validated.',
                         hitl: 'AI suggested counter-offer target price of $13.75 to preserve 44.7% gross margin.',
                         humanCorrection: 'Corrected ambiguous PO typeface price from $12.50 to $12.80 (+$1,560 profit margin).',
-                        timeSaved: '3.5 hrs &rarr; 15 mins (93% faster)',
+                        timeSaved: '3.5 hrs → 15 mins (93% faster)',
                         risk: '100% Verified by Human'
                     },
                     {
@@ -1534,7 +1407,7 @@
                         autoAi: 'Calculated 6,739 yds fabric demand. Automated Comparative Statement (CS) across 3 nominated mills.',
                         hitl: 'Nominated Fabric Ltd. ($3.20/yd, 30d lead time, 94 quality rating).',
                         humanCorrection: 'Overrode fabric wastage from 5% to 8% for stripe jersey matching.',
-                        timeSaved: '2 days &rarr; 20 mins',
+                        timeSaved: '2 days → 20 mins',
                         risk: 'Zero stockout risk'
                     },
                     {
@@ -1554,7 +1427,7 @@
                         autoAi: 'NLP parsed unformatted buyer email: "Fit approved with minor neck drop tweak (-0.5cm)".',
                         hitl: 'Pattern master adjusted neck collar CAD pattern and logged buyer approval confirmation.',
                         humanCorrection: 'Updated lab dip shade recipe to standard Pantone 19-4052.',
-                        timeSaved: '4 days &rarr; 1 day',
+                        timeSaved: '4 days → 1 day',
                         risk: 'Approved on 1st revision'
                     },
                     {
@@ -1624,7 +1497,7 @@
                         autoAi: 'Extracted 140 GSM Organic Single Jersey & water-based graphic print specs.',
                         hitl: 'Fast-track approval triggered for Zara 21-day express fast-fashion program.',
                         humanCorrection: 'Validated crop length measurements with Spanish size grade.',
-                        timeSaved: '30 mins &rarr; 3 secs',
+                        timeSaved: '30 mins → 3 secs',
                         risk: 'Clean'
                     },
                     {
@@ -1639,7 +1512,7 @@
                         autoAi: 'Cost Sheet rolled up to $4.85/pc FOB. Fast pricing accepted.',
                         hitl: 'Approved volume margin of 48.4% for 8,500 pcs run.',
                         humanCorrection: 'Applied packaging polybag spec update.',
-                        timeSaved: '2 hrs &rarr; 10 mins',
+                        timeSaved: '2 hrs → 10 mins',
                         risk: 'Approved'
                     },
                     {
@@ -1654,7 +1527,7 @@
                         autoAi: 'Greige fabric pulled from ready warehouse stock (9,200 yds reserved).',
                         hitl: 'Dye house priority slot allocated for immediate rotary printing.',
                         humanCorrection: 'Print ink formulation adjusted for zero cadmium.',
-                        timeSaved: '5 days &rarr; 1 day',
+                        timeSaved: '5 days → 1 day',
                         risk: 'Stock in-house'
                     },
                     {
@@ -1669,7 +1542,7 @@
                         autoAi: 'AI digital 3D sample approved via CLO3D simulation directly with Zara buyers.',
                         hitl: 'Physical proto dispatched via DHL Express with instant barcode tracking.',
                         humanCorrection: 'Print placement centered by +1.5cm.',
-                        timeSaved: '6 days &rarr; 2 days',
+                        timeSaved: '6 days → 2 days',
                         risk: 'Approved'
                     },
                     {
@@ -1729,7 +1602,7 @@
                         autoAi: 'Decomposed 320 GSM Brushed Fleece, kangaroo pocket & brass eyelets.',
                         hitl: 'AI suggested brushed fleece recipe from winter 2025 archive.',
                         humanCorrection: 'Corrected hood lining spec to single jersey 160 GSM.',
-                        timeSaved: '1 hour &rarr; 5 secs',
+                        timeSaved: '1 hour → 5 secs',
                         risk: 'Verified'
                     },
                     {
@@ -1744,7 +1617,7 @@
                         autoAi: 'Unit cost rolled up to $10.80. Target price verified at $18.50 (41.6% margin).',
                         hitl: 'Executive approval granted for $222,000 order booking.',
                         humanCorrection: 'Currency exchange buffer locked at 1.5%.',
-                        timeSaved: '4 hrs &rarr; 20 mins',
+                        timeSaved: '4 hrs → 20 mins',
                         risk: 'Signed'
                     },
                     {
@@ -1759,7 +1632,7 @@
                         autoAi: 'Calculated 16,800 kg yarn requirement. CS matrix nominated Prime Spinning.',
                         hitl: 'Confirmed heavy rib cuff trims with local trim supplier.',
                         humanCorrection: 'Added 4% buffer for brush fleece shrinkage.',
-                        timeSaved: '3 days &rarr; 2 hrs',
+                        timeSaved: '3 days → 2 hrs',
                         risk: 'Yarn in transit'
                     },
                     {
@@ -1828,206 +1701,206 @@
                 ]
             },
             'buyer-master': {
-                title: '<i class="bi bi-person-badge me-2"></i>Buyer Master & Contract Intelligence',
-                sub: 'Live extraction accuracy, credit risk assessment & preference tuning',
+                title: '<i class="bi bi-person-badge me-2"></i>Buyer Master, Risk & Duplicate Guard',
+                sub: 'Contract NLP extraction, duplicate blocking, risk scoring & auto compliance attachment',
                 badge: '<i class="bi bi-building-check me-1"></i> H&M Master Profile',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> Contract OCR', val: '99.2%', sub: 'Zero-touch clause extraction' },
-                    { label: '<i class="bi bi-shield-exclamation"></i> Risk Scoring', val: '68 (Med)', sub: 'Financial health audit' },
-                    { label: '<i class="bi bi-stopwatch"></i> Ingestion Time', val: '2 Secs', sub: 'vs 25 mins manual keying' },
-                    { label: '<i class="bi bi-pencil-square"></i> Custom Rules', val: '±0% Tol', sub: 'Carton packing rule learned' },
+                    { label: '<i class="bi bi-shield-slash"></i> Duplicate Guard', val: 'Active (0 Dup)', sub: 'Blocks duplicate profiles' },
+                    { label: '<i class="bi bi-shield-exclamation"></i> Risk Scoring', val: '68 (Med)', sub: 'Historical delay audit' },
+                    { label: '<i class="bi bi-file-earmark-check"></i> Compliance Docs', val: '3 Attached', sub: 'SEDEX, OEKO-TEX auto-linked' },
                 ]
             },
             'buyer-order-mgmt': {
-                title: '<i class="bi bi-file-earmark-text me-2"></i>PO Intake & Order Discrepancy Control',
-                sub: 'Automated PO parsing, anomaly warnings & OCR active learning',
+                title: '<i class="bi bi-file-earmark-text me-2"></i>Buyer Order Management & Amendment Simulator',
+                sub: 'Automated PO ingestion, amendment ripple simulation, duplicate check & delay prediction',
                 badge: '<i class="bi bi-stars me-1"></i> Active Learning: Enabled',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> Field Extraction', val: '92% Auto', sub: '16 mandatory fields parsed' },
-                    { label: '<i class="bi bi-exclamation-triangle"></i> Anomaly Detection', val: '1 Flagged', sub: 'Ambiguous typeface price' },
-                    { label: '<i class="bi bi-stopwatch"></i> PO Entry Speed', val: '3 Secs', sub: 'vs 30 mins manual typing' },
-                    { label: '<i class="bi bi-cash-stack"></i> Revenue Saved', val: '+$1,560', sub: 'Corrected $12.50 &rarr; $12.80' },
+                    { label: '<i class="bi bi-arrow-left-right"></i> Amendment Sim', val: 'Real-Time', sub: 'Qty/date ripple analyzer' },
+                    { label: '<i class="bi bi-shield-check"></i> Duplicate PO', val: '0 Duplicate', sub: 'PO archive cross-check' },
+                    { label: '<i class="bi bi-stopwatch"></i> Delay Predictor', val: '4.2% Risk', sub: 'Early delay forecast' },
                 ]
             },
             'style-product-master': {
-                title: '<i class="bi bi-tags me-2"></i>Tech Pack Intelligence & Style Archive',
-                sub: 'Automated spec extraction, fabric similarity & CAD sync',
+                title: '<i class="bi bi-tags me-2"></i>Style & Product Master Intelligence',
+                sub: 'Tech Pack Vision AI, style similarity matching, CMS auto-publish & defect detection',
                 badge: '<i class="bi bi-collection me-1"></i> 1,400+ Styles Indexed',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> Spec Extraction', val: '100% Auto', sub: '180 GSM, 100% Cotton' },
                     { label: '<i class="bi bi-diagram-3"></i> Style Similarity', val: '88% Match', sub: 'Matched Style #ST-0987' },
-                    { label: '<i class="bi bi-stopwatch"></i> Tech Pack Parsing', val: '4 Secs', sub: 'vs 45 mins manual reading' },
-                    { label: '<i class="bi bi-arrow-repeat"></i> Ripple Recalc', val: '1,350 kg', sub: 'Yarn weight updated live' },
+                    { label: '<i class="bi bi-cloud-upload"></i> CMS Publishing', val: '1-Click Ready', sub: 'Versioned with rollback' },
+                    { label: '<i class="bi bi-eye"></i> Defect Vision', val: '0 Flaws Found', sub: 'Texture scan passed' },
                 ]
             },
             'order-booking': {
-                title: '<i class="bi bi-cart-check me-2"></i>Order Booking & Ratio Validation',
-                sub: 'Mandatory field verification & historical size-color distribution',
+                title: '<i class="bi bi-cart-check me-2"></i>Order Booking & Ratio Feasibility',
+                sub: 'ERP mandatory field verification, historical breakdown prefill & shipment feasibility',
                 badge: '<i class="bi bi-check2-circle me-1"></i> ERP Pre-Validation Pass',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> ERP Verification', val: '16/16 Valid', sub: '100% clean check' },
-                    { label: '<i class="bi bi-grid-3x3"></i> Ratio Suggestion', val: '5.2k Pcs', sub: 'Historical size matrix' },
-                    { label: '<i class="bi bi-stopwatch"></i> Booking Cycle', val: '5 Mins', sub: 'vs 2 hours manual routing' },
-                    { label: '<i class="bi bi-bullseye"></i> Breakdown Accuracy', val: '99.8%', sub: 'Zero ratio imbalance' },
+                    { label: '<i class="bi bi-grid-3x3"></i> Ratio Matrix', val: 'Auto-Prefilled', sub: 'Historical size-color curve' },
+                    { label: '<i class="bi bi-speedometer2"></i> Feasibility Check', val: 'Feasible (100%)', sub: 'Fabric ETA vs prod days' },
+                    { label: '<i class="bi bi-stopwatch"></i> Booking Speed', val: '5 Mins', sub: 'vs 2 hours manual slips' },
                 ]
             },
             'ie-smv': {
-                title: '<i class="bi bi-speedometer2 me-2"></i>Industrial Engineering & Line Balancing',
-                sub: 'GSD SMV decomposition, bottleneck prediction & line routing',
+                title: '<i class="bi bi-speedometer2 me-2"></i>IE, SMV & Production Line Balancing',
+                sub: 'GSD SMV decomposition, auto T&A dependency generation & multi-order line balancing',
                 badge: '<i class="bi bi-cpu me-1"></i> Line 04 Recommended',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Total Garment SMV', val: '12.5 Mins', sub: 'Auto-decomposed' },
-                    { label: '<i class="bi bi-speedometer"></i> Line Efficiency', val: '86% Target', sub: 'Sewing Line 04' },
-                    { label: '<i class="bi bi-stopwatch"></i> SMV Study Time', val: 'Instant', sub: 'vs 3 hrs manual stopwatch' },
-                    { label: '<i class="bi bi-arrows-expand"></i> Balancing Delta', val: '+14% Pcs/Hr', sub: 'Line workload balanced' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Total Garment SMV', val: '12.5 Mins', sub: '18 operations decomposed' },
+                    { label: '<i class="bi bi-calendar2-range"></i> SMV-Based T&A', val: 'Generated', sub: 'Full task dependencies' },
+                    { label: '<i class="bi bi-speedometer"></i> Line Balancing', val: '86% Target', sub: 'Line 04 workload balanced' },
+                    { label: '<i class="bi bi-arrows-expand"></i> Efficiency Gain', val: '+14% Pcs/Hr', sub: 'Workload optimized' },
                 ]
             },
             'product-costing': {
-                title: '<i class="bi bi-calculator me-2"></i>Product Costing & Anomaly Guard',
-                sub: 'Dynamic component calculation, CM rate overrides & supplier audits',
+                title: '<i class="bi bi-calculator me-2"></i>Product Costing & Dual-Version Comparison',
+                sub: 'Dynamic recipe rollup, washing anomaly detection, version diffing & dynamic pricing',
                 badge: '<i class="bi bi-shield-check me-1"></i> Margin Guard Active',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Base Cost Rollup', val: '$7.54 FOB', sub: 'Automated recipe rollup' },
-                    { label: '<i class="bi bi-exclamation-diamond"></i> Washing Flag', val: '+35% Alert', sub: 'Identified alternate vendor' },
-                    { label: '<i class="bi bi-stopwatch"></i> Costing Speed', val: '10 Secs', sub: 'vs 1.5 hrs manual Excel' },
-                    { label: '<i class="bi bi-pencil-square"></i> CM Rate Override', val: '$2.65', sub: 'Placket making cost updated' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Base FOB Cost', val: '$7.54/pc', sub: 'Recipe rollup with provenance' },
+                    { label: '<i class="bi bi-exclamation-diamond"></i> Cost Anomaly', val: '+35% Wash Alert', sub: 'Prompted vendor review' },
+                    { label: '<i class="bi bi-columns-gap"></i> Version Diff', val: 'v1.0 vs v2.0', sub: 'Side-by-side variance %' },
+                    { label: '<i class="bi bi-tag"></i> Dynamic Pricing', val: '$13.75 Sweet Spot', sub: 'Optimized win margin' },
                 ]
             },
             'cost-sheet': {
-                title: '<i class="bi bi-table me-2"></i>Live FOB Cost Sheet & Margin Sensitivity',
-                sub: 'Component breakdown, dynamic slider modeling & negotiation planner',
+                title: '<i class="bi bi-table me-2"></i>Live FOB Cost Sheet & Missing Cost Guard',
+                sub: 'Automated cost sheet generation, missing cost detector, margin sensitivity & 1-click approval',
                 badge: '<i class="bi bi-tag me-1"></i> FOB Target: $14.00',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> FOB Garment Cost', val: '$7.74/pc', sub: 'Synchronized live' },
-                    { label: '<i class="bi bi-graph-up"></i> Gross Profit Margin', val: '44.7%', sub: 'Healthy margin band' },
-                    { label: '<i class="bi bi-stopwatch"></i> Quote Generation', val: 'Real-Time', sub: 'Instant slider recalculation' },
-                    { label: '<i class="bi bi-trophy"></i> Win Probability', val: '78% Hist', sub: 'At $14.00 quote' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> FOB Total', val: '$7.74/pc', sub: 'Factory overhead included' },
+                    { label: '<i class="bi bi-search"></i> Missing Cost Guard', val: '1 Detected & Fixed', sub: 'Special care trim added' },
+                    { label: '<i class="bi bi-sliders"></i> Margin Sensitivity', val: 'Live Slider', sub: 'Real-time margin calc' },
+                    { label: '<i class="bi bi-send-check"></i> Approval Dispatch', val: '1-Click Link', sub: 'Push notice to Director' },
                 ]
             },
             'target-margin': {
-                title: '<i class="bi bi-graph-up-arrow me-2"></i>Target Price Negotiation Strategy',
-                sub: 'Buyer target price gap analysis & counter-offer guidance',
+                title: '<i class="bi bi-graph-up-arrow me-2"></i>Target Price & Margin Explainer',
+                sub: 'Buyer negotiation strategy, plain-English margin impact explainer & natural language Q&A',
                 badge: '<i class="bi bi-chat-quote me-1"></i> Target: $13.50 · Factory: $14.00',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> Rec Counter-Offer', val: '$13.75', sub: 'Optimized sweet spot' },
+                    { label: '<i class="bi bi-chat-text"></i> Impact Explainer', val: 'Plain English', sub: 'Clear reason for margin gap' },
                     { label: '<i class="bi bi-percent"></i> Acceptance Prob', val: '70% High', sub: 'Immediate acceptance rate' },
-                    { label: '<i class="bi bi-stopwatch"></i> Strategy Speed', val: 'Instant', sub: 'Historical negotiation model' },
-                    { label: '<i class="bi bi-cash"></i> Gross Value Gap', val: '+$1,300', sub: 'Preserved over buyer target' },
+                    { label: '<i class="bi bi-cash"></i> Preserved Margin', val: '+$1,300', sub: 'Protected over buyer target' },
                 ]
             },
             'order-budgeting': {
-                title: '<i class="bi bi-wallet2 me-2"></i>Order-Wise Budget Allocation & Tracking',
-                sub: 'Cost-to-budget prefill, cost overrun prevention & spend caps',
+                title: '<i class="bi bi-wallet2 me-2"></i>Order-Wise Budgeting & Spend Forecast',
+                sub: 'BOM budget line prefill, ±2.0% variance lockout rules & final utilization prediction',
                 badge: '<i class="bi bi-wallet me-1"></i> Budget Cap: $39,208',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Auto Allocation', val: '$39,208', sub: 'Prefilled from costing' },
-                    { label: '<i class="bi bi-pie-chart"></i> Fabric Allocation', val: '$19,968', sub: '51% of total spend' },
-                    { label: '<i class="bi bi-stopwatch"></i> Budget Setup', val: '1 Sec', sub: 'vs 45 mins manual typing' },
-                    { label: '<i class="bi bi-shield-lock"></i> Variance Tol', val: '±2.0% Max', sub: 'Automated lockout rule' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Auto Allocation', val: '$39,208', sub: 'Prefilled from costing/BOM' },
+                    { label: '<i class="bi bi-shield-lock"></i> Variance Lockout', val: '±2.0% Max', sub: 'Overrun prevention guard' },
+                    { label: '<i class="bi bi-graph-up"></i> Spend Forecast', val: '98.1% Projected', sub: 'Predictive utilization' },
+                    { label: '<i class="bi bi-pie-chart"></i> Fabric Allocation', val: '$19,968 (51%)', sub: 'Main cost component' },
                 ]
             },
             'material-requirement': {
                 title: '<i class="bi bi-box-seam me-2"></i>Material Requirement Planning (MRP)',
-                sub: 'Yarn & fabric demand formulas, custom wastage tuning & auto PO requisition',
+                sub: 'Approved consumption library matching, category wastage rules & manager escalation',
                 badge: '<i class="bi bi-check-all me-1"></i> Requisition Ready',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> Total Yardage', val: '6,739 yd', sub: 'Auto calculated with wastage' },
-                    { label: '<i class="bi bi-tags"></i> Category Rule', val: 'Stripe Jersey', sub: 'Matched fabric complexity' },
-                    { label: '<i class="bi bi-stopwatch"></i> MRP Calc Speed', val: 'Instant', sub: 'vs 1.5 hrs manual formulas' },
-                    { label: '<i class="bi bi-pencil-square"></i> Wastage Override', val: '8% (+187 yd)', sub: 'Human approved for stripe' },
+                    { label: '<i class="bi bi-journal-bookmark"></i> Approved Library', val: 'Matched ST-0987', sub: 'Historical consumption' },
+                    { label: '<i class="bi bi-pencil-square"></i> Wastage Tolerance', val: '8% Overridden', sub: 'Escalated to Manager' },
+                    { label: '<i class="bi bi-shield-check"></i> Shortage Prevented', val: '187 yd Buffer', sub: 'Stripe jersey match safe' },
                 ]
             },
             'supplier-cs': {
                 title: '<i class="bi bi-files me-2"></i>Supplier Comparative Statement (CS)',
-                sub: 'Multi-mill quote audits, lead time scoring & vendor nomination',
+                sub: 'Quotation extraction, multi-factor scorecard & buyer-nominated supplier prioritization',
                 badge: '<i class="bi bi-award me-1"></i> Fabric Ltd. Top Ranked',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Quote Ingestion', val: '3 Mills', sub: 'Standardized comparison' },
-                    { label: '<i class="bi bi-star"></i> Top Mill Score', val: '94/100', sub: 'Fabric Ltd @ $3.20/yd' },
-                    { label: '<i class="bi bi-stopwatch"></i> CS Prep Time', val: '20 Mins', sub: 'vs 2 days manual vendor calls' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Quote Ingestion', val: '3 Mills (PDF/Mail)', sub: 'Price, Lead, MOQ extracted' },
+                    { label: '<i class="bi bi-star"></i> Weighted Score', val: '94/100 Top', sub: 'Fabric Ltd @ $3.20/yd' },
+                    { label: '<i class="bi bi-shield-check"></i> Nominated Priority', val: 'Enforced', sub: 'Approval needed for non-nom' },
                     { label: '<i class="bi bi-truck"></i> Delivery Window', val: '30 Days', sub: 'Zero critical path delay' },
                 ]
             },
             'fabric-trims': {
-                title: '<i class="bi bi-layers me-2"></i>Inventory Allocation & Shortage Prevention',
-                sub: 'Warehouse stock matching, deadstock reuse & shortage drafting',
+                title: '<i class="bi bi-layers me-2"></i>Fabric & Trims Requirement & Surge Control',
+                sub: 'Demand calculation, warehouse stock shortage alert & buyer quantity increase PO revision',
                 badge: '<i class="bi bi-box me-1"></i> Warehouse Linked',
                 kpis: [
                     { label: '<i class="bi bi-lightning-charge-fill"></i> In-Stock Match', val: '4,200 yd', sub: 'Warehouse stock allocated' },
-                    { label: '<i class="bi bi-exclamation-octagon"></i> Shortage Alert', val: '2,352 yd', sub: 'Auto requisition drafted' },
-                    { label: '<i class="bi bi-stopwatch"></i> Stock Reconcile', val: '5 Secs', sub: 'vs 3 hrs manual ledger audit' },
-                    { label: '<i class="bi bi-file-earmark-plus"></i> PO Requisition', val: '#PO-881', sub: 'Automated generation' },
+                    { label: '<i class="bi bi-exclamation-octagon"></i> Shortage Alert', val: '2,352 yd', sub: 'Auto requisition PO drafted' },
+                    { label: '<i class="bi bi-arrow-repeat"></i> Order Surge Recalc', val: '+1,200 Pcs', sub: 'Auto PO revision prepared' },
+                    { label: '<i class="bi bi-stopwatch"></i> Stock Reconcile', val: '5 Secs', sub: 'vs 3 hrs manual ledger' },
                 ]
             },
             'sample-dev': {
-                title: '<i class="bi bi-clipboard-check me-2"></i>Sample Development & Fit Approval',
-                sub: 'Unstructured buyer email parsing, courier tracking & revision management',
+                title: '<i class="bi bi-clipboard-check me-2"></i>Sample Dev, Tracking & Escalation',
+                sub: 'Buyer feedback NLP parsing, real-time DHL/FedEx tracking & automatic escalation hierarchy',
                 badge: '<i class="bi bi-check-circle me-1"></i> Approved with Comments',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> NLP Feedback Parse', val: '3.2 Secs', sub: 'Extracted neck drop spec' },
-                    { label: '<i class="bi bi-arrow-repeat"></i> Revision Speed', val: '1 Rev', sub: 'Down from 3.2 avg' },
-                    { label: '<i class="bi bi-stopwatch"></i> Approval Cycle', val: '1 Day', sub: 'vs 4 days manual email search' },
-                    { label: '<i class="bi bi-pencil-square"></i> Pattern Updated', val: '-0.5cm Drop', sub: 'Synchronized to CAD' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> NLP Feedback Parse', val: '3.2 Secs', sub: 'Extracted neck drop -0.5cm' },
+                    { label: '<i class="bi bi-truck"></i> Courier Live ETA', val: 'Delivered (DHL)', sub: 'Waypoint tracking linked' },
+                    { label: '<i class="bi bi-bell"></i> Auto Escalation', val: '3-Tier Chain', sub: 'Alert → Manager → Head' },
+                    { label: '<i class="bi bi-arrow-repeat"></i> Approval Rounds', val: '1 Rev', sub: 'Down from 3.2 avg' },
                 ]
             },
             'ta-calendar': {
-                title: '<i class="bi bi-calendar-event me-2"></i>Time & Action (T&A) Critical Path Engine',
-                sub: 'Automated scheduling, downstream buffer recalculations & ETD guards',
+                title: '<i class="bi bi-calendar-event me-2"></i>T&A Calendar Critical Path & Delay Prediction',
+                sub: 'Template-based T&A generation, ripple dependency auto-shift & predictive delay scoring',
                 badge: '<i class="bi bi-calendar-check me-1"></i> ETD: Oct 5 (On Schedule)',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Critical Path', val: '34 Days', sub: 'Auto baseline generated' },
-                    { label: '<i class="bi bi-shield-check"></i> Milestone Guard', val: '6 Gates', sub: 'Automated alert tracking' },
-                    { label: '<i class="bi bi-stopwatch"></i> Schedule Plan', val: 'Instant', sub: 'vs 1 day manual Excel Gantt' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Critical Path', val: '34 Days', sub: 'Template-based baseline' },
+                    { label: '<i class="bi bi-diagram-3"></i> Ripple Recalc', val: 'Dynamic Shift', sub: 'Dependent tasks adjust' },
+                    { label: '<i class="bi bi-shield-exclamation"></i> Delay Predictor', val: '98.5% On-Time', sub: 'Material/prod risk score' },
                     { label: '<i class="bi bi-pencil-square"></i> Buffer Adjustment', val: '+3 Days', sub: 'Plant maintenance absorbed' },
                 ]
             },
             'production-followup': {
-                title: '<i class="bi bi-gear me-2"></i>Floor Progress & Bottleneck Analytics',
-                sub: 'Real-time sewing output, hourly defect rate & line balancing alerts',
+                title: '<i class="bi bi-gear me-2"></i>Production Follow-up & Remedial Tasks',
+                sub: 'Real-time floor analytics, conversational status Q&A & automated delay remedial tasks',
                 badge: '<i class="bi bi-activity me-1"></i> Line 04 Active',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Output Tracking', val: '80% Done', sub: '4,160 / 5,200 pcs sewn' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> Floor Output', val: '80% Complete', sub: '4,160 / 5,200 pcs sewn' },
                     { label: '<i class="bi bi-exclamation-triangle"></i> Bottleneck Alert', val: '1.5d Delay', sub: 'Line 04 needle issue' },
-                    { label: '<i class="bi bi-stopwatch"></i> Exception Detect', val: 'Real-Time', sub: 'Hourly IoT line telemetry' },
-                    { label: '<i class="bi bi-arrow-left-right"></i> Remedial Action', val: 'Re-routed', sub: 'Workload re-balanced' },
+                    { label: '<i class="bi bi-chat-dots"></i> Floor Copilot', val: 'Instant Q&A', sub: 'Answers sewing progress' },
+                    { label: '<i class="bi bi-list-check"></i> Remedial Tasks', val: 'Auto-Generated', sub: 'Notifies Planning & updates T&A' },
                 ]
             },
             'shipment-planning': {
-                title: '<i class="bi bi-truck me-2"></i>Shipment Planning & Freight Documentation',
-                sub: 'Commercial packing list generation, port clearance & forwarder dispatch',
+                title: '<i class="bi bi-truck me-2"></i>Shipment Planning, Risk & Partial Tracking',
+                sub: 'Multi-factor shipment risk scoring, partial shipment balance tracking & commercial export docs',
                 badge: '<i class="bi bi-geo-alt me-1"></i> Destination: Hamburg Port',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Freight Docs Draft', val: '100% Auto', sub: 'Commercial Inv & Packing List' },
-                    { label: '<i class="bi bi-check-circle"></i> Forwarder Rate', val: 'Maersk Spot', sub: 'Preferred freight contract' },
-                    { label: '<i class="bi bi-stopwatch"></i> Doc Dispatch', val: '10 Mins', sub: 'vs 2 days manual prep' },
-                    { label: '<i class="bi bi-shield-check"></i> ETD Compliance', val: '100% On-Time', sub: 'Cleared for Oct 5 sailing' },
+                    { label: '<i class="bi bi-shield-check"></i> Shipment Risk Score', val: '98/100 (Safe)', sub: 'Material + Prod + QA pass' },
+                    { label: '<i class="bi bi-pie-chart"></i> Partial Tracking', val: '3,000 / 5,200 Shipped', sub: '2,200 balance remaining' },
+                    { label: '<i class="bi bi-file-earmark-text"></i> Freight Docs Draft', val: '100% Auto', sub: 'Commercial Inv & Packing List' },
+                    { label: '<i class="bi bi-check2-circle"></i> HS Code Guard', val: '6105.10 Valid', sub: 'Zero port demurrage risk' },
                 ]
             },
             'order-status': {
-                title: '<i class="bi bi-speedometer me-2"></i>Order Status 360° & AI Copilot',
-                sub: 'Natural language query answering, milestone telemetry & exception tracking',
+                title: '<i class="bi bi-speedometer me-2"></i>Order Status 360°, Copilot & Risk Cards',
+                sub: 'Natural language order copilot, daily exception digest & multi-system consolidated risk cards',
                 badge: '<i class="bi bi-stars me-1"></i> Copilot Active',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Status Telemetry', val: 'In Sewing', sub: '62% floor completion' },
-                    { label: '<i class="bi bi-chat-dots"></i> Response Speed', val: '0.6 Secs', sub: 'Instant ERP query answer' },
-                    { label: '<i class="bi bi-stopwatch"></i> Status Reporting', val: 'Instant', sub: 'Eliminated daily email reports' },
-                    { label: '<i class="bi bi-check2-circle"></i> Milestone Health', val: 'Green / OK', sub: 'No overdue milestones' },
+                    { label: '<i class="bi bi-chat-dots"></i> Status Copilot', val: '0.6s Response', sub: 'Answers order holds & ETAs' },
+                    { label: '<i class="bi bi-card-checklist"></i> Exception Digest', val: '5 Overdue, 3 Samples', sub: 'Daily morning report' },
+                    { label: '<i class="bi bi-exclamation-diamond"></i> Risk Cards', val: 'Consolidated', sub: 'Single-glance multi-system' },
+                    { label: '<i class="bi bi-shield-check"></i> Milestone Health', val: 'Green / OK', sub: 'No overdue critical paths' },
                 ]
             },
             'profitability': {
-                title: '<i class="bi bi-coin me-2"></i>Post-Mortem Profitability & Variance Audit',
-                sub: 'Budgeted vs actual spend reconciliation, profit margin analysis & leakage control',
+                title: '<i class="bi bi-coin me-2"></i>Buyer Profitability, Variance & CLV Forecast',
+                sub: 'Actual vs budget P&L rollup, plain-English variance explainer & Customer Lifetime Value forecast',
                 badge: '<i class="bi bi-graph-up-arrow me-1"></i> Net Margin: 44.8%',
                 kpis: [
-                    { label: '<i class="bi bi-lightning-charge-fill"></i> Variance Reconciled', val: '+$758 Fav', sub: 'Under budgeted cost' },
+                    { label: '<i class="bi bi-lightning-charge-fill"></i> P&L Rollup', val: '+$758 Favorable', sub: 'Synced with actual finance' },
+                    { label: '<i class="bi bi-chat-quote"></i> Variance Explainer', val: 'Plain English', sub: 'Explains exact cost drivers' },
+                    { label: '<i class="bi bi-graph-up"></i> CLV Forecast', val: '$1.42M (3-Yr)', sub: 'Predictive buyer lifetime value' },
                     { label: '<i class="bi bi-percent"></i> Net Profit Margin', val: '44.8%', sub: 'High profitability tier' },
-                    { label: '<i class="bi bi-stopwatch"></i> Post-Mortem Audit', val: 'Auto-Gen', sub: 'vs 3 weeks manual audit' },
-                    { label: '<i class="bi bi-lightbulb"></i> Margin Driver', val: 'Fabric CS', sub: '+$0.15/yd saving captured' },
                 ]
             }
         };
 
-        // ====== HELPERS & INTERACTIVE LEGACY TYPING SIMULATOR ======
+        // ====== INTERACTIVE SIMULATION & ACTIVE LEARNING HANDLERS ======
         function showModal(title, html) {
             document.getElementById('aiModalLabel').innerHTML = `<i class="bi bi-cpu me-2"></i> ${title}`;
             document.getElementById('aiModalBody').innerHTML = html;
@@ -2041,11 +1914,8 @@
             const toast = new bootstrap.Toast(toastEl, { delay: 3500 });
             toast.show();
             totalCorrectionsCount++;
-            const counter = document.getElementById('topCorrectionCounter');
-            if (counter) counter.textContent = `$${(14560 + totalCorrectionsCount * 120).toLocaleString()}`;
         }
 
-        // Simulates realistic character-by-character manual human data entry in Legacy forms
         function simulateLegacyManualEntry(containerId, timerId, errorId, targetMinutes, fields, errorNote) {
             const container = document.getElementById(containerId);
             const timerEl = document.getElementById(timerId);
@@ -2083,7 +1953,7 @@
                         errorEl.style.display = 'block';
                         errorEl.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-1"></i> <strong>Legacy Vulnerability:</strong> ${errorNote}`;
                     }
-                    showLearningToast(`Legacy manual entry took ${targetMinutes} mins. Note how AI completes this in seconds!`);
+                    showLearningToast(`Legacy manual entry took ${targetMinutes} mins. AI completes this in seconds!`);
                     return;
                 }
 
@@ -2128,10 +1998,10 @@
                     <td class="text-muted fw-bold">${idx + 1}</td>
                     <td><strong>${row.name}</strong></td>
                     <td><span class="badge bg-light text-dark border"><i class="bi bi-file-earmark-spreadsheet me-1"></i> ${row.legacyTool}</span></td>
-                    <td class="fw-bold">${row.legacyTime}</td>
+                    <td class="fw-bold text-danger">${row.legacyTime}</td>
                     <td><span class="badge bg-light text-dark border"><i class="bi bi-stars me-1"></i> ${row.aiTool}</span></td>
-                    <td class="fw-bold">${row.aiTime}</td>
-                    <td><span class="badge bg-light text-dark border">${row.timeSaved}</span></td>
+                    <td class="fw-bold text-success">${row.aiTime}</td>
+                    <td><span class="badge bg-success">${row.timeSaved}</span></td>
                     <td><strong class="text-dark">${row.impact}</strong></td>
                 `;
                 tbody.appendChild(tr);
@@ -2143,7 +2013,6 @@
         function openRaceModal() {
             const modal = new bootstrap.Modal(document.getElementById('raceModal'));
             modal.show();
-            // Reset race bars
             document.getElementById('aiProgressFill').style.width = '0%';
             document.getElementById('legacyProgressFill').style.width = '0%';
             document.getElementById('aiRaceTime').textContent = '0.0s';
@@ -2167,7 +2036,6 @@
             const raceInterval = setInterval(() => {
                 timer += 100;
 
-                // AI Speed (Completes in ~2.8 seconds simulated)
                 if (aiProgress < 100) {
                     aiProgress += 12;
                     if (aiProgress > 100) aiProgress = 100;
@@ -2186,7 +2054,6 @@
                     }
                 }
 
-                // Legacy Speed (Crawls slowly, completes in ~12 seconds simulated representing 45 mins)
                 if (legacyProgress < 100) {
                     legacyProgress += 2.2;
                     if (legacyProgress > 100) legacyProgress = 100;
@@ -2228,17 +2095,30 @@
             setTimeout(() => {
                 const aiDiv = document.createElement('div');
                 aiDiv.className = 'chat-msg ai';
-                const responses = [
-                    'Analyzing contract archive... Found 3 previous orders with identical payment terms (Net 60). Legacy search would take 45 mins.',
-                    'Shipment feasibility check: Current critical path shows 34 days needed vs 48 days legacy baseline. On schedule.',
-                    'Material shortage alert: Fabric booking #PO-456 requires 250m buffer. Automated PO amendment drafted.',
-                    'Buyer H&M historical margin benchmark is 14.8%. Your current quote is at 15.2% (Healthy).',
-                    'I have prepared a draft negotiation email with volume tiered pricing ($13.75 for 5k pcs, $13.50 for 10k pcs).'
-                ];
-                aiDiv.innerHTML = `<i class="bi bi-stars me-1 text-primary"></i> ${responses[Math.floor(Math.random() * responses.length)]}`;
+                let reply = '';
+                const lower = msg.toLowerCase();
+
+                if (lower.includes('h&m') && lower.includes('margin')) {
+                    reply = 'Historical benchmark for Buyer H&M: Average Gross Margin is <strong>14.8%</strong> across 24 seasons (Range: 13.2% – 16.5%). Current order ST-1256 is projected at <strong>15.2%</strong>.';
+                } else if (lower.includes('hold') || lower.includes('status')) {
+                    reply = 'Currently, <strong>1 order</strong> is on Hold: PO-2026-0042 (Brand Zara) awaiting lab dip shade approval. 7 orders are actively running on schedule.';
+                } else if (lower.includes('sewing') || lower.includes('order')) {
+                    reply = 'Order #PO-2026-0089: Sewing is at <strong>80% completion (4,160 / 5,200 pcs)</strong> on Line 04. Expected line completion: Sep 21.';
+                } else {
+                    const responses = [
+                        'Analyzing contract archive... Found 3 previous orders with identical payment terms (Net 60). Legacy search would take 45 mins.',
+                        'Shipment feasibility check: Current critical path shows 34 days needed vs 48 days legacy baseline. On schedule.',
+                        'Material shortage alert: Fabric booking #PO-456 requires 250m buffer. Automated PO amendment drafted.',
+                        'Buyer H&M historical margin benchmark is 14.8%. Your current quote is at 15.2% (Healthy).',
+                        'I have prepared a draft negotiation email with volume tiered pricing ($13.75 for 5k pcs, $13.50 for 10k pcs).'
+                    ];
+                    reply = responses[Math.floor(Math.random() * responses.length)];
+                }
+
+                aiDiv.innerHTML = `<i class="bi bi-stars me-1 text-primary"></i> ${reply}`;
                 container.appendChild(aiDiv);
                 container.scrollTop = container.scrollHeight;
-            }, 600);
+            }, 500);
         }
 
         function updateImpactRibbonForModule(mod) {
@@ -2359,7 +2239,6 @@
             });
         }
 
-        // ====== LIFECYCLE TRACKER INTERACTIVE HANDLERS ======
         function switchSampleOrder(orderKey) {
             currentSelectedOrderKey = orderKey;
             const order = sampleOrders[orderKey];
@@ -2531,17 +2410,6 @@
                                 <div class="legacy-error-alert" id="stageLegacyError"></div>
                             </div>
 
-                            <div class="workflow-step-chain">
-                                <div class="workflow-step-item">
-                                    <div class="step-badge legacy">1</div>
-                                    <div><strong>Manual Entry:</strong> 100% human keyboard typing from paper binders with zero automated parsing.</div>
-                                </div>
-                                <div class="workflow-step-item">
-                                    <div class="step-badge legacy">2</div>
-                                    <div><strong>Coordination Lag:</strong> 24–48 hours delay chasing approvals via email and phone.</div>
-                                </div>
-                            </div>
-
                             <div class="kpi-stat-strip">
                                 <div class="kpi-micro-card">
                                     <div class="k-label">Labor Time</div>
@@ -2603,7 +2471,38 @@
             `;
         }
 
-        // ====== INTERACTIVE CORRECTION HANDLERS ======
+        // ====== INTERACTIVE ACTION HANDLERS ======
+        function simulateAction(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.display = 'block';
+                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Buyer Master
+        function checkDuplicateBuyer() {
+            const resultEl = document.getElementById('duplicateBuyerResult');
+            if (resultEl) {
+                resultEl.style.display = 'block';
+                resultEl.innerHTML = `
+                    <div class="alert alert-danger border-danger small mb-0">
+                        <i class="bi bi-shield-slash-fill me-1"></i> <strong>Duplicate Detected & Blocked:</strong> Buyer Profile "H&M Hennes & Mauritz (Tax ID: SE5561519552)" already exists (Profile #BUY-0042). Duplicate creation blocked to prevent master table contamination.
+                    </div>
+                `;
+            }
+            showLearningToast('Duplicate buyer profile identified and blocked.');
+        }
+
+        function autoAttachComplianceDocs() {
+            const docsEl = document.getElementById('complianceDocsResult');
+            if (docsEl) {
+                docsEl.style.display = 'block';
+            }
+            showLearningToast('3 valid compliance documents auto-discovered and attached to Buyer Profile.');
+        }
+
+        // Buyer Order Management
         function applyPoCorrection() {
             const correctedPrice = parseFloat(document.getElementById('poPriceInput').value) || 12.80;
             const qty = 5200;
@@ -2621,6 +2520,43 @@
             showLearningToast(`PO Price updated to $${correctedPrice.toFixed(2)}. Order value recalculated to ${newTotal}.`);
         }
 
+        function simulateOrderAmendment() {
+            const extraQty = parseInt(document.getElementById('amendmentQtyInput').value) || 1500;
+            const newShipDate = document.getElementById('amendmentDateInput').value || 'Oct 28, 2026';
+            const resultEl = document.getElementById('amendmentImpactResult');
+
+            if (resultEl) {
+                resultEl.style.display = 'block';
+                resultEl.innerHTML = `
+                    <div class="p-3 bg-light border rounded small">
+                        <h6 class="fw-bold text-dark mb-2"><i class="bi bi-lightning-charge me-1"></i> Amendment Ripple Impact Report (+${extraQty.toLocaleString()} pcs, Ship Date: ${newShipDate}):</h6>
+                        <ul class="mb-2 ps-3">
+                            <li><strong>Material Demand:</strong> Fabric requirement increases by <strong>+1,872 yds</strong> (Total: 8,611 yds).</li>
+                            <li><strong>Budget Impact:</strong> Fabric allocation shifts from $19,968 &rarr; <strong>$25,958</strong> (+$5,990).</li>
+                            <li><strong>T&A Schedule:</strong> Sewing window extended by <strong>+3 days</strong>. Fabric Mill delivery buffer fits safely.</li>
+                            <li><strong>Capacity Feasibility:</strong> Line 04 has sufficient capacity buffer. Overall on-time probability: <strong>96.4%</strong>.</li>
+                        </ul>
+                        <button class="btn btn-sm btn-success fw-bold" onclick="showLearningToast('Amendment approved! PO, MRP, and T&A updated automatically.')"><i class="bi bi-check-circle me-1"></i> Auto-Apply ERP Amendment</button>
+                    </div>
+                `;
+            }
+            showLearningToast('Order amendment impact simulation generated across Budget, Booking, and T&A.');
+        }
+
+        function checkDuplicatePO() {
+            const resEl = document.getElementById('duplicatePoResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+                resEl.innerHTML = `
+                    <div class="alert alert-warning border-warning small mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> <strong>Duplicate PO Flag:</strong> PO Number "PO-2026-0089" was already booked on Aug 28, 2026 for Buyer H&M. Re-entry flagged for merchandiser review.
+                    </div>
+                `;
+            }
+            showLearningToast('Duplicate PO verification complete: 1 duplicate found in archive.');
+        }
+
+        // Style & Product Master
         function applyGsmCorrection() {
             const gsm = document.getElementById('techPackGsmInput').value;
             document.getElementById('techPackGsmValue').innerHTML = `<span class="diff-before">160 GSM</span> <span class="diff-after">${gsm} GSM</span>`;
@@ -2632,22 +2568,73 @@
             showLearningToast(`GSM updated to ${gsm}. Yarn consumption and cost sheet recalculated.`);
         }
 
-        function applyWastageOverride() {
-            const wastage = parseFloat(document.getElementById('wastageInput').value) || 8;
-            const orderQty = 5200;
-            const cons = 1.2;
-            const newTotal = Math.round(orderQty * cons * (1 + wastage / 100));
-
-            document.getElementById('wastageDisplayValue').innerHTML = `<span class="diff-before">5%</span> <span class="diff-after">${wastage}%</span>`;
-            document.getElementById('wastageDemandValue').innerHTML = `<span class="diff-before">6,552 yd</span> <span class="diff-after">${newTotal.toLocaleString()} yd (+${newTotal - 6552} yd)</span>`;
-
-            const banner = document.getElementById('wastageLearningBanner');
-            banner.style.display = 'block';
-            banner.innerHTML = `<i class="bi bi-shield-check me-2"></i><strong>Override Escalation & Learning:</strong> Custom wastage rule recorded for Category "Stripe Jersey". Manager approval requested automatically.`;
-
-            showLearningToast(`Wastage changed to ${wastage}%. Additional ${newTotal - 6552} yards added to PO requisition.`);
+        function runStyleSimilarityMatch() {
+            const resEl = document.getElementById('styleSimilarityResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+            }
+            showLearningToast('Matched 88% similarity with Style ST-0987. Reused CAD pattern & wash recipe.');
         }
 
+        function publishStyleToCMS() {
+            showLearningToast('Style ST-1256 published to B2B Showroom CMS (v2.1). Rollback snapshot stored.');
+        }
+
+        function runDefectScan() {
+            const resEl = document.getElementById('defectScanResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+                resEl.innerHTML = `
+                    <div class="p-2 border rounded bg-white small mt-2">
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            <span class="fw-bold"><i class="bi bi-eye-fill text-primary me-1"></i> Vision AI Texture & Defect Analysis:</span>
+                            <span class="badge bg-success">Passed (99.4% Clean)</span>
+                        </div>
+                        <div class="text-muted">Analyzed 100% Cotton Single Jersey swatch image. No yarn slub, needle hole, or dye streaking detected. Weave consistency: 98.7%.</div>
+                    </div>
+                `;
+            }
+            showLearningToast('Vision AI texture scan completed: Zero fabric flaws detected.');
+        }
+
+        // Order Booking
+        function runShipmentFeasibilityCheck() {
+            const resEl = document.getElementById('feasibilityCheckResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+                resEl.innerHTML = `
+                    <div class="alert alert-success border-success small mb-0 mt-2">
+                        <i class="bi bi-check-circle-fill me-1"></i> <strong>Shipment Feasibility: 100% FEASIBLE</strong><br>
+                        Fabric In-house Target: Sep 1 &bull; Cutting & Sewing: Sep 6–21 &bull; Inspection: Sep 28 &bull; Port ETD: Oct 5.<br>
+                        Total required: 34 days &le; 45-day buyer window (11-day safety buffer available).
+                    </div>
+                `;
+            }
+            showLearningToast('Shipment feasibility verified against fabric supply and factory line capacity.');
+        }
+
+        // IE & SMV
+        function generateSmvTna() {
+            showModal('SMV-Based Automated T&A Schedule', `
+                <p class="small text-muted">Time & Action schedule generated based on 12.5 garment SMV and 86% line efficiency:</p>
+                <table class="table table-sm small table-bordered">
+                    <tr class="table-light"><th>Milestone Activity</th><th>SMV / Time Basis</th><th>Calculated Duration</th><th>Start - End Date</th></tr>
+                    <tr><td>Fabric Knitting & Dyeing</td><td>Mill Lead Time</td><td>14 Days</td><td>Aug 15 – Aug 29</td></tr>
+                    <tr><td>Pattern & Marker Nesting</td><td>CAD Ops (0.4m)</td><td>2 Days</td><td>Aug 30 – Sep 01</td></tr>
+                    <tr><td>Spreading & Cutting</td><td>1.8 SMV (5.2k pcs)</td><td>4 Days</td><td>Sep 02 – Sep 05</td></tr>
+                    <tr><td>Sewing & Assembly (Line 04)</td><td>8.4 SMV (86% Eff)</td><td>12 Days</td><td>Sep 06 – Sep 18</td></tr>
+                    <tr><td>Washing & Silicone Finish</td><td>Recipe Cycle</td><td>3 Days</td><td>Sep 19 – Sep 21</td></tr>
+                    <tr><td>Ironing, Packing & QA</td><td>2.3 SMV</td><td>4 Days</td><td>Sep 22 – Sep 26</td></tr>
+                    <tr class="table-success fw-bold"><td colspan="3">Final Commercial Handover</td><td>Oct 05 (ETD CTG)</td></tr>
+                </table>
+            `);
+        }
+
+        function balanceProductionLines() {
+            showLearningToast('Line balancing simulated: Order #PO-2026-0089 allocated to Line 04 (+14% pcs/hr).');
+        }
+
+        // Product Costing
         function applyCmRateOverride() {
             const cmRate = parseFloat(document.getElementById('cmRateInput').value) || 2.65;
             const fabric = 3.84;
@@ -2669,6 +2656,33 @@
             showLearningToast(`CM Rate updated to $${cmRate.toFixed(2)}. Cost sheet total updated to $${totalCost.toFixed(2)}.`);
         }
 
+        function compareCostingVersions() {
+            const resEl = document.getElementById('costingVersionCompareResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+            }
+            showLearningToast('Costing Version 1.0 vs Version 2.0 side-by-side variance analysis generated.');
+        }
+
+        // Cost Sheet
+        function findMissingCosts() {
+            const resEl = document.getElementById('missingCostResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+                resEl.innerHTML = `
+                    <div class="alert alert-warning border-warning small mb-2">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i> <strong>Missing Cost Detected:</strong> Special woven care label ($0.08/pc) and Factory Overhead buffer ($0.12/pc) were missing from raw tech pack breakdown.
+                    </div>
+                    <button class="btn btn-sm btn-primary fw-bold" onclick="showLearningToast('Missing overhead ($0.12) and label ($0.08) auto-added to Cost Sheet.')"><i class="bi bi-plus-circle me-1"></i> Auto-Add $0.20 to Cost Sheet</button>
+                `;
+            }
+            showLearningToast('Missing cost audit complete: 2 omitted line-items flagged.');
+        }
+
+        function dispatchApprovalRequest() {
+            showLearningToast('One-click approval notification and secure review link dispatched to Merchandising Director.');
+        }
+
         function updateMargin(val) {
             const price = parseFloat(val);
             document.getElementById('targetPriceDisplay').textContent = '$' + price.toFixed(2);
@@ -2678,6 +2692,72 @@
             document.getElementById('marginDisplay').textContent = margin.toFixed(1) + '%';
         }
 
+        // Material Requirement (MRP)
+        function applyWastageOverride() {
+            const wastage = parseFloat(document.getElementById('wastageInput').value) || 8;
+            const orderQty = 5200;
+            const cons = 1.2;
+            const newTotal = Math.round(orderQty * cons * (1 + wastage / 100));
+
+            document.getElementById('wastageDisplayValue').innerHTML = `<span class="diff-before">5%</span> <span class="diff-after">${wastage}%</span>`;
+            document.getElementById('wastageDemandValue').innerHTML = `<span class="diff-before">6,552 yd</span> <span class="diff-after">${newTotal.toLocaleString()} yd (+${newTotal - 6552} yd)</span>`;
+
+            const banner = document.getElementById('wastageLearningBanner');
+            banner.style.display = 'block';
+            banner.innerHTML = `<i class="bi bi-shield-check me-2"></i><strong>Override Escalation & Learning:</strong> Custom wastage rule recorded for Category "Stripe Jersey". Manager approval requested automatically.`;
+
+            showLearningToast(`Wastage changed to ${wastage}%. Additional ${newTotal - 6552} yards added to PO requisition.`);
+        }
+
+        // Supplier CS
+        function handleNonNominatedSupplier() {
+            showModal('Buyer Nominated Supplier Approval Required', `
+                <div class="alert alert-warning small">
+                    <i class="bi bi-shield-exclamation me-1"></i> <strong>Buyer Nomination Policy:</strong> Buyer H&M nominates <strong>Fabric Ltd.</strong> for organic jersey. Selecting an alternate vendor (TexCorp) requires formal Buyer Commercial Approval.
+                </div>
+                <p class="small">An automatic Buyer Concession Request draft has been prepared with comparison data ($3.35 vs $3.20, 25d vs 30d lead time).</p>
+                <button class="btn btn-sm btn-primary" onclick="showLearningToast('Concession request email sent to Buyer H&M Merchandising Head.'); bootstrap.Modal.getInstance(document.getElementById('aiModal')).hide();">Send Approval Request to Buyer</button>
+            `);
+        }
+
+        // Fabric & Trims
+        function recalculateOrderSurge() {
+            const surgeQty = 6500;
+            const extraYds = Math.round((surgeQty - 5200) * 1.2 * 1.08);
+            showModal('Order Volume Surge Recalculation (+1,300 pcs)', `
+                <p class="small text-muted">Buyer increased PO quantity from 5,200 pcs &rarr; <strong>6,500 pcs (+25%)</strong>:</p>
+                <div class="extract-grid mb-3">
+                    <div class="extract-item"><div class="label">Additional Qty</div><div class="value">+1,300 Pcs</div></div>
+                    <div class="extract-item"><div class="label">Extra Fabric Demand</div><div class="value">+${extraYds.toLocaleString()} Yds</div></div>
+                    <div class="extract-item"><div class="label">Revised Total Fabric</div><div class="value">8,424 Yds</div></div>
+                    <div class="extract-item"><div class="label">Extra Yarn Req</div><div class="value">+338 kg</div></div>
+                </div>
+                <div class="alert alert-info small mb-2">Supplier PO Revision #PO-881-REV1 has been automatically drafted for Fabric Ltd.</div>
+                <button class="btn btn-sm btn-success" onclick="showLearningToast('Supplier PO Revision #PO-881-REV1 dispatched to mill.'); bootstrap.Modal.getInstance(document.getElementById('aiModal')).hide();">Confirm & Send Mill Requisition</button>
+            `);
+        }
+
+        // Sample Development
+        function trackCourierLive() {
+            const resEl = document.getElementById('courierTrackingResult');
+            if (resEl) {
+                resEl.style.display = 'block';
+            }
+            showLearningToast('Connected to DHL Express API: Waybill #8492049182 status refreshed.');
+        }
+
+        function triggerEscalation() {
+            showModal('Sample Deadline Escalation Hierarchy', `
+                <p class="small text-muted">Automatic escalation sequence triggered for Sample Proto 2 (Approval overdue by 24h):</p>
+                <div class="p-3 bg-light rounded border small">
+                    <div class="mb-2"><span class="badge bg-success me-2">Tier 1 (0h)</span> Merchandiser In-app Alert & Buyer Email Follow-up <i class="bi bi-check-circle text-success ms-1"></i></div>
+                    <div class="mb-2"><span class="badge bg-warning text-dark me-2">Tier 2 (+24h)</span> SMS & Email Escalation to Merchandising Manager <i class="bi bi-check-circle text-success ms-1"></i></div>
+                    <div class="mb-0"><span class="badge bg-danger me-2">Tier 3 (+48h)</span> Critical Path Exception logged on Executive Dashboard for General Manager</div>
+                </div>
+            `);
+        }
+
+        // T&A Calendar
         function applyTnaAdjustment() {
             const extraDays = parseInt(document.getElementById('tnaDelayInput').value) || 3;
             document.getElementById('tnaSewingDates').innerHTML = `<span class="diff-before">Sep 6–18</span> <span class="diff-after">Sep 6–21 (+${extraDays}d)</span>`;
@@ -2690,15 +2770,72 @@
             showLearningToast(`T&A updated (+${extraDays} days). Critical path shifted.`);
         }
 
-        function simulateAction(id) {
-            const el = document.getElementById(id);
-            if (el) {
-                el.style.display = 'block';
-                el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+        // Production Follow-up
+        function generateRemedialTasks() {
+            showModal('Automated Production Remedial Tasks', `
+                <div class="p-3 bg-light rounded border small">
+                    <h6 class="fw-bold mb-2"><i class="bi bi-tools me-1"></i> Auto-Generated Remedial Action Plan for Line 04:</h6>
+                    <ol class="mb-2 ps-3">
+                        <li><strong>Mechanic Dispatch:</strong> Replaced defective feed dog and needle on Line 04 (Resolved in 45m).</li>
+                        <li><strong>Workload Transfer:</strong> Diverted 500 pcs placket assembly to Line 02 auxiliary team.</li>
+                        <li><strong>T&A Alignment:</strong> Absorbed 1-day buffer into finishing phase. ETD Oct 5 remains 100% protected.</li>
+                    </ol>
+                    <button class="btn btn-sm btn-primary" onclick="showLearningToast('Remedial plan notified to Floor Supervisor & Planning Team.'); bootstrap.Modal.getInstance(document.getElementById('aiModal')).hide();">Acknowledge & Sync Floor</button>
+                </div>
+            `);
         }
 
-        // ====== BUILD ALL 19 MODULE PANES (WITH MIMICKED MANUAL INPUT TERMINALS) ======
+        // Shipment Planning
+        function calculatePartialShipment() {
+            const shipped = parseInt(document.getElementById('partialShippedInput').value) || 3000;
+            const total = 5200;
+            const balance = total - shipped;
+            const resEl = document.getElementById('partialShipmentResult');
+
+            if (resEl) {
+                resEl.style.display = 'block';
+                resEl.innerHTML = `
+                    <div class="extract-grid mt-2">
+                        <div class="extract-item"><div class="label">Partial Shipped</div><div class="value text-success">${shipped.toLocaleString()} pcs (57.7%)</div></div>
+                        <div class="extract-item"><div class="label">Remaining Balance</div><div class="value text-warning">${balance.toLocaleString()} pcs (42.3%)</div></div>
+                        <div class="extract-item"><div class="label">Balance ETD</div><div class="value">Oct 12, 2026</div></div>
+                        <div class="extract-item"><div class="label">Split Invoicing</div><div class="value">Auto-Generated</div></div>
+                    </div>
+                `;
+            }
+            showLearningToast(`Partial shipment recorded: ${shipped.toLocaleString()} pcs shipped, ${balance.toLocaleString()} pcs remaining.`);
+        }
+
+        // Order Status 360
+        function showDailyExceptionDigest() {
+            showModal('Daily Merchandising Exception Digest', `
+                <div class="p-3 bg-dark text-white rounded small mb-2" style="font-family:'JetBrains Mono', monospace;">
+                    <div class="text-warning fw-bold mb-2"><i class="bi bi-exclamation-octagon me-1"></i> [EXCEPTIONS DIGEST] Morning Audit (08:30 AM):</div>
+                    <div class="text-danger">&bull; 1 Critical T&A Overdue: PO-2026-0034 Lab Dip approval pending from Buyer Target (+2d)</div>
+                    <div class="text-warning">&bull; 2 Floor Bottlenecks: Line 04 Needle maintenance (Resolved), Line 08 Sewing at 74% eff</div>
+                    <div class="text-info">&bull; 3 Pending Approvals: Sample Proto 2 awaiting Zara confirmation, 1 wastage override request</div>
+                    <div class="text-success">&bull; 14 Orders running 100% on schedule with healthy margin buffers.</div>
+                </div>
+            `);
+        }
+
+        // Buyer Profitability
+        function predictCustomerLifetimeValue() {
+            showModal('Buyer Lifetime Value (CLV) & Profitability Forecast', `
+                <div class="p-3 bg-light rounded border small">
+                    <h6 class="fw-bold mb-2"><i class="bi bi-graph-up-arrow text-primary me-1"></i> 3-Year Predictive Profitability Model (Buyer H&M):</h6>
+                    <div class="extract-grid mb-3">
+                        <div class="extract-item"><div class="label">Projected 3-Yr Revenue</div><div class="value">$3.85M</div></div>
+                        <div class="extract-item"><div class="label">Avg Gross Margin</div><div class="value text-success">15.4%</div></div>
+                        <div class="extract-item"><div class="label">Predicted CLV</div><div class="value text-primary">$1.42M Net</div></div>
+                        <div class="extract-item"><div class="label">Risk Churn Rate</div><div class="value text-success">3.2% (Low)</div></div>
+                    </div>
+                    <p class="mb-0 text-muted"><strong>Recommendation:</strong> High-priority buyer tier. Strategic volume discounts of up to 1.8% recommended on orders &gt;20,000 pcs to lock annual core polo volume.</p>
+                </div>
+            `);
+        }
+
+        // ====== BUILD ALL 19 MODULE PANES ======
         function buildPane(moduleId) {
             const panes = {
                 'lifecycle-tracker': `
@@ -2717,7 +2854,7 @@
                             <button class="order-pill-btn" id="orderBtn-PO-2026-0145" onclick="switchSampleOrder('PO-2026-0145')"><i class="bi bi-hourglass-split"></i> PO-2026-0145 (Target · 12k pcs)</button>
                         </div>
                     </div>
-                    <span class="badge bg-success px-3 py-2"><i class="bi bi-lightning-charge-fill me-1"></i> Side-by-Side Validation Ready</span>
+                    <span class="badge bg-success px-3 py-2"><i class="bi bi-lightning-charge-fill me-1"></i> Side-by-Side Audit Ready</span>
                 </div>
 
                 <div id="lifecycleContentContainer">
@@ -2727,15 +2864,15 @@
 
                 'buyer-master': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-person-badge"></i> Buyer Master & Contract Intel</div>
-                    <div class="module-sub">Enrichment, risk scoring, compliance tolerance rules, and contract Q&A.</div>
+                    <div class="module-title"><i class="bi bi-person-badge"></i> 1. Buyer Master & Contract Intel</div>
+                    <div class="module-sub">Contract extraction, duplicate profile blocking, risk scoring, and auto-compliance document attachments.</div>
                 </div>
 
                 <!-- Card 1: Contract Enrichment -->
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-upload"></i> Buyer Contract Parsing & Commercial Clauses</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 25 Mins &rarr; 2 Secs (99% faster)</span>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 25 Mins → 2 Secs (99% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -2745,7 +2882,6 @@
                             </div>
                             <p class="small text-muted mb-2">Merchandisers manually read 35-page PDF contracts and re-type commercial clauses into ERP master tables.</p>
                             
-                            <!-- Mimicked Legacy Contract Input Form -->
                             <div class="legacy-terminal-box" id="buyerMasterLegacyForm">
                                 <div class="legacy-terminal-header">
                                     <span class="small fw-bold text-dark"><i class="bi bi-keyboard me-1"></i> Contract Field Entry</span>
@@ -2790,30 +2926,55 @@
                     </div>
                 </div>
 
-                <!-- Card 2: Risk Scoring & Human Preference Override -->
+                <!-- Card 2: Duplicate Buyer Detection & Compliance Auto-Attach -->
+                <div class="comparison-card-wrapper" data-tier="auto">
+                    <div class="comparison-card-header">
+                        <h6><i class="bi bi-shield-slash"></i> Duplicate Buyer Profile Detection & Compliance Auto-Discovery</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-shield-check"></i> Master Data Protection</span>
+                    </div>
+                    <div class="comparison-grid">
+                        <div class="legacy-side">
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy ERP</div>
+                            <p class="small text-muted mb-2">Multiple merchandisers create duplicate profiles for the same buyer (e.g., "H&M Sweden", "Hennes & Mauritz CTG"), causing split credit limits and lost compliance files.</p>
+                        </div>
+                        <div class="ai-side">
+                            <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <button class="btn btn-outline-danger btn-sm fw-bold" onclick="checkDuplicateBuyer()"><i class="bi bi-search"></i> Test Duplicate Profile Check</button>
+                                <button class="btn btn-outline-ai btn-sm" onclick="autoAttachComplianceDocs()"><i class="bi bi-paperclip"></i> Auto-Attach Compliance Docs</button>
+                            </div>
+                            <div id="duplicateBuyerResult" class="mb-2" style="display:none;"></div>
+                            <div id="complianceDocsResult" class="p-2 border rounded bg-white small" style="display:none;">
+                                <div class="fw-bold mb-1"><i class="bi bi-file-earmark-check text-success me-1"></i> Auto-Attached Compliance Records:</div>
+                                <span class="badge bg-light text-dark border me-1"><i class="bi bi-shield-check text-success"></i> SEDEX SMETA Audit (Valid till Dec 2026)</span>
+                                <span class="badge bg-light text-dark border me-1"><i class="bi bi-shield-check text-success"></i> OEKO-TEX Standard 100</span>
+                                <span class="badge bg-light text-dark border"><i class="bi bi-shield-check text-success"></i> Accord Fire Safety Cert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Risk Scoring & Human Preference Override -->
                 <div class="comparison-card-wrapper" data-tier="correction">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-shield-exclamation"></i> Buyer Financial Risk & Tolerance Preference Tuning</h6>
+                        <h6><i class="bi bi-shield-exclamation"></i> Buyer Financial Risk Score & Payment History Alert</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-cpu"></i> Active Learning Enabled</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
                             <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Process</div>
                             <p class="small text-muted mb-2">No centralized credit warning. Merchandisers book orders based on subjective memory, leading to cash flow lockups on delayed payments.</p>
-                            <div class="workflow-step-chain">
-                                <div class="workflow-step-item"><div class="step-badge legacy">1</div><div>No live credit health scoring.</div></div>
-                                <div class="workflow-step-item"><div class="step-badge legacy">2</div><div>Packing tolerance discrepancies handled manually after cartons are rejected.</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
                             <div class="d-flex align-items-center gap-3 mb-2">
                                 <div style="width:130px;">
                                     <div class="risk-gauge"><div class="fill warning" style="width:68%;"></div></div>
-                                    <div class="d-flex justify-content-between small"><span>Low</span><span class="fw-bold">68 (Med)</span><span>High</span></div>
+                                    <div class="d-flex justify-content-between small"><span>Low</span><span class="fw-bold text-warning">68 (Med Risk)</span><span>High</span></div>
                                 </div>
                                 <span class="badge-tier badge-correction"><i class="bi bi-pencil-square"></i> HUMAN CORRECTION</span>
                             </div>
+                            <div class="alert alert-light border small py-1 px-2 mb-2"><i class="bi bi-exclamation-triangle text-warning me-1"></i> Payment history alert: Buyer delayed payment by 14 days on 2 previous shipments. Letter of Credit (LC) confirmation recommended.</div>
                             <div class="correction-panel">
                                 <div class="row g-2 align-items-center">
                                     <div class="col-md-5">
@@ -2837,7 +2998,7 @@
                     </div>
                 </div>
 
-                <!-- Card 3: Chat Copilot -->
+                <!-- Card 4: Chat Copilot -->
                 <div class="comparison-card-wrapper" data-tier="semi">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-chat-dots"></i> Buyer Knowledge Q&A Copilot</h6>
@@ -2854,7 +3015,7 @@
                                 <div class="chat-msg ai"><i class="bi bi-stars me-1 text-primary"></i> Hello! Ask me anything about Buyer contracts, historical pricing, or compliance rules.</div>
                             </div>
                             <div class="input-group mt-2">
-                                <input type="text" class="form-control form-control-sm" id="buyerChatInput" placeholder="e.g. What are the penalty clauses for late shipment with Buyer X?" onkeydown="if(event.key==='Enter') sendChat('buyerChatContainer','buyerChatInput')" />
+                                <input type="text" class="form-control form-control-sm" id="buyerChatInput" placeholder="e.g. What are the penalty clauses for late shipment with Buyer H&M?" onkeydown="if(event.key==='Enter') sendChat('buyerChatContainer','buyerChatInput')" />
                                 <button class="btn btn-ai btn-sm" onclick="sendChat('buyerChatContainer','buyerChatInput')"><i class="bi bi-send"></i> Ask</button>
                             </div>
                         </div>
@@ -2864,25 +3025,21 @@
 
                 'buyer-order-mgmt': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-file-earmark-text"></i> Buyer Order Management</div>
-                    <div class="module-sub">PO extraction, amendment impact simulation, duplicate detection, and live price corrections.</div>
+                    <div class="module-title"><i class="bi bi-file-earmark-text"></i> 2. Buyer Order Management</div>
+                    <div class="module-sub">PO extraction, amendment impact simulation, duplicate PO detection, and early delivery delay prediction.</div>
                 </div>
 
                 <!-- Card 1: PO Ingestion & Discrepancy -->
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-file-earmark-pdf"></i> PO Document Ingestion & Anomaly Guard</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 30 Mins &rarr; 3 Secs (99.8% faster)</span>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 30 Mins → 3 Secs (99.8% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Manual Entry</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> NO SCAN FEATURE</span>
-                            </div>
-                            <p class="small text-muted mb-2">Order entry operators manually re-type 16 fields from scanned PO images into the ERP. Ambiguous font typefaces frequently lead to severe pricing errors.</p>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Manual Entry</div>
+                            <p class="small text-muted mb-2">Order entry operators manually re-type 16 fields from scanned PO images into ERP. Ambiguous font typefaces frequently lead to severe pricing errors.</p>
                             
-                            <!-- Mimicked Legacy PO Form -->
                             <div class="legacy-terminal-box" id="poLegacyForm">
                                 <div class="legacy-terminal-header">
                                     <span class="small fw-bold text-dark"><i class="bi bi-keyboard me-1"></i> Manual Keying (PO Form)</span>
@@ -2903,11 +3060,6 @@
                                 </div>
                                 <div class="legacy-error-alert" id="poLegacyError"></div>
                             </div>
-
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Legacy Speed</div><div class="k-val">30 Mins / PO</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Typo Risk</div><div class="k-val">15% Error Rate</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
@@ -2926,10 +3078,6 @@
                                 </div>
                                 <div class="mt-2 small text-muted" id="poConfidenceBadge"><i class="bi bi-exclamation-triangle"></i> AI detected ambiguous price typeface (82% confidence). Human verification recommended.</div>
                             </div>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">AI Ingestion</div><div class="k-val">3.0 Seconds</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Validation</div><div class="k-val">100% Field Check</div></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -2937,7 +3085,7 @@
                 <!-- Card 2: Active Learning Correction -->
                 <div class="comparison-card-wrapper" data-tier="correction">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-pencil-square"></i> Active Learning: Human Price Verification ($12.50 &rarr; $12.80)</h6>
+                        <h6><i class="bi bi-pencil-square"></i> Active Learning: Human Price Verification ($12.50 → $12.80)</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-cash-stack"></i> +$1,560 Margin Protected</span>
                     </div>
                     <div class="comparison-grid">
@@ -2967,29 +3115,62 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Card 3: Order Amendment Simulator & Duplicate PO / Delay Predictor -->
+                <div class="comparison-card-wrapper" data-tier="semi">
+                    <div class="comparison-card-header">
+                        <h6><i class="bi bi-arrow-repeat"></i> Order Amendment Impact Simulator & Delivery Delay Predictor</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-cpu"></i> Ripple Analysis</span>
+                    </div>
+                    <div class="comparison-grid">
+                        <div class="legacy-side">
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Process</div>
+                            <p class="small text-muted mb-2">When a buyer requests quantity or date changes, recalculating the impact on raw materials, factory capacity, and critical path takes 2 days of manual meetings.</p>
+                        </div>
+                        <div class="ai-side">
+                            <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-4">
+                                    <label class="small fw-bold text-muted">Additional Qty (pcs):</label>
+                                    <input type="number" class="form-control form-control-sm" id="amendmentQtyInput" value="1500">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="small fw-bold text-muted">Revised Ship Date:</label>
+                                    <input type="text" class="form-control form-control-sm" id="amendmentDateInput" value="Oct 28, 2026">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="small d-block text-muted">&nbsp;</label>
+                                    <button class="btn btn-ai btn-sm w-100" onclick="simulateOrderAmendment()"><i class="bi bi-play-fill"></i> Simulate Ripple</button>
+                                </div>
+                            </div>
+                            <div id="amendmentImpactResult" class="mb-3" style="display:none;"></div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary btn-sm" onclick="checkDuplicatePO()"><i class="bi bi-search"></i> Check Duplicate PO</button>
+                                <span class="badge bg-light text-dark border p-2"><i class="bi bi-stopwatch text-success me-1"></i> Delay Risk: <strong>4.2% (Safe)</strong></span>
+                            </div>
+                            <div id="duplicatePoResult" class="mt-2" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
             `,
 
                 'style-product-master': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-tags"></i> Style & Product Master</div>
-                    <div class="module-sub">Tech Pack extraction, fabric similarity matching, and interactive GSM adjustment.</div>
+                    <div class="module-title"><i class="bi bi-tags"></i> 3. Style & Product Master</div>
+                    <div class="module-sub">Tech Pack extraction, style similarity matching, CMS publishing, and vision fabric defect scan.</div>
                 </div>
 
                 <!-- Card 1: Tech Pack Extraction -->
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-file-earmark-code"></i> Automated Tech Pack Decomposition</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 45 Mins &rarr; 4 Secs (99% faster)</span>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 45 Mins → 4 Secs (99% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Manual Entry</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> NO TECH PACK SCAN</span>
-                            </div>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Manual Entry</div>
                             <p class="small text-muted mb-2">Merchandisers manually inspect 20-30 pages of CAD drawings, measurement tables, and wash instructions, typing details into separate spreadsheets.</p>
                             
-                            <!-- Mimicked Legacy Tech Pack Form -->
                             <div class="legacy-terminal-box" id="techLegacyForm">
                                 <div class="legacy-terminal-header">
                                     <span class="small fw-bold text-dark"><i class="bi bi-keyboard me-1"></i> Tech Pack Manual Entry</span>
@@ -3008,11 +3189,6 @@
                                 </div>
                                 <div class="legacy-error-alert" id="techLegacyError"></div>
                             </div>
-
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Manual Prep</div><div class="k-val">45 Mins / Style</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Spec Risk</div><div class="k-val">Misread Collar Spec</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
@@ -3027,15 +3203,41 @@
                                 <div class="extract-item"><div class="label">Construction</div><div class="value">Single Jersey</div></div>
                                 <div class="extract-item"><div class="label">Wash Type</div><div class="value">Silicone Enzyme</div></div>
                             </div>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">AI Extraction</div><div class="k-val">3.4 Seconds</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Field Match</div><div class="k-val">100% Automated</div></div>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: GSM Override -->
+                <!-- Card 2: Style Similarity & CMS Auto-Publishing / Vision Defect Scan -->
+                <div class="comparison-card-wrapper" data-tier="auto">
+                    <div class="comparison-card-header">
+                        <h6><i class="bi bi-collection"></i> 1,400+ Style Similarity Match, CMS Publishing & Defect Scan</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-stars"></i> Vision AI</span>
+                    </div>
+                    <div class="comparison-grid">
+                        <div class="legacy-side">
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Workflow</div>
+                            <p class="small text-muted mb-2">Pattern makers redraw identical CAD patterns from scratch. Styles are never linked to web catalogs or scanned for fabric flaws before bulk cutting.</p>
+                        </div>
+                        <div class="ai-side">
+                            <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="d-flex gap-2 flex-wrap mb-2">
+                                <button class="btn btn-outline-ai btn-sm" onclick="runStyleSimilarityMatch()"><i class="bi bi-diagram-3"></i> Match Style Similarity</button>
+                                <button class="btn btn-outline-primary btn-sm" onclick="publishStyleToCMS()"><i class="bi bi-cloud-arrow-up"></i> Auto-Publish to CMS</button>
+                                <button class="btn btn-outline-success btn-sm" onclick="runDefectScan()"><i class="bi bi-eye"></i> Vision Defect Scan</button>
+                            </div>
+                            <div id="styleSimilarityResult" class="p-2 border rounded bg-white small mb-2" style="display:none;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold"><i class="bi bi-check-circle-fill text-success me-1"></i> 88% Match Found with Style #ST-0987 (Summer 2025 Polo):</span>
+                                    <span class="badge bg-success">Reused 4 Patterns</span>
+                                </div>
+                                <div class="text-muted mt-1">Identical flat-knit collar, sleeve hem, and 2-button placket. Only body length changed (+2cm). Rework eliminated.</div>
+                            </div>
+                            <div id="defectScanResult" style="display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: GSM Override -->
                 <div class="comparison-card-wrapper" data-tier="correction">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-pencil-square"></i> Fabric GSM Weight Adaptation & Downstream Ripple</h6>
@@ -3072,21 +3274,18 @@
 
                 'order-booking': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-cart-check"></i> Order Booking</div>
-                    <div class="module-sub">Mandatory validation check, breakdown suggestion, and shipment feasibility.</div>
+                    <div class="module-title"><i class="bi bi-cart-check"></i> 4. Order Booking</div>
+                    <div class="module-sub">Mandatory validation check, breakdown suggestion, and shipment feasibility verification.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-check-all"></i> ERP Mandatory Pre-Validation & Ratio Calculation</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Hours &rarr; 5 Mins (96% faster)</span>
+                        <h6><i class="bi bi-check-all"></i> ERP Mandatory Pre-Validation & Historical Size-Color Matrix</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Hours → 5 Mins (96% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Process</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> MANUAL PAPER SLIPS</span>
-                            </div>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Process</div>
                             <p class="small text-muted mb-2">Paper booking slips passed from Merchandiser to Commercial, Production, and Planning managers for manual physical signature approvals.</p>
                             
                             <div class="legacy-terminal-box" id="bookingLegacyForm">
@@ -3106,15 +3305,10 @@
                                 </div>
                                 <div class="legacy-error-alert" id="bookingLegacyError"></div>
                             </div>
-
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Routing Delay</div><div class="k-val">2–3 Days Lag</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Ratio Errors</div><div class="k-val">8% Size Imbalance</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="alert alert-light border small mb-2"><i class="bi bi-check-circle-fill me-1"></i> AI validated 16 mandatory ERP fields across Buyer, Currency, Incoterms, and Shipment Windows. 100% Valid.</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-check-circle-fill text-success me-1"></i> AI validated 16 mandatory ERP fields across Buyer, Currency, Incoterms, and Shipment Windows. 100% Valid.</div>
                             <div class="table-responsive">
                                 <table class="table table-sm table-bordered text-center small mb-2">
                                     <tr class="table-light"><th>Color</th><th>S (20%)</th><th>M (30%)</th><th>L (30%)</th><th>XL (20%)</th><th>Total</th></tr>
@@ -3122,10 +3316,8 @@
                                     <tr><td>Heather Grey</td><td>520</td><td>780</td><td>780</td><td>520</td><td><strong>2,600</strong></td></tr>
                                 </table>
                             </div>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Booking Time</div><div class="k-val">Instant (5s)</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Ratio Match</div><div class="k-val">99.8% Precision</div></div>
-                            </div>
+                            <button class="btn btn-outline-ai btn-sm" onclick="runShipmentFeasibilityCheck()"><i class="bi bi-calendar-check"></i> Run Shipment Feasibility Check</button>
+                            <div id="feasibilityCheckResult" style="display:none;"></div>
                         </div>
                     </div>
                 </div>
@@ -3133,21 +3325,18 @@
 
                 'ie-smv': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-speedometer2"></i> IE & SMV Management</div>
-                    <div class="module-sub">SMV calculation, line workload balancing, and operator efficiency.</div>
+                    <div class="module-title"><i class="bi bi-speedometer2"></i> 5. IE & SMV Management</div>
+                    <div class="module-sub">SMV calculation, SMV-based automated T&A generation, and multi-order line balancing.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-speedometer2"></i> Garment SMV Decomposition & Line Workload Balancing</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Hours &rarr; 1 Sec (99.9% faster)</span>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Hours → 1 Sec (99.9% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Stopwatch Study</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> NO AUTO BALANCE</span>
-                            </div>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Stopwatch Study</div>
                             <p class="small text-muted mb-2">IE engineers perform physical stopwatch studies on sample lines, recording times on paper boards. Sewing line balance calculated in manual Excel.</p>
                             
                             <div class="legacy-terminal-box" id="ieLegacyForm">
@@ -3167,11 +3356,6 @@
                                 </div>
                                 <div class="legacy-error-alert" id="ieLegacyError"></div>
                             </div>
-
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Study Duration</div><div class="k-val">3 Hours</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Line Efficiency</div><div class="k-val">72% Average</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
@@ -3181,10 +3365,10 @@
                                 <div class="extract-item"><div class="label">Finishing SMV</div><div class="value">2.3 Mins</div></div>
                                 <div class="extract-item"><div class="label">Total SMV</div><div class="value">12.5 Mins</div></div>
                             </div>
-                            <div class="alert alert-light border small mb-0"><i class="bi bi-info-circle-fill me-1"></i> Suggested routing: <strong>Line 04 (Target Efficiency: 86%)</strong> (+14% pcs/hr output).</div>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Decomposition</div><div class="k-val">Instant (1s)</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Balanced Output</div><div class="k-val">86% Efficiency</div></div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-info-circle-fill text-primary me-1"></i> Suggested routing: <strong>Line 04 (Target Efficiency: 86%)</strong> (+14% pcs/hr output).</div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-ai btn-sm" onclick="generateSmvTna()"><i class="bi bi-calendar-event"></i> Auto-Generate SMV T&A</button>
+                                <button class="btn btn-outline-ai btn-sm" onclick="balanceProductionLines()"><i class="bi bi-sliders"></i> Rebalance Multi-Order Lines</button>
                             </div>
                         </div>
                     </div>
@@ -3193,21 +3377,18 @@
 
                 'product-costing': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-calculator"></i> Product Costing</div>
-                    <div class="module-sub">Component suggestions, cost flag alerts, and live CM override.</div>
+                    <div class="module-title"><i class="bi bi-calculator"></i> 6. Product Costing</div>
+                    <div class="module-sub">Component suggestions, cost flag alerts, dual-version comparison, and dynamic pricing.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="correction">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-calculator"></i> Dynamic Cost Rollup & CM Override</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 1.5 Hours &rarr; 10 Secs (98% faster)</span>
+                        <h6><i class="bi bi-calculator"></i> Dynamic Cost Rollup & Anomaly Guard (+35% Washing Flag)</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 1.5 Hours → 10 Secs (98% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Excel Sheet</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> NO ANOMALY GUARD</span>
-                            </div>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Excel Sheet</div>
                             <p class="small text-muted mb-2">Cost sheets maintained in fragile Excel files with 12 nested VLOOKUP formulas. Hidden formula errors often lead to bidding under actual cost.</p>
                             
                             <div class="legacy-terminal-box" id="costingLegacyForm">
@@ -3228,15 +3409,10 @@
                                 </div>
                                 <div class="legacy-error-alert" id="costingLegacyError"></div>
                             </div>
-
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Excel Prep</div><div class="k-val">1.5 Hours</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Margin Leakage</div><div class="k-val">-$0.35/pc Hidden Loss</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="correction-panel">
+                            <div class="correction-panel mb-2">
                                 <div class="row g-2 align-items-center">
                                     <div class="col-md-4">
                                         <label class="small text-muted fw-bold">AI Baseline CM:</label>
@@ -3253,7 +3429,17 @@
                                 </div>
                                 <div class="learning-banner" id="costingLearningBanner"></div>
                             </div>
-                            <div class="alert alert-light border small mt-2 mb-0"><i class="bi bi-exclamation-triangle-fill me-1"></i> Washing quote of <strong>$0.45/pc</strong> is 35% above history ($0.33). Alternate vendor suggested.</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-exclamation-triangle-fill text-warning me-1"></i> Washing quote of <strong>$0.45/pc</strong> is 35% above history ($0.33). Alternate vendor suggested.</div>
+                            <button class="btn btn-outline-ai btn-sm" onclick="compareCostingVersions()"><i class="bi bi-columns-gap"></i> Compare Costing Versions (v1.0 vs v2.0)</button>
+                            <div id="costingVersionCompareResult" class="mt-2" style="display:none;">
+                                <table class="table table-sm small table-bordered mb-0">
+                                    <tr class="table-light"><th>Component</th><th>Ver 1.0 (Initial)</th><th>Ver 2.0 (Revised)</th><th>Variance ($)</th><th>Delta %</th></tr>
+                                    <tr><td>Fabric</td><td>$3.95</td><td>$3.84</td><td class="delta positive">-$0.11</td><td class="delta positive">-2.8%</td></tr>
+                                    <tr><td>CM Rate</td><td>$2.45</td><td>$2.65</td><td class="delta negative">+$0.20</td><td class="delta negative">+8.1%</td></tr>
+                                    <tr><td>Washing</td><td>$0.45</td><td>$0.35</td><td class="delta positive">-$0.10</td><td class="delta positive">-22.2%</td></tr>
+                                    <tr class="table-primary fw-bold"><td>Total FOB</td><td>$7.69</td><td>$7.54</td><td class="delta positive">-$0.15</td><td class="delta positive">-2.0%</td></tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3261,8 +3447,8 @@
 
                 'cost-sheet': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-table"></i> Cost Sheet</div>
-                    <div class="module-sub">Automated rollup, dynamic margin sensitivity slider, and quotation advice.</div>
+                    <div class="module-title"><i class="bi bi-table"></i> 7. Cost Sheet</div>
+                    <div class="module-sub">Automated rollup with overhead, missing cost finder, margin slider, and 1-click executive approval.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
@@ -3274,10 +3460,6 @@
                         <div class="legacy-side">
                             <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Process</div>
                             <p class="small text-muted mb-2">Static Excel quotation sheets require re-typing for every buyer negotiation counter-offer. Takes 45 mins to see new gross margin.</p>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">Recalc Time</div><div class="k-val">45 Mins / Round</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Win Strategy</div><div class="k-val">Subjective Guesswork</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
@@ -3293,10 +3475,15 @@
                                 <label class="fw-bold small text-muted">Price Sensitivity Slider:</label>
                                 <input type="range" class="form-range" min="10" max="20" step="0.25" value="14" id="priceSlider" oninput="updateMargin(this.value)" />
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div>Quote Price: <strong id="targetPriceDisplay" class="fs-6 fw-bold">$14.00</strong></div>
-                                    <div>Gross Margin: <strong id="marginDisplay" class="fs-6 fw-bold">46.1%</strong></div>
+                                    <div>Quote Price: <strong id="targetPriceDisplay" class="fs-6 fw-bold text-primary">$14.00</strong></div>
+                                    <div>Gross Margin: <strong id="marginDisplay" class="fs-6 fw-bold text-success">46.1%</strong></div>
                                 </div>
                             </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-warning text-dark btn-sm fw-bold" onclick="findMissingCosts()"><i class="bi bi-search"></i> Check Missing Costs</button>
+                                <button class="btn btn-ai btn-sm" onclick="dispatchApprovalRequest()"><i class="bi bi-send-check"></i> Send for Executive Approval</button>
+                            </div>
+                            <div id="missingCostResult" class="mt-2" style="display:none;"></div>
                         </div>
                     </div>
                 </div>
@@ -3304,13 +3491,13 @@
 
                 'target-margin': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-graph-up-arrow"></i> Target Price & Margin</div>
-                    <div class="module-sub">Negotiation strategy, price gap analysis, and margin erosion explainers.</div>
+                    <div class="module-title"><i class="bi bi-graph-up-arrow"></i> 8. Target Price & Margin</div>
+                    <div class="module-sub">Negotiation strategy, plain-English impact explainer, and natural language pricing Copilot.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="semi">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-graph-up-arrow"></i> Negotiation Pricing Strategy</h6>
+                        <h6><i class="bi bi-graph-up-arrow"></i> Negotiation Pricing Strategy & Margin Explainer</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-cash"></i> +$1,300 Preserved</span>
                     </div>
                     <div class="comparison-grid">
@@ -3320,7 +3507,18 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="alert alert-light border small mb-0"><i class="bi bi-lightbulb-fill me-1"></i> Buyer Target Price: <strong>$13.50</strong> vs Factory Quote: <strong>$14.00</strong>. AI Recommends counter-offering <strong>$13.75</strong> with a <strong>70% probability</strong> of immediate acceptance.</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-lightbulb-fill text-warning me-1"></i> Buyer Target Price: <strong>$13.50</strong> vs Factory Quote: <strong>$14.00</strong>. AI Recommends counter-offering <strong>$13.75</strong> with a <strong>70% probability</strong> of immediate acceptance.</div>
+                            <div class="p-2 border rounded bg-white small mb-2">
+                                <div class="fw-bold"><i class="bi bi-info-circle text-primary me-1"></i> Plain-English Margin Impact Explanation:</div>
+                                <div class="text-muted">"At buyer target ($13.50), gross margin drops to 44.1% due to +$0.20 placket CM complexity. Counter-offering $13.75 preserves 45.2% margin (+$1,300 gross profit on 5,200 pcs)."</div>
+                            </div>
+                            <div class="chat-box" id="marginChatContainer">
+                                <div class="chat-msg ai"><i class="bi bi-stars me-1 text-primary"></i> Ask me about buyer margin benchmarks or price concession strategies. (Try: "What is H&M average margin?")</div>
+                            </div>
+                            <div class="input-group mt-2">
+                                <input type="text" class="form-control form-control-sm" id="marginChatInput" placeholder="e.g. What is H&M average margin?" onkeydown="if(event.key==='Enter') sendChat('marginChatContainer','marginChatInput')" />
+                                <button class="btn btn-ai btn-sm" onclick="sendChat('marginChatContainer','marginChatInput')"><i class="bi bi-send"></i> Ask</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3328,14 +3526,14 @@
 
                 'order-budgeting': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-wallet2"></i> Order-wise Budgeting</div>
-                    <div class="module-sub">Budget prefill from costing, variance alerts, and spend forecasts.</div>
+                    <div class="module-title"><i class="bi bi-wallet2"></i> 9. Order-wise Budgeting</div>
+                    <div class="module-sub">Costing & BOM prefill, variance alert lockout rules, and pre-completion spend utilization forecast.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-wallet"></i> Automated Total Budget Allocation (5,200 Pcs)</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 45 Mins &rarr; 1 Sec (99% faster)</span>
+                        <h6><i class="bi bi-wallet"></i> Automated Budget Allocation & Spend Forecast (5,200 Pcs)</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 45 Mins → 1 Sec (99% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -3344,11 +3542,18 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="extract-grid">
+                            <div class="extract-grid mb-2">
                                 <div class="extract-item"><div class="label">Fabric Budget</div><div class="value">$19,968</div></div>
                                 <div class="extract-item"><div class="label">Trims Budget</div><div class="value">$4,420</div></div>
                                 <div class="extract-item"><div class="label">CM Budget</div><div class="value">$12,740</div></div>
                                 <div class="extract-item"><div class="label">Total Budget</div><div class="value">$39,208</div></div>
+                            </div>
+                            <div class="p-2 border rounded bg-white small mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold"><i class="bi bi-graph-up text-success me-1"></i> Predicted Final Spend Utilization:</span>
+                                    <span class="badge bg-success">98.1% (Under Budget by $758)</span>
+                                </div>
+                                <div class="text-muted mt-1">Variance guard active (±2.0% lockout threshold). No overrun detected.</div>
                             </div>
                         </div>
                     </div>
@@ -3357,8 +3562,8 @@
 
                 'material-requirement': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-box-seam"></i> Material Requirement Planning</div>
-                    <div class="module-sub">Demand calculations, wastage rules, and human wastage overrides.</div>
+                    <div class="module-title"><i class="bi bi-box-seam"></i> 10. Material Requirement Planning (MRP)</div>
+                    <div class="module-sub">Approved consumption library matching, category wastage rules, and tolerance escalation.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="correction">
@@ -3368,10 +3573,7 @@
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Calculator</div>
-                                <span class="badge bg-light text-dark border" style="font-size:0.68rem;"><i class="bi bi-x-circle-fill me-1"></i> FIXED 5% WASTAGE</span>
-                            </div>
+                            <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Calculator</div>
                             <p class="small text-muted mb-2">Fixed 5% wastage applied uniformly. Complex stripe jersey matching requires 8% wastage, which when missed causes severe fabric shortage.</p>
                             
                             <div class="legacy-terminal-box" id="mrpLegacyForm">
@@ -3395,6 +3597,7 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-journal-check text-success me-1"></i> Matched Approved Consumption Library for Style #ST-0987: <strong>1.20 yds/pc</strong>.</div>
                             <div class="correction-panel">
                                 <div class="row g-2 align-items-center">
                                     <div class="col-md-3">
@@ -3423,35 +3626,28 @@
 
                 'supplier-cs': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-files"></i> Supplier Comparative Statement (CS)</div>
-                    <div class="module-sub">Quotation extraction, supplier scorecards, and human vendor selection.</div>
+                    <div class="module-title"><i class="bi bi-files"></i> 11. Supplier CS (Comparative Statement)</div>
+                    <div class="module-sub">Quotation extraction, multi-factor scorecard, and buyer-nominated supplier prioritization rules.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="semi">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-files"></i> Supplier Comparative Matrix & Scorecard</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Days &rarr; 20 Mins (99% faster)</span>
+                        <h6><i class="bi bi-files"></i> Supplier Comparative Matrix & Nominated Vendor Rule</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Days → 20 Mins (99% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
                             <div class="side-system-tag tag-legacy"><i class="bi bi-file-earmark-spreadsheet me-1"></i> Legacy Phone & Paper CS</div>
                             <p class="small text-muted mb-2">Merchandisers spend 2 days calling 3-5 yarn mills, manually comparing prices and delivery dates on paper note sheets.</p>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">CS Prep Time</div><div class="k-val">2 Days Delay</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Vendor Ranking</div><div class="k-val">Price only (ignores lead time)</div></div>
-                            </div>
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-award-fill text-warning me-1"></i> <strong>Buyer Nominated Supplier Policy:</strong> Fabric Ltd. is preferred by Buyer H&M (Score: 94/100).</div>
                             <table class="table table-sm comparison-table table-bordered mb-2">
                                 <tr class="table-light"><th>Supplier</th><th>Price / Yd</th><th>Lead Time</th><th>Score</th><th>AI Rec</th><th>Action</th></tr>
-                                <tr class="table-success"><td><strong>Fabric Ltd.</strong></td><td>$3.20</td><td>30 Days</td><td><span class="badge bg-success">94/100</span></td><td><span class="badge bg-success">Top Choice</span></td><td><button class="btn btn-sm btn-success py-0 px-2" onclick="showLearningToast('Fabric Ltd. nominated. Requisition PO generated.')">Nominate</button></td></tr>
-                                <tr><td>TexCorp</td><td>$3.35</td><td>25 Days</td><td><span class="badge bg-warning text-dark">88/100</span></td><td>Faster Lead</td><td><button class="btn btn-sm btn-outline-secondary py-0 px-2">Select</button></td></tr>
+                                <tr class="table-success"><td><strong>Fabric Ltd.</strong> (Nominated)</td><td>$3.20</td><td>30 Days</td><td><span class="badge bg-success">94/100</span></td><td><span class="badge bg-success">Top Choice</span></td><td><button class="btn btn-sm btn-success py-0 px-2" onclick="showLearningToast('Fabric Ltd. nominated. Requisition PO generated.')">Nominate</button></td></tr>
+                                <tr><td>TexCorp (Non-Nominated)</td><td>$3.35</td><td>25 Days</td><td><span class="badge bg-warning text-dark">88/100</span></td><td>Faster Lead</td><td><button class="btn btn-sm btn-outline-warning text-dark py-0 px-2" onclick="handleNonNominatedSupplier()">Select (Needs Approval)</button></td></tr>
                             </table>
-                            <div class="kpi-stat-strip">
-                                <div class="kpi-micro-card"><div class="k-label">CS Ingestion</div><div class="k-val">20 Mins (OCR)</div></div>
-                                <div class="kpi-micro-card"><div class="k-label">Evaluation</div><div class="k-val">Multi-factor Scoring</div></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -3459,14 +3655,14 @@
 
                 'fabric-trims': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-layers"></i> Fabric & Trims Requirement</div>
-                    <div class="module-sub">Shortage prediction, inventory optimization, and PO deltas.</div>
+                    <div class="module-title"><i class="bi bi-layers"></i> 12. Fabric & Trims Requirement</div>
+                    <div class="module-sub">Shortage prediction, inventory allocation, and order surge PO revision drafting.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-layers"></i> Inventory Matching & Shortage Auto-Requisition</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Hours &rarr; 5 Secs (99.5% faster)</span>
+                        <h6><i class="bi bi-layers"></i> Inventory Matching, Shortage Prediction & Order Surge Control</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Hours → 5 Secs (99.5% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -3475,7 +3671,8 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="alert alert-light border small mb-0"><i class="bi bi-exclamation-octagon-fill me-1"></i> Warehouse stock: 4,200 yd | Order Req: 6,552 yd &rarr; <strong>Shortage: 2,352 yds</strong>. Automated Requisition PO-881 drafted.</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-exclamation-octagon-fill text-danger me-1"></i> Warehouse stock: 4,200 yd | Order Req: 6,552 yd → <strong>Shortage: 2,352 yds (36%)</strong>. Automated Requisition PO-881 drafted.</div>
+                            <button class="btn btn-outline-ai btn-sm" onclick="recalculateOrderSurge()"><i class="bi bi-arrow-repeat"></i> Simulate Buyer Qty Surge (+1,300 pcs)</button>
                         </div>
                     </div>
                 </div>
@@ -3483,14 +3680,14 @@
 
                 'sample-dev': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-clipboard-check"></i> Sample Development & Approval</div>
-                    <div class="module-sub">Buyer comments parsing, courier tracking, and photo defect inspection.</div>
+                    <div class="module-title"><i class="bi bi-clipboard-check"></i> 13. Sample Development & Approval</div>
+                    <div class="module-sub">Buyer comment NLP extraction, live DHL/FedEx courier tracking, and automated escalation engine.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-clipboard-check"></i> Unstructured Buyer Feedback Extraction</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 4 Days &rarr; 1 Day (75% faster)</span>
+                        <h6><i class="bi bi-clipboard-check"></i> Buyer Feedback Parsing & Live Courier Tracking</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 4 Days → 1 Day (75% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -3499,10 +3696,21 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="extract-grid">
-                                <div class="extract-item"><div class="label">Sample Status</div><div class="value">Approved with Comments</div></div>
+                            <div class="extract-grid mb-2">
+                                <div class="extract-item"><div class="label">Sample Status</div><div class="value">Approved w/ Comments</div></div>
                                 <div class="extract-item"><div class="label">Action Required</div><div class="value">Adjust Neck Drop -0.5cm</div></div>
                                 <div class="extract-item"><div class="label">Deadline</div><div class="value">Sep 5, 2026</div></div>
+                            </div>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <button class="btn btn-outline-ai btn-sm" onclick="trackCourierLive()"><i class="bi bi-truck"></i> Track DHL Courier Live</button>
+                                <button class="btn btn-outline-danger btn-sm" onclick="triggerEscalation()"><i class="bi bi-bell-fill"></i> Test Missed Deadline Escalation</button>
+                            </div>
+                            <div id="courierTrackingResult" class="p-2 border rounded bg-white small mt-2" style="display:none;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold"><i class="bi bi-box-seam text-primary me-1"></i> DHL Express Waybill #8492049182:</span>
+                                    <span class="badge bg-success">Delivered in Stockholm HQ</span>
+                                </div>
+                                <div class="text-muted mt-1">Signed by: Anna Lindgren (Buyer Fit Tech) on Sep 3, 2026 at 11:24 AM CET.</div>
                             </div>
                         </div>
                     </div>
@@ -3511,13 +3719,13 @@
 
                 'ta-calendar': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-calendar-event"></i> Time & Action (T&A) Calendar</div>
-                    <div class="module-sub">Automated scheduling, critical path tracking, and interactive delay adjustments.</div>
+                    <div class="module-title"><i class="bi bi-calendar-event"></i> 14. Time & Action (T&A) Calendar</div>
+                    <div class="module-sub">Template-based T&A scheduling, downstream ripple recalculation, and predictive delay risk scoring.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="correction">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-calendar-event"></i> Critical Path Engine & Downstream Buffer Recalculation</h6>
+                        <h6><i class="bi bi-calendar-event"></i> Critical Path Engine & Ripple Dependency Recalculation</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-stopwatch"></i> 14 Days Lead Time Saved</span>
                     </div>
                     <div class="comparison-grid">
@@ -3553,13 +3761,13 @@
 
                 'production-followup': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-gear"></i> Production Follow-up</div>
-                    <div class="module-sub">Bottleneck alerts, floor progress queries, and automated daily task checklists.</div>
+                    <div class="module-title"><i class="bi bi-gear"></i> 15. Production Follow-up</div>
+                    <div class="module-sub">Bottleneck alerts, floor progress conversational queries, and automated remedial task generation.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-gear"></i> Real-time Line Bottleneck Alerts</h6>
+                        <h6><i class="bi bi-gear"></i> Real-time Line Output Analytics & Bottleneck Alerts</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> Real-Time IoT Telemetry</span>
                     </div>
                     <div class="comparison-grid">
@@ -3569,7 +3777,8 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="alert alert-light border small mb-0"><i class="bi bi-exclamation-triangle-fill me-1"></i> Sewing Line 04 is <strong>1.5 days behind schedule</strong> due to needle breakage on collar attachment. Remedial re-allocation suggested.</div>
+                            <div class="alert alert-light border small mb-2"><i class="bi bi-exclamation-triangle-fill text-warning me-1"></i> Sewing Line 04 is <strong>1.5 days behind schedule</strong> due to needle breakage on collar attachment.</div>
+                            <button class="btn btn-ai btn-sm" onclick="generateRemedialTasks()"><i class="bi bi-list-task"></i> Auto-Generate Remedial Tasks</button>
                         </div>
                     </div>
                 </div>
@@ -3577,14 +3786,14 @@
 
                 'shipment-planning': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-truck"></i> Shipment Planning</div>
-                    <div class="module-sub">Risk scoring, partial shipment tracking, and automated commercial invoice drafts.</div>
+                    <div class="module-title"><i class="bi bi-truck"></i> 16. Shipment Planning</div>
+                    <div class="module-sub">Shipment risk scoring, partial shipment balance tracking, and auto-drafted commercial invoices.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="semi">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-truck"></i> Automated Commercial Shipping Draft & HS Code Guard</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Days &rarr; 10 Mins (98% faster)</span>
+                        <h6><i class="bi bi-truck"></i> Shipment Risk Score & Partial Shipment Tracker</h6>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 2 Days → 10 Mins (98% faster)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -3593,8 +3802,22 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <div class="border p-2 bg-light rounded small mb-2">Dear Logistics Team, Commercial Packing List & Invoice drafted for Order #PO-2026-0089 (5,200 pcs). Destination: Hamburg Port. HS Code: 6105.10 Validated.</div>
-                            <button class="btn btn-ai btn-sm" onclick="showLearningToast('Shipping instructions dispatched to Freight Forwarder.')"><i class="bi bi-send"></i> Approve & Dispatch</button>
+                            <div class="alert alert-light border small mb-2">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span><i class="bi bi-shield-check text-success me-1"></i> <strong>Shipment Risk Score: 98/100 (Safe)</strong></span>
+                                    <span class="badge bg-success">Cleared for Oct 5 ETD</span>
+                                </div>
+                                <div class="text-muted mt-1">Material Readiness: 100% &bull; Production Sewing: 80% &bull; Final Inspection: Scheduled Sep 28.</div>
+                            </div>
+                            <div class="p-2 border rounded bg-white small mb-2">
+                                <label class="fw-bold small text-muted">Track Partial Shipment (Shipped Pcs):</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    <input type="number" class="form-control" id="partialShippedInput" value="3000">
+                                    <button class="btn btn-outline-ai" onclick="calculatePartialShipment()"><i class="bi bi-calculator"></i> Calculate Balance</button>
+                                </div>
+                                <div id="partialShipmentResult" style="display:none;"></div>
+                            </div>
+                            <button class="btn btn-ai btn-sm" onclick="showLearningToast('Commercial Invoice (HS Code: 6105.10) drafted and dispatched to Forwarder.')"><i class="bi bi-send"></i> Approve & Dispatch Commercial Invoice</button>
                         </div>
                     </div>
                 </div>
@@ -3602,13 +3825,13 @@
 
                 'order-status': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-speedometer"></i> Order Status 360°</div>
-                    <div class="module-sub">Real-time status copilot, daily exceptions summary, and milestone trackers.</div>
+                    <div class="module-title"><i class="bi bi-speedometer"></i> 17. Order Status 360°</div>
+                    <div class="module-sub">Real-time status copilot, daily exception digest, and multi-system consolidated risk cards.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="semi">
                     <div class="comparison-card-header">
-                        <h6><i class="bi bi-speedometer"></i> Order Status 360° Copilot</h6>
+                        <h6><i class="bi bi-speedometer"></i> Order Status 360° Copilot & Daily Exception Digest</h6>
                         <span class="head-to-head-delta-pill"><i class="bi bi-chat-dots"></i> 0.6s Instant Answer</span>
                     </div>
                     <div class="comparison-grid">
@@ -3618,11 +3841,15 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="small fw-bold text-muted">Conversational Order Copilot:</span>
+                                <button class="btn btn-outline-warning text-dark btn-sm fw-bold" onclick="showDailyExceptionDigest()"><i class="bi bi-card-checklist"></i> View Daily Exception Digest</button>
+                            </div>
                             <div class="chat-box" id="statusChatContainer">
-                                <div class="chat-msg ai"><i class="bi bi-stars me-1 text-primary"></i> Order #PO-2026-0089 is currently <strong>In Sewing (62% complete)</strong>. Expected packing date: Sep 28. How can I assist you?</div>
+                                <div class="chat-msg ai"><i class="bi bi-stars me-1 text-primary"></i> Order #PO-2026-0089 is currently <strong>In Sewing (80% complete)</strong>. Expected packing date: Sep 28. Ask me anything about any order.</div>
                             </div>
                             <div class="input-group mt-2">
-                                <input type="text" class="form-control form-control-sm" id="statusChatInput" placeholder="e.g. Which orders are currently at risk of missing ETD?" onkeydown="if(event.key==='Enter') sendChat('statusChatContainer','statusChatInput')" />
+                                <input type="text" class="form-control form-control-sm" id="statusChatInput" placeholder="e.g. How many orders for Brand Zara are on hold?" onkeydown="if(event.key==='Enter') sendChat('statusChatContainer','statusChatInput')" />
                                 <button class="btn btn-ai btn-sm" onclick="sendChat('statusChatContainer','statusChatInput')"><i class="bi bi-send"></i> Ask</button>
                             </div>
                         </div>
@@ -3632,14 +3859,14 @@
 
                 'profitability': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-coin"></i> Buyer Profitability</div>
-                    <div class="module-sub">Actual vs budget variance analysis, margin erosion drivers, and post-mortem insights.</div>
+                    <div class="module-title"><i class="bi bi-coin"></i> 18. Buyer Profitability</div>
+                    <div class="module-sub">Actual vs budget variance analysis, plain-English variance explainers, and Customer Lifetime Value forecasting.</div>
                 </div>
 
                 <div class="comparison-card-wrapper" data-tier="auto">
                     <div class="comparison-card-header">
                         <h6><i class="bi bi-coin"></i> Post-Mortem Profitability & Spend Variance</h6>
-                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Weeks &rarr; Instant (Auto-Rollup)</span>
+                        <span class="head-to-head-delta-pill"><i class="bi bi-lightning-charge-fill"></i> 3 Weeks → Instant (Auto-Rollup)</span>
                     </div>
                     <div class="comparison-grid">
                         <div class="legacy-side">
@@ -3648,11 +3875,16 @@
                         </div>
                         <div class="ai-side">
                             <div class="side-system-tag tag-ai"><i class="bi bi-stars me-1"></i> Fortis AI Pipeline</div>
-                            <table class="table table-sm comparison-table table-bordered small mb-0">
+                            <table class="table table-sm comparison-table table-bordered small mb-2">
                                 <tr class="table-light"><th>Order Code</th><th>Budget</th><th>Actual</th><th>Variance</th><th>Margin</th></tr>
                                 <tr><td>ORD-2026-0089</td><td>$39,208</td><td>$38,450</td><td class="delta positive">+$758 (Under Budget)</td><td><span class="badge bg-success">44.8%</span></td></tr>
                                 <tr><td>ORD-2026-0072</td><td>$52,000</td><td>$53,100</td><td class="delta negative">-$1,100 (Overrun)</td><td><span class="badge bg-warning text-dark">38.2%</span></td></tr>
                             </table>
+                            <div class="p-2 border rounded bg-white small mb-2">
+                                <div class="fw-bold"><i class="bi bi-chat-quote text-primary me-1"></i> Plain-English Variance Explainer:</div>
+                                <div class="text-muted">"Order #ORD-2026-0089 achieved +$758 favorable profit due to $0.15/yd savings from Fabric Ltd. negotiated bulk discount, offsetting a minor +$0.20 placket CM rate increase."</div>
+                            </div>
+                            <button class="btn btn-outline-ai btn-sm" onclick="predictCustomerLifetimeValue()"><i class="bi bi-graph-up"></i> Forecast Customer Lifetime Value (CLV)</button>
                         </div>
                     </div>
                 </div>
@@ -3668,14 +3900,13 @@
             const main = document.getElementById('moduleContainer');
 
             modules.forEach((mod, idx) => {
-                // Nav item
                 const link = document.createElement('a');
                 link.className = 'module-link' + (idx === 0 ? ' active' : '');
                 link.setAttribute('data-module', mod.id);
 
                 if (mod.isFeatured) {
                     link.classList.add('featured-module');
-                    link.innerHTML = `<i class="bi ${mod.icon} "></i> <span>${mod.label}</span> <span class="badge bg-warning text-dark ms-auto" style="font-size:0.62rem; padding: 2px 6px;">MASTER</span>`;
+                    link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span> <span class="badge bg-warning text-dark ms-auto" style="font-size:0.62rem; padding: 2px 6px;">MASTER</span>`;
                 } else {
                     link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span>`;
                 }
@@ -3694,7 +3925,6 @@
                 });
                 nav.appendChild(link);
 
-                // Content pane
                 const pane = document.createElement('div');
                 pane.className = 'module-pane' + (idx === 0 ? ' active' : '');
                 pane.id = 'pane-' + mod.id;
@@ -3702,7 +3932,6 @@
                 main.appendChild(pane);
             });
 
-            // Initialize Order Lifecycle Stepper and default filter bar
             renderOrderLifecycleView();
             updateFilterBarForModule(modules[0]);
         });
