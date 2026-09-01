@@ -16,21 +16,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #e0e7ff;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-light: #e0f2fe;
             --secondary: #0f172a;
-            --sidebar-bg: #0b1329;
-            --sidebar-hover: #152243;
-            --sidebar-active: #1e293b;
+            --sidebar-bg: #091322;
+            --sidebar-hover: #122238;
+            --sidebar-active: #162c47;
+            --sidebar-border: rgba(56, 189, 248, 0.18);
+            --rmg-indigo: #1e3a8a;
+            --rmg-accent: #38bdf8;
+            --rmg-gold: #f59e0b;
+            --rmg-emerald: #10b981;
             --bg-main: #f8fafc;
             --card-border: #e2e8f0;
             --auto-color: #10b981;
             --auto-bg: #ecfdf5;
             --semi-color: #f59e0b;
             --semi-bg: #fffbeb;
-            --correction-color: #6366f1;
-            --correction-bg: #eef2ff;
+            --correction-color: #0284c7;
+            --correction-bg: #f0f9ff;
 
             /* Legacy System Colors */
             --legacy-bg: #fffcf6;
@@ -53,18 +58,21 @@
             overflow: hidden;
         }
 
-        /* Sidebar Styling */
+        /* Sidebar Styling - Ready Made Garments (RMG) Theme */
         .sidebar {
             height: 100vh;
-            background: var(--sidebar-bg);
+            background: linear-gradient(180deg, #091322 0%, #0d1e34 50%, #07111c 100%);
+            background-image: radial-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px), linear-gradient(180deg, #091322 0%, #0d1e34 50%, #07111c 100%);
+            background-size: 16px 16px, 100% 100%;
             color: #cbd5e1;
-            padding-top: 18px;
+            padding-top: 0;
             overflow-y: auto;
             position: sticky;
             top: 0;
             width: 300px;
             flex-shrink: 0;
-            border-right: 1px solid #1e293b;
+            border-right: 1px solid rgba(56, 189, 248, 0.18);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.35);
             z-index: 100;
             display: flex;
             flex-direction: column;
@@ -72,10 +80,22 @@
         }
 
         .sidebar-header {
-            padding: 16px 20px;
-            background: #070d1e;
-            border-bottom: 1px solid #1e293b;
+            padding: 20px 20px 16px 20px;
+            background: linear-gradient(135deg, #060e1a 0%, #0f2744 100%);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
             margin-bottom: 12px;
+            position: relative;
+        }
+
+        .sidebar-header::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, #38bdf8 0%, #f59e0b 50%, transparent 100%);
+            opacity: 0.7;
         }
 
         .sidebar-header h5 {
@@ -89,11 +109,13 @@
         }
 
         .sidebar-header small {
-            color: #94a3b8;
-            font-size: 0.74rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            display: block;
+            color: #38bdf8;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .sidebar-nav-container {
@@ -105,10 +127,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 8px 18px;
+            padding: 9px 18px;
             color: #94a3b8;
             text-decoration: none;
-            border-left: 3px solid transparent;
+            border-left: 3.5px solid transparent;
             transition: all 0.2s ease;
             cursor: pointer;
             font-size: 0.82rem;
@@ -116,42 +138,55 @@
         }
 
         .sidebar .module-link:hover {
-            background: var(--sidebar-hover);
+            background: rgba(56, 189, 248, 0.08);
             color: #ffffff;
+            border-left-color: rgba(56, 189, 248, 0.4);
         }
 
         .sidebar .module-link.active {
-            background: #1e293b;
+            background: linear-gradient(90deg, rgba(14, 116, 144, 0.3) 0%, rgba(15, 23, 42, 0.5) 100%);
             color: #ffffff;
-            border-left-color: #6366f1;
-            font-weight: 600;
+            border-left-color: #38bdf8;
+            font-weight: 700;
+            box-shadow: inset 0 0 12px rgba(56, 189, 248, 0.1);
         }
 
         .sidebar .module-link.featured-module {
-            background: rgba(99, 102, 241, 0.12);
-            color: #ffffff;
-            border-left-color: #6366f1;
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.25) 0%, rgba(16, 185, 129, 0.12) 100%);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-left: 4px solid #38bdf8;
             font-weight: 700;
-            margin-bottom: 8px;
-            border-radius: 0 8px 8px 0;
+            margin: 0 12px 10px 12px;
+            border-radius: 8px;
         }
 
         .sidebar .module-link.featured-module.active {
-            background: rgba(99, 102, 241, 0.25);
-            border-left-color: #ffffff;
+            background: linear-gradient(90deg, rgba(2, 132, 199, 0.4) 0%, rgba(16, 185, 129, 0.22) 100%);
+            color: #ffffff;
+            border-color: #38bdf8;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
         }
 
         .sidebar .module-link i {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             width: 20px;
             text-align: center;
-            color: #cbd5e1;
+            color: #38bdf8;
+            opacity: 0.85;
+        }
+
+        .sidebar .module-link:hover i,
+        .sidebar .module-link.active i {
+            opacity: 1;
+            color: #38bdf8;
         }
 
         .sidebar-footer {
-            padding: 14px 16px;
-            border-top: 1px solid #1e293b;
-            background: rgba(0, 0, 0, 0.25);
+            padding: 16px 18px;
+            border-top: 1px solid rgba(56, 189, 248, 0.18);
+            background: rgba(4, 10, 20, 0.6);
+            backdrop-filter: blur(8px);
         }
 
         /* Main Content Container */
@@ -170,15 +205,15 @@
             background: #f8fafc;
         }
 
-        /* Top Executive Impact Ribbon */
+        /* Top Executive Impact Ribbon - Ready Made Garments Header */
         .impact-ribbon {
-            background: #0f172a;
+            background: linear-gradient(135deg, #091728 0%, #0f2b48 50%, #0a1b2e 100%);
             border-radius: 16px;
             padding: 20px 24px;
             color: #ffffff;
             margin-bottom: 18px;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
-            border: 1px solid #334155;
+            box-shadow: 0 12px 28px -6px rgba(10, 27, 46, 0.4);
+            border: 1px solid rgba(56, 189, 248, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -188,9 +223,9 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 320px;
+            width: 360px;
             height: 100%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle at 90% 20%, rgba(56, 189, 248, 0.2) 0%, rgba(245, 158, 11, 0.08) 40%, transparent 70%);
             pointer-events: none;
         }
 
@@ -201,21 +236,23 @@
         }
 
         .impact-item {
-            background: #1e293b;
-            border: 1px solid #334155;
+            background: linear-gradient(135deg, #112640 0%, #0d1f33 100%);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 12px;
             padding: 12px 14px;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .impact-item:hover {
             transform: translateY(-2px);
-            border-color: #6366f1;
+            border-color: #38bdf8;
+            box-shadow: 0 6px 18px rgba(14, 165, 233, 0.25);
         }
 
         .impact-item .label {
             font-size: 0.72rem;
-            color: #cbd5e1;
+            color: #7dd3fc;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1062,8 +1099,15 @@
         <div class="sidebar">
             <div>
                 <div class="sidebar-header">
-                    <h5><i class="bi bi-boxes me-2"></i>Merchandising AI</h5>
-                    <small>FORTIS APPAREL SUITE</small>
+                    <div class="d-flex align-items-center justify-content-between mb-1">
+                        <h5><i class="bi bi-scissors me-2" style="color: #38bdf8;"></i>Fortis Apparel</h5>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px;">
+                            <i class="bi bi-patch-check-fill me-1"></i>RMG MERCHANDISE
+                        </span>
+                        <small class="text-white-50" style="font-size: 0.7rem; font-weight: 600;">GARMENTS AI</small>
+                    </div>
                 </div>
                 <div class="sidebar-nav-container">
                     <nav class="nav flex-column" id="moduleNav">
@@ -1095,14 +1139,14 @@
                 <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
                     <div>
                         <h6 class="mb-0 fw-bold" id="ribbonTitle">
-                            <i class="bi bi-signpost-2-fill me-2"></i>End-to-End Order Lifecycle Telemetry
+                            <i class="bi bi-diagram-3-fill me-2" style="color: #38bdf8;"></i>Ready Made Garments (RMG) Order Lifecycle Telemetry
                         </h6>
-                        <small class="text-white-50" id="ribbonSub">Aggregated pipeline metrics across all 6 manufacturing milestones</small>
+                        <small class="text-white-50" id="ribbonSub">Aggregated apparel merchandising metrics across all manufacturing milestones</small>
                     </div>
                     <div class="d-flex gap-2 align-items-center">
                         <button class="btn btn-sm btn-outline-light px-3 py-1" onclick="openBenchmarkModal()"><i
                                 class="bi bi-bar-chart-line me-1"></i> Full Benchmark (19 Modules)</button>
-                        <span class="badge bg-primary px-3 py-2" id="ribbonBadge"><i class="bi bi-stars me-1"></i> 18 Custom Rules Learned</span>
+                        <span class="badge px-3 py-2" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border: 1px solid rgba(56, 189, 248, 0.4);" id="ribbonBadge"><i class="bi bi-stars me-1"></i> 18 Custom RMG Rules Learned</span>
                     </div>
                 </div>
                 <div class="impact-grid" id="ribbonGrid">
