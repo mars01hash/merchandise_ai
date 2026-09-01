@@ -20,6 +20,8 @@
             --primary-dark: #0369a1;
             --primary-light: #e0f2fe;
             --secondary: #0f172a;
+            --erp-shell: #0a1322;
+            --erp-shell-border: rgba(56, 189, 248, 0.2);
             --sidebar-bg: #091322;
             --sidebar-hover: #122238;
             --sidebar-active: #162c47;
@@ -28,8 +30,8 @@
             --rmg-accent: #38bdf8;
             --rmg-gold: #f59e0b;
             --rmg-emerald: #10b981;
-            --bg-main: #f8fafc;
-            --card-border: #e2e8f0;
+            --bg-main: #f1f5f9;
+            --card-border: #cbd5e1;
             --auto-color: #10b981;
             --auto-bg: #ecfdf5;
             --semi-color: #f59e0b;
@@ -53,22 +55,395 @@
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-main);
-            color: #1e293b;
+            color: #0f172a;
             margin: 0;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Enterprise Global ShellBar */
+        .erp-shellbar {
+            height: 50px;
+            background: var(--erp-shell);
+            border-bottom: 1px solid var(--erp-shell-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            color: #ffffff;
+            z-index: 1050;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        .erp-brand-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .erp-brand-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .erp-brand-title i {
+            color: #38bdf8;
+            font-size: 1.1rem;
+        }
+
+        .erp-plant-dropdown {
+            position: relative;
+        }
+
+        .erp-plant-picker {
+            background: #112238;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+        }
+
+        .erp-plant-picker:hover,
+        .erp-plant-picker:focus {
+            background: #172d48;
+            border-color: #38bdf8;
+            color: #ffffff;
+        }
+
+        .erp-plant-menu {
+            background: #0d1e34;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            padding: 6px;
+            min-width: 230px;
+            margin-top: 6px !important;
+            z-index: 1060;
+        }
+
+        .erp-plant-menu .dropdown-header {
+            font-size: 0.65rem;
+            color: #7dd3fc;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            padding: 4px 10px;
+        }
+
+        .erp-plant-item {
+            color: #cbd5e1;
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.15s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .erp-plant-item:hover {
+            background: rgba(56, 189, 248, 0.15);
+            color: #ffffff;
+        }
+
+        .erp-plant-item.active {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .erp-search-container {
+            flex: 1;
+            max-width: 480px;
+            position: relative;
+            margin: 0 20px;
+        }
+
+        .erp-search-input {
+            width: 100%;
+            background: #10243d;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 8px;
+            padding: 6px 12px 6px 34px;
+            color: #ffffff;
+            font-size: 0.78rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .erp-search-input:focus {
+            border-color: #38bdf8;
+            background: #152d4c;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+        }
+
+        .erp-search-input::placeholder {
+            color: #64748b;
+        }
+
+        .erp-search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .erp-search-shortcut {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1d3557;
+            color: #94a3b8;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .erp-actions-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .erp-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .erp-status-pill.erp-live {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .erp-status-pill.ai-copilot {
+            background: rgba(2, 132, 199, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulseLive 1.5s infinite;
+        }
+
+        @keyframes pulseLive {
+            0% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.4;
+            }
+        }
+
+        .erp-btn-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.15s;
+        }
+
+        .erp-btn-icon:hover {
+            background: rgba(255, 255, 255, 0.16);
+            color: #ffffff;
+        }
+
+        .erp-btn-icon .badge-dot {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ef4444;
+            border: 1.5px solid #111c2e;
+        }
+
+        .erp-user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .erp-avatar {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .erp-user-info {
+            line-height: 1.15;
+            text-align: left;
+        }
+
+        .erp-user-name {
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .erp-user-role {
+            font-size: 0.63rem;
+            color: #94a3b8;
+        }
+
+        /* Enterprise Document Context & Action Header Bar */
+        .erp-doc-bar {
+            background: #ffffff;
+            border-bottom: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+
+        .erp-doc-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .erp-doc-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.74rem;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .erp-doc-meta {
+            font-size: 0.72rem;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .erp-doc-meta strong {
+            color: #0f172a;
+        }
+
+        .erp-doc-actions {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .erp-btn {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.70rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: 1px solid transparent;
+        }
+
+        .erp-btn-primary {
+            background: #0284c7;
+            color: #ffffff;
+        }
+
+        .erp-btn-primary:hover {
+            background: #0369a1;
+            color: #ffffff;
+        }
+
+        .erp-btn-outline {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            color: #334155;
+        }
+
+        .erp-btn-outline:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+            color: #0f172a;
         }
 
         /* Sidebar Styling - Ready Made Garments (RMG) Theme */
         .sidebar {
-            height: 100vh;
+            height: 100%;
             background: linear-gradient(180deg, #091322 0%, #0d1e34 50%, #07111c 100%);
             background-image: radial-gradient(rgba(56, 189, 248, 0.05) 1px, transparent 1px), linear-gradient(180deg, #091322 0%, #0d1e34 50%, #07111c 100%);
             background-size: 16px 16px, 100% 100%;
             color: #cbd5e1;
             padding-top: 0;
             overflow-y: auto;
-            position: sticky;
-            top: 0;
             width: 300px;
             flex-shrink: 0;
             border-right: 1px solid rgba(56, 189, 248, 0.18);
@@ -80,10 +455,10 @@
         }
 
         .sidebar-header {
-            padding: 20px 20px 16px 20px;
+            padding: 14px 16px 10px 16px;
             background: linear-gradient(135deg, #060e1a 0%, #0f2744 100%);
             border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             position: relative;
         }
 
@@ -91,8 +466,8 @@
             content: '';
             position: absolute;
             bottom: -1px;
-            left: 20px;
-            right: 20px;
+            left: 16px;
+            right: 16px;
             height: 1px;
             background: linear-gradient(90deg, #38bdf8 0%, #f59e0b 50%, transparent 100%);
             opacity: 0.7;
@@ -101,16 +476,16 @@
         .sidebar-header h5 {
             color: #ffffff;
             font-weight: 800;
-            font-size: 1.18rem;
+            font-size: 1.08rem;
             letter-spacing: -0.3px;
             display: flex;
             align-items: center;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .sidebar-header small {
             color: #38bdf8;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 800;
             letter-spacing: 0.8px;
             display: flex;
@@ -118,22 +493,77 @@
             gap: 6px;
         }
 
+        .sidebar-menu-search {
+            padding: 0 14px 8px 14px;
+        }
+
+        .sidebar-menu-search input {
+            width: 100%;
+            background: #112033;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 6px;
+            padding: 5px 8px 5px 26px;
+            font-size: 0.74rem;
+            color: #ffffff;
+        }
+
+        .sidebar-menu-search input:focus {
+            outline: none;
+            border-color: #38bdf8;
+            background: #172b44;
+        }
+
+        .sidebar-menu-search .search-wrap {
+            position: relative;
+        }
+
+        .sidebar-menu-search .search-wrap i {
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
         .sidebar-nav-container {
             flex: 1;
             overflow-y: auto;
         }
 
+        .sidebar-category-header {
+            padding: 10px 16px 3px 16px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: #7dd3fc;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0.95;
+        }
+
+        .sidebar-category-count {
+            background: rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
         .sidebar .module-link {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 9px 18px;
+            gap: 10px;
+            padding: 7px 16px;
             color: #94a3b8;
             text-decoration: none;
             border-left: 3.5px solid transparent;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             cursor: pointer;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 500;
         }
 
@@ -157,7 +587,7 @@
             border: 1px solid rgba(56, 189, 248, 0.3);
             border-left: 4px solid #38bdf8;
             font-weight: 700;
-            margin: 0 12px 10px 12px;
+            margin: 0 10px 8px 10px;
             border-radius: 8px;
         }
 
@@ -169,8 +599,8 @@
         }
 
         .sidebar .module-link i {
-            font-size: 1.05rem;
-            width: 20px;
+            font-size: 0.95rem;
+            width: 18px;
             text-align: center;
             color: #38bdf8;
             opacity: 0.85;
@@ -183,36 +613,36 @@
         }
 
         .sidebar-footer {
-            padding: 16px 18px;
+            padding: 12px 14px;
             border-top: 1px solid rgba(56, 189, 248, 0.18);
-            background: rgba(4, 10, 20, 0.6);
+            background: rgba(4, 10, 20, 0.65);
             backdrop-filter: blur(8px);
         }
 
         /* Main Content Container */
         .main-wrapper {
             display: flex;
-            height: 100vh;
+            height: calc(100vh - 50px);
             overflow: hidden;
             width: 100%;
         }
 
         .main-content {
-            padding: 20px 26px;
+            padding: 10px 14px;
             overflow-y: auto;
-            height: 100vh;
+            height: 100%;
             flex: 1;
-            background: #f8fafc;
+            background: #f1f5f9;
         }
 
         /* Top Executive Impact Ribbon - Ready Made Garments Header */
         .impact-ribbon {
             background: linear-gradient(135deg, #091728 0%, #0f2b48 50%, #0a1b2e 100%);
-            border-radius: 16px;
-            padding: 20px 24px;
+            border-radius: 8px;
+            padding: 10px 14px;
             color: #ffffff;
-            margin-bottom: 18px;
-            box-shadow: 0 12px 28px -6px rgba(10, 27, 46, 0.4);
+            margin-bottom: 10px;
+            box-shadow: 0 4px 14px rgba(10, 27, 46, 0.25);
             border: 1px solid rgba(56, 189, 248, 0.25);
             position: relative;
             overflow: hidden;
@@ -223,7 +653,7 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 360px;
+            width: 260px;
             height: 100%;
             background: radial-gradient(circle at 90% 20%, rgba(56, 189, 248, 0.2) 0%, rgba(245, 158, 11, 0.08) 40%, transparent 70%);
             pointer-events: none;
@@ -231,103 +661,103 @@
 
         .impact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
         }
 
         .impact-item {
             background: linear-gradient(135deg, #112640 0%, #0d1f33 100%);
             border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 12px;
-            padding: 12px 14px;
+            border-radius: 6px;
+            padding: 6px 10px;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .impact-item:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             border-color: #38bdf8;
-            box-shadow: 0 6px 18px rgba(14, 165, 233, 0.25);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
         }
 
         .impact-item .label {
-            font-size: 0.72rem;
+            font-size: 0.60rem;
             color: #7dd3fc;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .impact-item .val {
-            font-size: 1.3rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: #ffffff;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .impact-item .sub {
-            font-size: 0.72rem;
+            font-size: 0.60rem;
             color: #94a3b8;
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         /* Controls Toolbar */
         .controls-toolbar {
             background: #ffffff;
-            border-radius: 12px;
-            padding: 10px 16px;
+            border-radius: 8px;
+            padding: 6px 12px;
             border: 1px solid var(--card-border);
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+            gap: 8px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02);
         }
 
         .view-mode-selector {
             display: inline-flex;
             background: #f1f5f9;
-            padding: 3px;
-            border-radius: 8px;
+            padding: 2px;
+            border-radius: 6px;
             border: 1px solid #e2e8f0;
         }
 
         .view-mode-btn {
             border: none;
             background: transparent;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.78rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
             font-weight: 600;
             color: #64748b;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .view-mode-btn.active {
             background: #ffffff;
             color: #0f172a;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
         }
 
         .tier-filter-btn {
             border: 1px solid #e2e8f0;
             background: #ffffff;
-            padding: 5px 11px;
-            border-radius: 8px;
-            font-size: 0.78rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.72rem;
             font-weight: 600;
             color: #475569;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
         }
 
         .tier-filter-btn:hover {
@@ -348,13 +778,13 @@
 
         .module-pane.active {
             display: block;
-            animation: fadeIn 0.25s ease-in-out;
+            animation: fadeIn 0.2s ease-in-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(4px);
+                transform: translateY(3px);
             }
 
             to {
@@ -364,78 +794,92 @@
         }
 
         .module-header {
-            margin-bottom: 18px;
-        }
-
-        .module-title {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: -0.3px;
-        }
-
-        .module-sub {
-            color: #64748b;
-            font-size: 0.86rem;
-            margin-top: 2px;
-        }
-
-        /* Dual Comparison Cards */
-        .comparison-card-wrapper {
             background: #ffffff;
-            border-radius: 14px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 18px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-            transition: border-color 0.2s;
-        }
-
-        .comparison-card-wrapper:hover {
-            border-color: #cbd5e1;
-        }
-
-        .comparison-card-header {
-            padding: 12px 18px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+            border-left: 4px solid #0284c7;
+        }
+
+        .module-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            letter-spacing: -0.2px;
+            margin: 0;
+        }
+
+        .module-sub {
+            color: #64748b;
+            font-size: 0.72rem;
+            margin-top: 2px;
+        }
+
+        /* Dual Comparison Cards - Enterprise ERP Sheet */
+        .comparison-card-wrapper {
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: border-color 0.15s;
+        }
+
+        .comparison-card-wrapper:hover {
+            border-color: #94a3b8;
+        }
+
+        .comparison-card-header {
+            padding: 6px 12px;
+            background: #f8fafc;
+            border-bottom: 1px solid #cbd5e1;
+            border-left: 3px solid #0284c7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .comparison-card-header h6 {
             margin: 0;
             font-weight: 700;
             color: #0f172a;
-            font-size: 0.95rem;
+            font-size: 0.80rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .head-to-head-delta-pill {
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
             color: #065f46;
-            font-size: 0.74rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 20px;
+            padding: 2px 6px;
+            border-radius: 4px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease;
         }
 
         @media (max-width: 992px) {
@@ -445,89 +889,90 @@
         }
 
         .legacy-side {
-            background: var(--legacy-bg);
-            padding: 16px 18px;
-            border-right: 1px solid var(--legacy-border);
+            background: #fdfbf7;
+            padding: 10px 12px;
+            border-right: 1px solid #e2e8f0;
         }
 
         .ai-side {
             background: #ffffff;
-            padding: 16px 18px;
+            padding: 10px 12px;
         }
 
         .side-system-tag {
-            font-size: 0.7rem;
+            font-size: 0.62rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
             display: inline-flex;
             align-items: center;
-            padding: 3px 8px;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-bottom: 6px;
         }
 
         .side-system-tag.tag-legacy {
-            background: var(--legacy-badge);
-            color: var(--legacy-header);
-            border: 1px solid #fdba74;
+            background: #ffedd5;
+            color: #9a3412;
+            border: 1px solid #fed7aa;
         }
 
         .side-system-tag.tag-ai {
-            background: #e0e7ff;
-            color: #3730a3;
-            border: 1px solid #c7d2fe;
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         /* Mimicked Legacy Terminal / Manual Keying */
         .legacy-terminal-box {
             background: #ffffff;
             border: 1px solid #fed7aa;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 8px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
         }
 
         .legacy-terminal-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             border-bottom: 1px dashed #fed7aa;
-            padding-bottom: 6px;
+            padding-bottom: 3px;
         }
 
         .legacy-timer-badge {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
+            font-size: 0.65rem;
             font-weight: 700;
             color: #c2410c;
             background: #ffedd5;
-            padding: 2px 6px;
+            padding: 1px 5px;
             border-radius: 4px;
         }
 
         .legacy-input-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+            gap: 5px;
         }
 
         .legacy-input-cell label {
-            font-size: 0.68rem;
-            font-weight: 600;
+            font-size: 0.60rem;
+            font-weight: 700;
             color: #78350f;
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            text-transform: uppercase;
         }
 
         .legacy-input-cell input,
         .legacy-input-cell select {
             width: 100%;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            padding: 4px 6px;
+            font-size: 0.72rem;
+            padding: 2px 5px;
             border: 1px solid #fed7aa;
             border-radius: 4px;
             background: #fffdfa;
@@ -543,22 +988,22 @@
             background: #fee2e2;
             border: 1px solid #fca5a5;
             color: #991b1b;
-            font-size: 0.76rem;
-            padding: 6px 10px;
-            border-radius: 6px;
-            margin-top: 8px;
+            font-size: 0.70rem;
+            padding: 4px 6px;
+            border-radius: 4px;
+            margin-top: 4px;
             display: none;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.2s ease;
         }
 
         /* KPI Micro Strips */
         .kpi-stat-strip {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 6px;
+            margin-top: 8px;
             border-top: 1px dashed #e2e8f0;
-            padding-top: 10px;
+            padding-top: 6px;
         }
 
         .legacy-side .kpi-stat-strip {
@@ -567,9 +1012,9 @@
 
         .kpi-micro-card {
             background: #ffffff;
-            border-radius: 6px;
-            padding: 6px 8px;
-            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px 6px;
+            border: 1px solid #cbd5e1;
         }
 
         .legacy-side .kpi-micro-card {
@@ -578,28 +1023,29 @@
         }
 
         .kpi-micro-card .k-label {
-            font-size: 0.66rem;
+            font-size: 0.58rem;
             color: #64748b;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
         }
 
         .kpi-micro-card .k-val {
-            font-size: 0.88rem;
+            font-size: 0.78rem;
             font-weight: 800;
             color: #0f172a;
             margin-top: 1px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Tier Badges */
         .badge-tier {
-            font-size: 0.7rem;
+            font-size: 0.62rem;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 2px 5px;
+            border-radius: 4px;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .badge-auto {
@@ -616,63 +1062,63 @@
 
         .badge-correction {
             background: var(--correction-bg);
-            color: #3730a3;
-            border: 1px solid #c7d2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         /* Buttons */
         .btn-ai {
-            background: #6366f1;
+            background: #0284c7;
             color: #ffffff;
             font-weight: 600;
-            font-size: 0.82rem;
-            padding: 6px 14px;
-            border-radius: 8px;
-            border: none;
-            transition: all 0.2s;
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #0369a1;
+            transition: all 0.15s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .btn-ai:hover {
-            background: #4f46e5;
+            background: #0369a1;
             color: #ffffff;
-            transform: translateY(-1px);
         }
 
         .btn-outline-ai {
-            border: 1px solid #6366f1;
-            color: #6366f1;
-            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #0f172a;
+            background: #ffffff;
             font-weight: 600;
-            font-size: 0.82rem;
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: all 0.2s;
+            font-size: 0.72rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            transition: all 0.15s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         .btn-outline-ai:hover {
-            background: #6366f1;
-            color: #ffffff;
+            background: #f8fafc;
+            border-color: #94a3b8;
+            color: #0284c7;
         }
 
         .btn-correction {
-            background: #4f46e5;
+            background: #0284c7;
             color: white;
-            font-size: 0.82rem;
+            font-size: 0.72rem;
             font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            padding: 6px 12px;
-            transition: 0.2s;
+            border: 1px solid #0369a1;
+            border-radius: 4px;
+            padding: 3px 8px;
+            transition: 0.15s;
         }
 
         .btn-correction:hover {
-            background: #3730a3;
+            background: #0369a1;
             color: white;
         }
 
@@ -680,14 +1126,14 @@
             background: #fff7ed;
             color: #c2410c;
             border: 1px solid #fed7aa;
-            font-size: 0.78rem;
+            font-size: 0.70rem;
             font-weight: 700;
-            border-radius: 6px;
-            padding: 5px 10px;
-            transition: all 0.2s;
+            border-radius: 4px;
+            padding: 3px 6px;
+            transition: all 0.15s;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
 
         .btn-legacy-sim:hover {
@@ -699,31 +1145,32 @@
         /* Extraction Item Display */
         .extract-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+            gap: 6px;
         }
 
         .extract-item {
-            background: #ffffff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-            border-left: 3px solid #6366f1;
+            background: #f8fafc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            border-left: 3px solid #0284c7;
         }
 
         .extract-item .label {
-            font-size: 0.68rem;
+            font-size: 0.58rem;
             color: #64748b;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
         }
 
         .extract-item .value {
-            font-size: 0.92rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: #0f172a;
-            margin-top: 2px;
+            margin-top: 1px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .extract-item.confidence-warning {
@@ -734,39 +1181,39 @@
         /* Human Correction Panel */
         .correction-panel {
             background: #ffffff;
-            border: 1px solid #c7d2fe;
-            border-radius: 10px;
-            padding: 12px 14px;
-            margin-top: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 8px 10px;
+            margin-top: 6px;
         }
 
         .learning-banner {
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
             color: #065f46;
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 0.8rem;
-            margin-top: 8px;
+            border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 0.72rem;
+            margin-top: 5px;
             display: none;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.2s ease;
         }
 
         /* Risk Gauge */
         .risk-gauge {
             width: 100%;
-            height: 8px;
+            height: 5px;
             background: #e2e8f0;
-            border-radius: 10px;
-            margin: 6px 0;
+            border-radius: 3px;
+            margin: 4px 0;
             overflow: hidden;
         }
 
         .risk-gauge .fill {
             height: 100%;
-            border-radius: 10px;
+            border-radius: 3px;
             background: #10b981;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
         }
 
         .risk-gauge .fill.warning {
@@ -777,12 +1224,27 @@
             background: #ef4444;
         }
 
-        /* Comparison Tables & Diffs */
-        .comparison-table td,
+        /* Enterprise Data Tables & Diffs */
+        .comparison-table {
+            border-color: #cbd5e1 !important;
+        }
+
         .comparison-table th {
+            background: #f1f5f9;
+            color: #334155;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            padding: 4px 6px;
+            border-bottom: 2px solid #cbd5e1;
+        }
+
+        .comparison-table td {
             vertical-align: middle;
-            font-size: 0.82rem;
-            padding: 6px 10px;
+            font-size: 0.72rem;
+            padding: 4px 6px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .delta.positive {
@@ -798,35 +1260,35 @@
         .diff-before {
             text-decoration: line-through;
             color: #64748b;
-            font-size: 0.82rem;
-            margin-right: 6px;
+            font-size: 0.70rem;
+            margin-right: 4px;
         }
 
         .diff-after {
             color: #0f172a;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.76rem;
         }
 
-        /* Chat Widget */
+        /* Chat Widget (Merchandising AI Copilot) */
         .chat-box {
-            background: #ffffff;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            padding: 12px;
-            max-height: 160px;
+            background: #f8fafc;
+            border-radius: 4px;
+            border: 1px solid #cbd5e1;
+            padding: 8px;
+            max-height: 130px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
         }
 
         .chat-msg {
-            padding: 7px 12px;
-            border-radius: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
             max-width: 85%;
-            font-size: 0.82rem;
-            line-height: 1.4;
+            font-size: 0.72rem;
+            line-height: 1.3;
             word-break: break-word;
         }
 
@@ -834,44 +1296,44 @@
             background: #0f172a;
             color: #ffffff;
             align-self: flex-end;
-            border-bottom-right-radius: 2px;
         }
 
         .chat-msg.ai {
-            background: #e0e7ff;
-            color: #1e1b4b;
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
             align-self: flex-start;
-            border-bottom-left-radius: 2px;
         }
 
         /* Order Lifecycle Hero & Stepper */
         .order-picker-bar {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 12px 18px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 18px;
+            border-radius: 6px;
+            padding: 6px 12px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+            gap: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
 
         .order-pill-btn {
             background: #f1f5f9;
             border: 1px solid #cbd5e1;
             color: #334155;
-            padding: 6px 14px;
-            border-radius: 9px;
-            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.70rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.15s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .order-pill-btn:hover {
@@ -880,81 +1342,84 @@
         }
 
         .order-pill-btn.active {
-            background: #6366f1;
-            border-color: #6366f1;
+            background: #0284c7;
+            border-color: #0369a1;
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 1px 4px rgba(2, 132, 199, 0.25);
         }
 
         .order-summary-hero {
-            background: #0f172a;
-            border-radius: 16px;
-            padding: 22px 24px;
+            background: linear-gradient(135deg, #091728 0%, #0f2b48 50%, #0a1b2e 100%);
+            border-radius: 8px;
+            padding: 10px 14px;
             color: #ffffff;
-            margin-bottom: 20px;
-            border: 1px solid #334155;
-            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+            margin-bottom: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 4px 12px rgba(10, 27, 46, 0.25);
         }
 
         .order-hero-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 12px;
-            margin-top: 14px;
+            grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+            gap: 6px;
+            margin-top: 8px;
         }
 
         .order-hero-kpi {
-            background: #1e293b;
-            border: 1px solid #475569;
-            border-radius: 10px;
-            padding: 10px 14px;
+            background: linear-gradient(135deg, #112640 0%, #0d1f33 100%);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 6px;
+            padding: 5px 8px;
         }
 
         .order-hero-kpi .kpi-label {
-            font-size: 0.72rem;
-            color: #cbd5e1;
+            font-size: 0.58rem;
+            color: #7dd3fc;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.4px;
             font-weight: 700;
         }
 
         .order-hero-kpi .kpi-val {
-            font-size: 1.25rem;
+            font-size: 0.92rem;
             font-weight: 800;
             color: #ffffff;
-            margin-top: 2px;
+            margin-top: 1px;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Stepper */
+        /* Stepper (Milestone Pipeline) */
         .lifecycle-stepper-box {
             background: #ffffff;
-            border-radius: 16px;
-            padding: 20px 18px;
-            border: 1px solid var(--card-border);
-            margin-bottom: 20px;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+            border-radius: 6px;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
 
         .stepper-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 6px;
             border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 12px;
+            padding-bottom: 6px;
         }
 
         .stepper-header h6 {
             color: #0f172a;
             font-weight: 800;
+            font-size: 0.80rem;
+            margin: 0;
         }
 
         .stepper-track {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
+            gap: 6px;
             position: relative;
         }
 
@@ -967,9 +1432,9 @@
         .stepper-step {
             text-align: center;
             cursor: pointer;
-            padding: 10px 4px;
-            border-radius: 12px;
-            transition: all 0.2s ease;
+            padding: 6px 2px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
             position: relative;
             background: transparent;
             border: 1px solid transparent;
@@ -983,33 +1448,33 @@
         .stepper-step.selected {
             background: #eef2ff;
             border-color: #c7d2fe;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.12);
+            box-shadow: 0 2px 6px rgba(99, 102, 241, 0.1);
         }
 
         .step-icon-circle {
-            width: 40px;
-            height: 40px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 6px auto;
-            font-size: 1.1rem;
+            margin: 0 auto 4px auto;
+            font-size: 0.82rem;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .step-status-completed .step-icon-circle {
             background: #d1fae5;
             color: #059669;
-            border: 2px solid #10b981;
+            border: 1.5px solid #10b981;
         }
 
         .step-status-active .step-icon-circle {
             background: #e0e7ff;
             color: #4f46e5;
-            border: 2px solid #6366f1;
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+            border: 1.5px solid #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
             animation: pulseStep 1.8s infinite;
         }
 
@@ -1017,30 +1482,30 @@
 
             0%,
             100% {
-                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.3);
             }
 
             50% {
-                box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+                box-shadow: 0 0 0 5px rgba(99, 102, 241, 0);
             }
         }
 
         .step-status-pending .step-icon-circle {
             background: #f8fafc;
             color: #94a3b8;
-            border: 2px dashed #cbd5e1;
+            border: 1.5px dashed #cbd5e1;
         }
 
         .step-title {
-            font-size: 0.74rem;
+            font-size: 0.66rem;
             font-weight: 700;
             color: #1e293b;
-            line-height: 1.25;
-            margin-bottom: 2px;
+            line-height: 1.15;
+            margin-bottom: 1px;
         }
 
         .step-timing {
-            font-size: 0.66rem;
+            font-size: 0.58rem;
             color: #64748b;
             font-weight: 500;
         }
@@ -1094,22 +1559,121 @@
 
 <body>
 
+    <!-- 1. Top Enterprise Global ShellBar -->
+    <header class="erp-shellbar">
+        <div class="erp-brand-section">
+            <a href="#" class="erp-brand-title text-decoration-none">
+                <i class="bi bi-boxes"></i>
+                <span>Fortis <span style="font-weight: 400; color: #94a3b8; font-size: 0.85rem;">Enterprise
+                        ERP</span></span>
+            </a>
+            <div class="dropdown erp-plant-dropdown">
+                <button class="erp-plant-picker dropdown-toggle border-0" type="button" id="plantDropdownBtn"
+                    data-bs-toggle="dropdown" aria-expanded="false" title="Switch Production Plant / Company Unit">
+                    <i class="bi bi-building-fill-gear text-info"></i>
+                    <span id="activePlantName">Fortis Garments Ltd.</span>
+                    <i class="bi bi-chevron-down ms-1 text-white-50" style="font-size: 0.65rem;"></i>
+                </button>
+                <ul class="dropdown-menu erp-plant-menu dropdown-menu-dark shadow" aria-labelledby="plantDropdownBtn">
+                    <li class="dropdown-header"><i class="bi bi-buildings me-1"></i> Production &amp; Fabric Units</li>
+                    <li><a class="dropdown-item erp-plant-item active" href="javascript:void(0)"
+                            onclick="switchPlantUnit('Fortis Garments Ltd.', this)"><i
+                                class="bi bi-building me-2 text-info"></i><span>Fortis Garments Ltd.</span> <i
+                                class="bi bi-check2 check-icon"></i></a></li>
+                    <li><a class="dropdown-item erp-plant-item" href="javascript:void(0)"
+                            onclick="switchPlantUnit('Habitus Fashion Ltd.', this)"><i
+                                class="bi bi-building me-2 text-info"></i><span>Habitus Fashion Ltd.</span> <i
+                                class="bi bi-check2 check-icon d-none"></i></a></li>
+                    <li><a class="dropdown-item erp-plant-item" href="javascript:void(0)"
+                            onclick="switchPlantUnit('KA Design Ltd.', this)"><i
+                                class="bi bi-building me-2 text-info"></i><span>KA Design Ltd.</span> <i
+                                class="bi bi-check2 check-icon d-none"></i></a></li>
+                    <li><a class="dropdown-item erp-plant-item" href="javascript:void(0)"
+                            onclick="switchPlantUnit('Village-Boro Bera', this)"><i
+                                class="bi bi-geo-alt me-2 text-warning"></i><span>Village-Boro Bera</span> <i
+                                class="bi bi-check2 check-icon d-none"></i></a></li>
+                    <li><a class="dropdown-item erp-plant-item" href="javascript:void(0)"
+                            onclick="switchPlantUnit('Arrow Fabric Ltd.', this)"><i
+                                class="bi bi-layers me-2 text-primary"></i><span>Arrow Fabric Ltd.</span> <i
+                                class="bi bi-check2 check-icon d-none"></i></a></li>
+                    <li><a class="dropdown-item erp-plant-item" href="javascript:void(0)"
+                            onclick="switchPlantUnit('Quattro Fashion Ltd.', this)"><i
+                                class="bi bi-building me-2 text-info"></i><span>Quattro Fashion Ltd.</span> <i
+                                class="bi bi-check2 check-icon d-none"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Universal Global Search Bar -->
+        <div class="erp-search-container">
+            <i class="bi bi-search erp-search-icon"></i>
+            <input type="text" id="erpGlobalSearch" class="erp-search-input"
+                placeholder="Search PO#, Style#, Buyer, BOM, T&A, Supplier (Press Alt+K or /)"
+                oninput="handleErpSearch(this.value)" />
+            <span class="erp-search-shortcut">Alt+K</span>
+        </div>
+
+        <!-- System Status & User Actions -->
+        <div class="erp-actions-section">
+            <span class="erp-status-pill erp-live" title="Enterprise Core Integration Active">
+                <span class="pulse-dot"></span> ERP Connected
+            </span>
+            <span class="erp-status-pill ai-copilot" title="Merchandising AI Copilot Online">
+                <i class="bi bi-stars"></i> Merchandising AI
+            </span>
+
+            <button class="erp-btn-icon" onclick="openBenchmarkModal()" title="Executive Benchmark Audit">
+                <i class="bi bi-table"></i>
+            </button>
+
+            <button class="erp-btn-icon" onclick="openRaceModal()" title="Live Workflow Race">
+                <i class="bi bi-stopwatch-fill text-warning"></i>
+            </button>
+
+            <button class="erp-btn-icon"
+                onclick="showLearningToast('3 Critical Alerts: 1 Shortage, 1 SMV Spike, 1 Courier Delay')"
+                title="System Notifications">
+                <i class="bi bi-bell-fill"></i>
+                <span class="badge-dot"></span>
+            </button>
+
+            <div class="erp-user-profile" title="Active Merchandiser Profile">
+                <div class="erp-avatar">KH</div>
+                <div class="erp-user-info d-none d-md-block">
+                    <div class="erp-user-name">John Doe</div>
+                    <div class="erp-user-role">Lead Merchandiser · L4</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="main-wrapper">
         <!-- Sidebar Navigation -->
         <div class="sidebar">
             <div>
                 <div class="sidebar-header">
                     <div class="d-flex align-items-center justify-content-between mb-1">
-                        <h5><i class="bi bi-scissors me-2" style="color: #38bdf8;"></i>Fortis</h5>
+                        <h5><i class="" style="color: #38bdf8;"></i>Fortis Group</h5>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <span class="badge"
-                            style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px;">
-                            <i class="bi bi-patch-check-fill me-1"></i>RMG MERCHANDISE
+                            style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px;">
+                            <i class="bi bi-patch-check-fill me-1"></i>RMG ERP MODULES
                         </span>
-                        <small class="text-white-50" style="font-size: 0.7rem; font-weight: 600;">GARMENTS AI</small>
+                        <small class="text-white-50" style="font-size: 0.68rem; font-weight: 600;">18 DOMAINS
+                            ACTIVE</small>
                     </div>
                 </div>
+
+                <!-- Fast Menu Filter -->
+                <div class="sidebar-menu-search">
+                    <div class="search-wrap">
+                        <i class="bi bi-filter"></i>
+                        <input type="text" id="menuFilterInput" placeholder="Quick find module..."
+                            oninput="filterSidebarMenu(this.value)" />
+                    </div>
+                </div>
+
                 <div class="sidebar-nav-container">
                     <nav class="nav flex-column" id="moduleNav">
                         <!-- Injected via JavaScript -->
@@ -1126,14 +1690,53 @@
                         <i class="bi bi-stopwatch-fill me-2"></i> Run Workflow Race
                     </button>
                 </div>
-                <div class="mt-2 text-center text-white-50" style="font-size:0.72rem;">
-                    <i class="bi bi-shield-check me-1"></i> Side-by-Side Audit Active
+                <div class="mt-2 text-center text-white-50" style="font-size:0.7rem;">
+                    <i class="bi bi-shield-check me-1 text-success"></i> Enterprise Core &amp; AI Verified
                 </div>
             </div>
         </div>
 
         <!-- Main Content Viewport -->
         <div class="main-content" id="mainContent">
+
+            <!-- 2. Enterprise Document Context & Action Header Bar -->
+            <div class="erp-doc-bar">
+                <div class="erp-doc-info">
+                    <div class="erp-doc-id" id="docIdBadge">
+                        <i class="bi bi-file-earmark-code"></i> <span id="currentDocId">PO-2026-0089</span>
+                    </div>
+                    <div class="erp-doc-meta">
+                        <span>Style: <strong id="currentDocStyle">ST-1256 (Men's Organic Polo)</strong></span>
+                        <span class="text-muted">&bull;</span>
+                        <span>Buyer: <strong id="currentDocBuyer">H&M Hennes & Mauritz</strong></span>
+                        <span class="text-muted">&bull;</span>
+                        <span>Qty: <strong id="currentDocQty">5,200 pcs</strong></span>
+                        <span class="text-muted">&bull;</span>
+                        <span>FOB: <strong id="currentDocFob">$12.80</strong></span>
+                    </div>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle fw-bold"
+                        style="font-size: 0.72rem;">
+                        <i class="bi bi-check-circle-fill me-1"></i>POSTED &amp; IN PRODUCTION
+                    </span>
+                </div>
+
+                <div class="erp-doc-actions">
+                    <button class="erp-btn erp-btn-primary" onclick="postErpTransaction()"
+                        title="Post and Commit transaction to ERP (Ctrl+S)">
+                        <i class="bi bi-cloud-arrow-up-fill"></i> Save &amp; Post ERP
+                    </button>
+                    <button class="erp-btn erp-btn-outline" onclick="printTechPack()" title="Print Standard Spec Sheet">
+                        <i class="bi bi-printer"></i> Print Spec
+                    </button>
+                    <button class="erp-btn erp-btn-outline" onclick="exportBOM()" title="Export Excel / EDI BOM">
+                        <i class="bi bi-file-earmark-excel"></i> Export BOM
+                    </button>
+                    <button class="erp-btn erp-btn-outline" onclick="viewAuditTrail()"
+                        title="View Revision History & Audit Logs">
+                        <i class="bi bi-clock-history"></i> Audit Trail
+                    </button>
+                </div>
+            </div>
 
             <!-- Top Executive Impact Ribbon -->
             <div class="impact-ribbon" id="impactRibbon">
@@ -1327,6 +1930,79 @@
         </div>
     </div>
 
+    <!-- Enterprise Audit Trail & Transaction Log Modal -->
+    <div class="modal fade" id="auditTrailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content shadow-lg border-0" style="border-radius:14px;">
+                <div class="modal-header bg-dark text-white">
+                    <div>
+                        <h5 class="modal-title fw-bold"><i class="bi bi-clock-history me-2 text-info"></i>Enterprise ERP
+                            Audit Trail &amp; Revision History</h5>
+                        <small class="text-white-50">Document: <strong class="text-white font-monospace">PO-2026-0089 /
+                                ST-1256</strong> &bull; Plant 1020 &bull; Compliance Log</small>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped mb-0 small align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Transaction</th>
+                                    <th>User / System</th>
+                                    <th>Action Performed</th>
+                                    <th>Delta & Verification</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-monospace text-muted">2026-09-01 16:40:12</td>
+                                    <td><span class="badge bg-secondary font-monospace">TX-990842</span></td>
+                                    <td><strong>Fortis Merchandising AI</strong> (Auto)</td>
+                                    <td>Tech pack vision OCR parsed 180 GSM Single Jersey</td>
+                                    <td><span class="text-success fw-bold">0 Errors (100% Match)</span></td>
+                                    <td><span class="badge bg-success">COMMITTED</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-monospace text-muted">2026-09-01 16:42:55</td>
+                                    <td><span class="badge bg-secondary font-monospace">TX-990845</span></td>
+                                    <td><strong>John Doe</strong> (L4 Exec)</td>
+                                    <td>Approved SMV 12.5m & assigned sewing Line 04</td>
+                                    <td><span class="text-primary">+14% Efficiency Target</span></td>
+                                    <td><span class="badge bg-success">APPROVED</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-monospace text-muted">2026-09-01 16:45:00</td>
+                                    <td><span class="badge bg-secondary font-monospace">TX-990849</span></td>
+                                    <td><strong>System Sentinel</strong> (Rule Guard)</td>
+                                    <td>Cost anomaly check: Flagged +35% wash quote</td>
+                                    <td><span class="text-warning fw-bold">Price renegotiated -$0.45</span></td>
+                                    <td><span class="badge bg-warning text-dark">VERIFIED</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="font-monospace text-muted">2026-09-01 16:48:30</td>
+                                    <td><span class="badge bg-secondary font-monospace">TX-990852</span></td>
+                                    <td><strong>Enterprise Ledger Bus</strong> (Live Sync)</td>
+                                    <td>Posted Sales Order & Material Reservation to Plant 1020</td>
+                                    <td><span class="text-success">5,200 pcs reserved</span></td>
+                                    <td><span class="badge bg-primary">IN PRODUCTION</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light d-flex justify-content-between">
+                    <span class="small text-muted"><i class="bi bi-shield-check me-1 text-success"></i> Immutable
+                        Cryptographic Hash: <code>0x8f3c...b12a</code> &bull; Level-4 Audit Log</span>
+                    <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-dismiss="modal">Close Audit
+                        Trail</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification for Active Learning -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
         <div id="learningToast" class="toast align-items-center text-bg-dark border-0 shadow-lg" role="alert"
@@ -1347,24 +2023,24 @@
         // ====== ALL 18 MERCHANDISING MODULES + MASTER ORDER JOURNEY ======
         const modules = [
             { id: 'lifecycle-tracker', label: 'Order Journey (Tech Pack → Ship)', icon: 'bi-signpost-2-fill', isFeatured: true },
-            { id: 'buyer-master', label: '1. Buyer Master', icon: 'bi-person-badge' },
-            { id: 'buyer-order-mgmt', label: '2. Buyer Order Management', icon: 'bi-file-earmark-text' },
-            { id: 'style-product-master', label: '3. Style & Product Master', icon: 'bi-tags' },
-            { id: 'order-booking', label: '4. Order Booking', icon: 'bi-cart-check' },
-            { id: 'ie-smv', label: '5. IE & SMV Management', icon: 'bi-speedometer2' },
-            { id: 'product-costing', label: '6. Product Costing', icon: 'bi-calculator' },
-            { id: 'cost-sheet', label: '7. Cost Sheet', icon: 'bi-table' },
-            { id: 'target-margin', label: '8. Target Price & Margin', icon: 'bi-graph-up-arrow' },
-            { id: 'order-budgeting', label: '9. Order-wise Budgeting', icon: 'bi-wallet2' },
-            { id: 'material-requirement', label: '10. Material Requirement (MRP)', icon: 'bi-box-seam' },
-            { id: 'supplier-cs', label: '11. Supplier CS', icon: 'bi-files' },
-            { id: 'fabric-trims', label: '12. Fabric & Trims Requirement', icon: 'bi-layers' },
-            { id: 'sample-dev', label: '13. Sample Dev & Approval', icon: 'bi-clipboard-check' },
-            { id: 'ta-calendar', label: '14. T&A Calendar', icon: 'bi-calendar-event' },
-            { id: 'production-followup', label: '15. Production Follow-up', icon: 'bi-gear' },
-            { id: 'shipment-planning', label: '16. Shipment Planning', icon: 'bi-truck' },
-            { id: 'order-status', label: '17. Order Status 360°', icon: 'bi-speedometer' },
-            { id: 'profitability', label: '18. Buyer Profitability', icon: 'bi-coin' },
+            { id: 'buyer-master', label: 'Buyer Master', icon: 'bi-person-badge' },
+            { id: 'buyer-order-mgmt', label: 'Buyer Order Management', icon: 'bi-file-earmark-text' },
+            { id: 'style-product-master', label: 'Style & Product Master', icon: 'bi-tags' },
+            { id: 'order-booking', label: 'Order Booking', icon: 'bi-cart-check' },
+            { id: 'ie-smv', label: 'IE & SMV Management', icon: 'bi-speedometer2' },
+            { id: 'product-costing', label: 'Product Costing', icon: 'bi-calculator' },
+            { id: 'cost-sheet', label: 'Cost Sheet', icon: 'bi-table' },
+            { id: 'target-margin', label: 'Target Price & Margin', icon: 'bi-graph-up-arrow' },
+            { id: 'order-budgeting', label: 'Order-wise Budgeting', icon: 'bi-wallet2' },
+            { id: 'material-requirement', label: 'Material Requirement (MRP)', icon: 'bi-box-seam' },
+            { id: 'supplier-cs', label: 'Supplier CS', icon: 'bi-files' },
+            { id: 'fabric-trims', label: 'Fabric & Trims Requirement', icon: 'bi-layers' },
+            { id: 'sample-dev', label: 'Sample Dev & Approval', icon: 'bi-clipboard-check' },
+            { id: 'ta-calendar', label: 'T&A Calendar', icon: 'bi-calendar-event' },
+            { id: 'production-followup', label: 'Production Follow-up', icon: 'bi-gear' },
+            { id: 'shipment-planning', label: 'Shipment Planning', icon: 'bi-truck' },
+            { id: 'order-status', label: 'Order Status 360°', icon: 'bi-speedometer' },
+            { id: 'profitability', label: 'Buyer Profitability', icon: 'bi-coin' },
         ];
 
         let totalCorrectionsCount = 14;
@@ -2379,12 +3055,14 @@
                 <div class="order-summary-hero">
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
                         <div>
-                            <span class="badge bg-warning text-dark px-3 py-1 fw-bold"><i class="bi bi-tag-fill me-1"></i> ${order.buyer}</span>
-                            <h4 class="fw-bold mt-2 mb-0">${order.orderNo}: ${order.style}</h4>
+                            <span class="badge bg-warning text-dark px-2 py-0.5 fw-bold" style="font-size: 0.65rem;"><i class="bi bi-tag-fill me-1"></i> ${order.buyer}</span>
+                            <div class="fw-bold mt-1 text-white font-monospace" style="font-size: 0.86rem; letter-spacing: -0.1px;">
+                                <i class="bi bi-box-seam me-1 text-info"></i>${order.orderNo}: <span style="color: #cbd5e1; font-weight: 600;">${order.style}</span>
+                            </div>
                         </div>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-light btn-sm fw-bold px-3" onclick="openRaceModal()"><i class="bi bi-stopwatch me-1"></i> Race Simulator</button>
-                            <button class="btn btn-warning btn-sm fw-bold px-3 shadow text-dark" onclick="simulateJourneyProgression()"><i class="bi bi-play-circle-fill me-1"></i> Simulate Live Progression</button>
+                        <div class="d-flex gap-1">
+                            <button class="btn btn-outline-light btn-sm fw-semibold px-2 py-1" style="font-size: 0.70rem;" onclick="openRaceModal()"><i class="bi bi-stopwatch me-1 text-warning"></i> Race Simulator</button>
+                            <button class="btn btn-warning btn-sm fw-bold px-2 py-1 shadow-sm text-dark" style="font-size: 0.70rem;" onclick="simulateJourneyProgression()"><i class="bi bi-play-circle-fill me-1"></i> Simulate Progression</button>
                         </div>
                     </div>
                     <div class="order-hero-grid">
@@ -2402,7 +3080,7 @@
                         </div>
                         <div class="order-hero-kpi">
                             <div class="kpi-label">Lead Time Reduction</div>
-                            <div class="kpi-val">${order.leadTimeDays}d <small class="fs-6 text-white-50">(vs ${order.baselineLeadTime}d Legacy)</small></div>
+                            <div class="kpi-val">${order.leadTimeDays}d <small class="text-white-50" style="font-size: 0.60rem;">(vs ${order.baselineLeadTime}d Legacy)</small></div>
                         </div>
                         <div class="order-hero-kpi">
                             <div class="kpi-label">Protected Value</div>
@@ -2924,7 +3602,7 @@
 
                 'buyer-master': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-person-badge"></i> 1. Buyer Master & Contract Intel</div>
+                    <div class="module-title"><i class="bi bi-person-badge"></i> Buyer Master & Contract Intel</div>
                     <div class="module-sub">Contract extraction, duplicate profile blocking, risk scoring, and auto-compliance document attachments.</div>
                 </div>
 
@@ -3085,7 +3763,7 @@
 
                 'buyer-order-mgmt': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-file-earmark-text"></i> 2. Buyer Order Management</div>
+                    <div class="module-title"><i class="bi bi-file-earmark-text"></i> Buyer Order Management</div>
                     <div class="module-sub">PO extraction, amendment impact simulation, duplicate PO detection, and early delivery delay prediction.</div>
                 </div>
 
@@ -3216,7 +3894,7 @@
 
                 'style-product-master': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-tags"></i> 3. Style & Product Master</div>
+                    <div class="module-title"><i class="bi bi-tags"></i> Style & Product Master</div>
                     <div class="module-sub">Tech Pack extraction, style similarity matching, CMS publishing, and vision fabric defect scan.</div>
                 </div>
 
@@ -3334,7 +4012,7 @@
 
                 'order-booking': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-cart-check"></i> 4. Order Booking</div>
+                    <div class="module-title"><i class="bi bi-cart-check"></i> Order Booking</div>
                     <div class="module-sub">Mandatory validation check, breakdown suggestion, and shipment feasibility verification.</div>
                 </div>
 
@@ -3385,7 +4063,7 @@
 
                 'ie-smv': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-speedometer2"></i> 5. IE & SMV Management</div>
+                    <div class="module-title"><i class="bi bi-speedometer2"></i> IE & SMV Management</div>
                     <div class="module-sub">SMV calculation, SMV-based automated T&A generation, and multi-order line balancing.</div>
                 </div>
 
@@ -3437,7 +4115,7 @@
 
                 'product-costing': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-calculator"></i> 6. Product Costing</div>
+                    <div class="module-title"><i class="bi bi-calculator"></i> Product Costing</div>
                     <div class="module-sub">Component suggestions, cost flag alerts, dual-version comparison, and dynamic pricing.</div>
                 </div>
 
@@ -3507,7 +4185,7 @@
 
                 'cost-sheet': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-table"></i> 7. Cost Sheet</div>
+                    <div class="module-title"><i class="bi bi-table"></i> Cost Sheet</div>
                     <div class="module-sub">Automated rollup with overhead, missing cost finder, margin slider, and 1-click executive approval.</div>
                 </div>
 
@@ -3551,7 +4229,7 @@
 
                 'target-margin': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-graph-up-arrow"></i> 8. Target Price & Margin</div>
+                    <div class="module-title"><i class="bi bi-graph-up-arrow"></i> Target Price & Margin</div>
                     <div class="module-sub">Negotiation strategy, plain-English impact explainer, and natural language pricing Copilot.</div>
                 </div>
 
@@ -3586,7 +4264,7 @@
 
                 'order-budgeting': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-wallet2"></i> 9. Order-wise Budgeting</div>
+                    <div class="module-title"><i class="bi bi-wallet2"></i> Order-wise Budgeting</div>
                     <div class="module-sub">Costing & BOM prefill, variance alert lockout rules, and pre-completion spend utilization forecast.</div>
                 </div>
 
@@ -3622,7 +4300,7 @@
 
                 'material-requirement': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-box-seam"></i> 10. Material Requirement Planning (MRP)</div>
+                    <div class="module-title"><i class="bi bi-box-seam"></i> Material Requirement Planning (MRP)</div>
                     <div class="module-sub">Approved consumption library matching, category wastage rules, and tolerance escalation.</div>
                 </div>
 
@@ -3686,7 +4364,7 @@
 
                 'supplier-cs': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-files"></i> 11. Supplier CS (Comparative Statement)</div>
+                    <div class="module-title"><i class="bi bi-files"></i> Supplier CS (Comparative Statement)</div>
                     <div class="module-sub">Quotation extraction, multi-factor scorecard, and buyer-nominated supplier prioritization rules.</div>
                 </div>
 
@@ -3715,7 +4393,7 @@
 
                 'fabric-trims': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-layers"></i> 12. Fabric & Trims Requirement</div>
+                    <div class="module-title"><i class="bi bi-layers"></i> Fabric & Trims Requirement</div>
                     <div class="module-sub">Shortage prediction, inventory allocation, and order surge PO revision drafting.</div>
                 </div>
 
@@ -3740,7 +4418,7 @@
 
                 'sample-dev': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-clipboard-check"></i> 13. Sample Development & Approval</div>
+                    <div class="module-title"><i class="bi bi-clipboard-check"></i> Sample Development & Approval</div>
                     <div class="module-sub">Buyer comment NLP extraction, live DHL/FedEx courier tracking, and automated escalation engine.</div>
                 </div>
 
@@ -3779,7 +4457,7 @@
 
                 'ta-calendar': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-calendar-event"></i> 14. Time & Action (T&A) Calendar</div>
+                    <div class="module-title"><i class="bi bi-calendar-event"></i> Time & Action (T&A) Calendar</div>
                     <div class="module-sub">Template-based T&A scheduling, downstream ripple recalculation, and predictive delay risk scoring.</div>
                 </div>
 
@@ -3821,7 +4499,7 @@
 
                 'production-followup': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-gear"></i> 15. Production Follow-up</div>
+                    <div class="module-title"><i class="bi bi-gear"></i> Production Follow-up</div>
                     <div class="module-sub">Bottleneck alerts, floor progress conversational queries, and automated remedial task generation.</div>
                 </div>
 
@@ -3846,7 +4524,7 @@
 
                 'shipment-planning': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-truck"></i> 16. Shipment Planning</div>
+                    <div class="module-title"><i class="bi bi-truck"></i> Shipment Planning</div>
                     <div class="module-sub">Shipment risk scoring, partial shipment balance tracking, and auto-drafted commercial invoices.</div>
                 </div>
 
@@ -3885,7 +4563,7 @@
 
                 'order-status': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-speedometer"></i> 17. Order Status 360°</div>
+                    <div class="module-title"><i class="bi bi-speedometer"></i> Order Status 360°</div>
                     <div class="module-sub">Real-time status copilot, daily exception digest, and multi-system consolidated risk cards.</div>
                 </div>
 
@@ -3919,7 +4597,7 @@
 
                 'profitability': `
                 <div class="module-header">
-                    <div class="module-title"><i class="bi bi-coin"></i> 18. Buyer Profitability</div>
+                    <div class="module-title"><i class="bi bi-coin"></i> Buyer Profitability</div>
                     <div class="module-sub">Actual vs budget variance analysis, plain-English variance explainers, and Customer Lifetime Value forecasting.</div>
                 </div>
 
@@ -3954,37 +4632,206 @@
             return panes[moduleId] || `<div class="module-title">Module ${moduleId} view ready.</div>`;
         }
 
+        // ====== ERP MODULE CATEGORIES ======
+        const erpCategories = [
+            {
+                name: 'Master Workflow',
+                icon: 'bi-signpost-2-fill',
+                moduleIds: ['lifecycle-tracker']
+            },
+            {
+                name: 'Master Data (MM)',
+                icon: 'bi-database-check',
+                moduleIds: ['buyer-master', 'style-product-master', 'ie-smv']
+            },
+            {
+                name: 'Commercial & Costing (SD/CO)',
+                icon: 'bi-calculator-fill',
+                moduleIds: ['buyer-order-mgmt', 'order-booking', 'product-costing', 'cost-sheet', 'target-margin']
+            },
+            {
+                name: 'Sourcing & MRP (PP)',
+                icon: 'bi-box-seam-fill',
+                moduleIds: ['order-budgeting', 'material-requirement', 'supplier-cs', 'fabric-trims']
+            },
+            {
+                name: 'Floor & Logistics (MES/LE)',
+                icon: 'bi-gear-wide-connected',
+                moduleIds: ['sample-dev', 'ta-calendar', 'production-followup', 'shipment-planning']
+            },
+            {
+                name: 'Executive & BI (FI-CO)',
+                icon: 'bi-graph-up-arrow',
+                moduleIds: ['order-status', 'profitability']
+            }
+        ];
+
+        // ====== ERP ACTION HANDLERS (PLANT SWITCHER, SAVE/POST, PRINT, EXPORT, AUDIT) ======
+        let currentActivePlant = 'Fortis Garments Ltd.';
+
+        function switchPlantUnit(plantName, element) {
+            currentActivePlant = plantName;
+            const activePlantEl = document.getElementById('activePlantName');
+            if (activePlantEl) {
+                activePlantEl.textContent = plantName;
+            }
+            document.querySelectorAll('.erp-plant-item').forEach(item => {
+                item.classList.remove('active');
+                const check = item.querySelector('.check-icon');
+                if (check) check.classList.add('d-none');
+            });
+            if (element) {
+                element.classList.add('active');
+                const check = element.querySelector('.check-icon');
+                if (check) check.classList.remove('d-none');
+            }
+            showLearningToast(`Active Production Unit switched to: <strong>${plantName}</strong>`);
+        }
+
+        function postErpTransaction() {
+            const txId = 'TX-' + Math.floor(100000 + Math.random() * 900000);
+            showLearningToast(`[ERP Core] Transaction ${txId} committed successfully. Document PO-2026-0089 posted to ${currentActivePlant}.`);
+        }
+
+        function printTechPack() {
+            showLearningToast('Generating Enterprise Spec Sheet & Tech Pack PDF (ST-1256)...');
+            setTimeout(() => {
+                window.print();
+            }, 600);
+        }
+
+        function exportBOM() {
+            const bomData = [
+                ["Component", "Specification", "Supplier", "Cons/Dzn", "Unit Price", "Subtotal FOB"],
+                ["Shell Fabric", "180 GSM Single Jersey 100% Organic Cotton", "EcoTextile Mills Ltd", "3.25 yds", "$2.15/yd", "$6.99"],
+                ["Collar & Cuff", "1x1 Rib Flat Knit Spun Polyester", "Apex Rib & Trims", "0.45 yds", "$1.80/yd", "$0.81"],
+                ["Placket Interlining", "Non-woven Microdot Interlining", "Freudenberg Group", "0.15 yds", "$0.65/yd", "$0.10"],
+                ["Main Label", "Woven Damask Recycled Poly", "Avery Dennison RBIS", "1.00 pcs", "$0.04/pc", "$0.04"],
+                ["Care & Size Label", "Printed Satin Washable", "Avery Dennison RBIS", "1.00 pcs", "$0.03/pc", "$0.03"],
+                ["Buttons", "4-Hole Engraved Horn Look 18L", "Prym Fashion Ltd", "3.00 pcs", "$0.02/pc", "$0.06"],
+                ["Sewing Thread", "Astra 100% Staple Spun Poly 40/2", "Coats Bangladesh", "180 m", "$0.001/m", "$0.18"],
+                ["Polybag & Carton", "Recycled LDPE + 5-Ply Corrugated", "Fortis Packaging Ltd", "1.00 set", "$0.22/set", "$0.22"],
+                ["CM (Cutting & Sewing)", "18 Operations decomposed SMV 12.5m", "Fortis Unit-03 (Line 04)", "1.00 pcs", "$1.85/pc", "$1.85"],
+                ["Commercial & Freight", "Export Doc, Forwarder & Port Handling", "DSV Global Logistics", "1.00 pcs", "$0.45/pc", "$0.45"]
+            ];
+
+            let csvContent = "data:text/csv;charset=utf-8," + bomData.map(e => e.map(cell => `"${cell}"`).join(",")).join("\n");
+            let encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "BOM_Cost_Sheet_ST-1256_PO-2026-0089.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showLearningToast('BOM CSV export generated & downloaded: BOM_Cost_Sheet_ST-1256.csv');
+        }
+
+        function viewAuditTrail() {
+            const modalEl = document.getElementById('auditTrailModal');
+            if (modalEl) {
+                const modal = new bootstrap.Modal(modalEl);
+                modal.show();
+            }
+        }
+
+        function filterSidebarMenu(query) {
+            const q = query.toLowerCase().trim();
+            document.querySelectorAll('#moduleNav .module-link').forEach(link => {
+                const text = link.innerText.toLowerCase();
+                if (!q || text.includes(q)) {
+                    link.style.display = 'flex';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+            document.querySelectorAll('.sidebar-category-header').forEach(hdr => {
+                if (!q) {
+                    hdr.style.display = 'flex';
+                }
+            });
+        }
+
+        function handleErpSearch(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) return;
+
+            // Search across module names
+            const matchedMod = modules.find(m => m.label.toLowerCase().includes(q) || m.id.toLowerCase().includes(q));
+            if (matchedMod) {
+                const link = document.querySelector(`.module-link[data-module="${matchedMod.id}"]`);
+                if (link) {
+                    link.click();
+                    showLearningToast(`Navigated to ${matchedMod.label} via ERP FastFind`);
+                }
+            }
+        }
+
+        // Global Keyboard Shortcut listener
+        document.addEventListener('keydown', function (e) {
+            // Alt+K or '/' to focus search
+            if ((e.altKey && e.key.toLowerCase() === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA')) {
+                e.preventDefault();
+                const searchInput = document.getElementById('erpGlobalSearch');
+                if (searchInput) {
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
+            // Ctrl+S to trigger Save & Post ERP
+            if (e.ctrlKey && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                postErpTransaction();
+            }
+        });
+
         // ====== INITIALIZATION ======
         document.addEventListener('DOMContentLoaded', function () {
             const nav = document.getElementById('moduleNav');
             const main = document.getElementById('moduleContainer');
 
-            modules.forEach((mod, idx) => {
-                const link = document.createElement('a');
-                link.className = 'module-link' + (idx === 0 ? ' active' : '');
-                link.setAttribute('data-module', mod.id);
+            // Render categorized sidebar navigation
+            erpCategories.forEach(cat => {
+                const catHeader = document.createElement('div');
+                catHeader.className = 'sidebar-category-header';
+                catHeader.innerHTML = `
+                    <span><i class="bi ${cat.icon} me-1" style="font-size:0.75rem;"></i> ${cat.name}</span>
+                    <span class="sidebar-category-count">${cat.moduleIds.length}</span>
+                `;
+                nav.appendChild(catHeader);
 
-                if (mod.isFeatured) {
-                    link.classList.add('featured-module');
-                    link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span> <span class="badge bg-warning text-dark ms-auto" style="font-size:0.62rem; padding: 2px 6px;">MASTER</span>`;
-                } else {
-                    link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span>`;
-                }
+                cat.moduleIds.forEach(modId => {
+                    const mod = modules.find(m => m.id === modId);
+                    if (!mod) return;
 
-                link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
+                    const link = document.createElement('a');
+                    link.className = 'module-link' + (mod.id === 'lifecycle-tracker' ? ' active' : '');
+                    link.setAttribute('data-module', mod.id);
 
-                    document.querySelectorAll('.module-pane').forEach(p => p.classList.remove('active'));
-                    const targetPane = document.getElementById('pane-' + mod.id);
-                    if (targetPane) {
-                        targetPane.classList.add('active');
-                        updateFilterBarForModule(mod);
+                    if (mod.isFeatured) {
+                        link.classList.add('featured-module');
+                        link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span> <span class="badge bg-warning text-dark ms-auto" style="font-size:0.6rem; padding: 2px 5px;">MASTER</span>`;
+                    } else {
+                        link.innerHTML = `<i class="bi ${mod.icon}"></i> <span>${mod.label}</span>`;
                     }
-                });
-                nav.appendChild(link);
 
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelectorAll('.module-link').forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+
+                        document.querySelectorAll('.module-pane').forEach(p => p.classList.remove('active'));
+                        const targetPane = document.getElementById('pane-' + mod.id);
+                        if (targetPane) {
+                            targetPane.classList.add('active');
+                            updateFilterBarForModule(mod);
+                        }
+                    });
+                    nav.appendChild(link);
+                });
+            });
+
+            // Render module panes into container
+            modules.forEach((mod, idx) => {
                 const pane = document.createElement('div');
                 pane.className = 'module-pane' + (idx === 0 ? ' active' : '');
                 pane.id = 'pane-' + mod.id;
